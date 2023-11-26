@@ -27,7 +27,8 @@ exports.signup = async(req, res) => {
         // sending the cookie with the token
         res.cookie("jwt", token, {
             expires: new Date(
-                Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000),
+                Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000
+            ),
                 secure: false,
                 httpOnly: true,
         });
@@ -66,13 +67,14 @@ exports.login = async(req, res) => {
         const token = jwt.sign(
             {id: user._id, name: user.name},
             process.env.JWT_SECRET,
-            {expiresIn: proccess.env.JWT_EXPIRES0}
+            {expiresIn: process.env.JWT_EXPIRES}
         );
 
         // sending the cookie with the token
         res.cookie("jwt", token, {
             expires: new Date(
-                Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000),
+                Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000
+                ),
                 secure: false,
                 httpOnly: true,
         });
@@ -104,13 +106,14 @@ exports.adminLogin = async(req, res) => {
         const token = jwt.sign(
             {id: admin._id, name: admin.username},
             process.env.JWT_SECRET,
-            {expiresIn: proccess.env.JWT_EXPIRES0}
+            {expiresIn: process.env.JWT_EXPIRES}
         );
 
         // sending the cookie with the token
         res.cookie("jwt", token, {
             expires: new Date(
-                Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000),
+                Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000
+            ),
                 secure: false,
                 httpOnly: true,
         });

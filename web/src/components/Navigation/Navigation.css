@@ -1,0 +1,21 @@
+.Nav-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+img{
+    width: 20px;
+}
+
+ul li {
+    background-color: rgba(239, 239, 239, 0.932);
+    /* width: 180px; */
+    height: 25px;
+    border: none;
+    border-radius: 5px;
+    padding: 8px;
+}
