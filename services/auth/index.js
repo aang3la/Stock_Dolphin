@@ -1,6 +1,6 @@
 // calling the packages
 const express = require("express");
-const database = require("./pkg/database/index");
+const database = require("../../pkg/database/index");
 const jwt = require("express-jwt");
 const cookieParser = require("cookie-parser");
 
@@ -34,18 +34,18 @@ app.use(jwt.expressjwt({
     },
     })
     .unless({
-        path: ["/api/signup", "/api/login", "/api/admin-login"]
+        path: ["/api/signup", "/api/login"]
     })
 );
 
 //routes for signup and login
-app.post("/api/signup", authHandler.signup);
-app.post("/api/login", authHandler.login);
-app.post("/api/admin-login", authHandler.adminLogin);
+app.post("/api/auth/signup", authHandler.signup);
+app.post("/api/auth/login", authHandler.login);
 
-app.listen(process.env.PORT, (err) => {
+
+app.listen(process.env.PORTAUTH, (err) => {
     if(err){
         return console.log("Couldn't start the service.");
     } 
-    console.log(`Service started successfully on port ${process.env.PORT}`);
+    console.log(`Service started successfully on port ${process.env.PORTAUTH}`);
 });

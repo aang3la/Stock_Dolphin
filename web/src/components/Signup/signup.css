@@ -1,0 +1,27 @@
+body {
+    background-color: #53A856;
+}
+
+.Signup-form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.Signup-form input {
+    width: 250px;
+    padding: 8px;
+    margin: 7px;
+    border: 1px solid rgb(0, 70, 0);
+    border-radius: 20px;
+}
+
+.Signup-form button {
+    width: 100px;
+    padding: 8px;
+    margin: 5px;
+    border: 1px solid rgb(0, 70, 0);
+    border-radius: 20px;
+    background-color: white;
+}

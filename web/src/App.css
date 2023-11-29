@@ -4,17 +4,6 @@
   text-align: center;
 }
 
-.App-navigation {
-  width: 250px;
-  height: 720px;
-  background-color: #53A856;
-}
-
-.App-logo {
-  width: 220px;
-  height: 122px;
-}
-
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
