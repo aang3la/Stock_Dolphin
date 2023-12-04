@@ -34,7 +34,7 @@ app.use(jwt.expressjwt({
     },
     })
     .unless({
-        path: ["/api/signup", "/api/login"]
+        path: ["/api/auth/signup", "/api/auth/login"]
     })
 );
 
