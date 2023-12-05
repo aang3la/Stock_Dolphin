@@ -3,7 +3,12 @@ const Items = require("../../../pkg/items/itemsSchema");
 // Show all items
 exports.getAllItems = async(req, res) => {
     try{
-        const items = await Items.find();
+        const queryObj = {...req.query}
+        let queryString = JSON.stringify(queryObj); 
+        queryString = queryString.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`)
+        const query = JSON.parse(queryString);
+
+        const items = await Items.find(query);
 
         res.status(200).json({
             status: "success",
