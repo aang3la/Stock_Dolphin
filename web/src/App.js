@@ -19,8 +19,9 @@ function App() {
         <button onClick={locationChange} data-target="signup">Signup</button>
       </nav>
       <div>
-        { location === 'signup' ? <Signup /> : null }
-        { location === 'login' ? <Login /> : null }
+        {/* { location === 'signup' ? <Signup /> : null }
+        { location === 'login' ? <Login /> : null } */}
+        <Dashboard />
       </div>
     </>
   );

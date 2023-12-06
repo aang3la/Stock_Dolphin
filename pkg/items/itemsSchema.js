@@ -10,6 +10,14 @@ const itemsSchema = new mongoose.Schema ({
     },
     category: {
         enum: ["Office Supply", "Kitchen Supply", "Sanitary Supply"]
+    },
+    numberOrders: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Orders',
+    },
+    totalCost: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Orders',
     }
 });
 
