@@ -1,28 +1,21 @@
 import './App.css';
-import React, { useState } from 'react';
+import { Routes, Route } from "react-router-dom";
 import Signup from './components/Signup/Signup';
-import Login from './components/Login/Login';
-import Dashboard from './components/Dashboard/Dashboard';
+import Dashboard from './pages/Dashboard/Dashboard';
+import Inventory from './pages/Inventory/Inventory';
+import Reports from './pages/Reports/Reports';
+import Suppliers from './pages/Suppliers/Suppliers';
 
 function App() {
-  const[location, setLocation] = useState('signup');
-
-  const locationChange = (event) => {
-    setLocation(event.target.dataset.target);
-  };
-
   return (
     <>
-     {/* <Dashboard /> */}
-      <nav>
-        <button onClick={locationChange} data-target="login">Login</button>
-        <button onClick={locationChange} data-target="signup">Signup</button>
-      </nav>
-      <div>
-        {/* { location === 'signup' ? <Signup /> : null }
-        { location === 'login' ? <Login /> : null } */}
-        <Dashboard />
-      </div>
+      <Routes>
+        <Route path='/' element={<Signup />} />
+        <Route path='/dashboard' element={<Dashboard />} />
+        <Route path='/inventory' element={<Inventory />} />
+        <Route path='/reports' element={<Reports />} />
+        <Route path='/suppliers' element={<Suppliers />} />
+      </Routes> 
     </>
   );
 }

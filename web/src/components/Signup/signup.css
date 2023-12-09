@@ -1,12 +1,9 @@
-body {
-    background-color: #53A856;
-}
-
 .Signup-form {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: center;
+    background-color: #53A856;
 }
 
 .Signup-form input {
