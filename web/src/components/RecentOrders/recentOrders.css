@@ -1,0 +1,49 @@
+.orders-heading {
+    font-size: 16px;
+    font-weight: 700;
+    color: black;
+    margin-left: 310px;
+    padding-bottom: 10px;
+}
+
+.orders-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.orders {
+    margin: 0 auto;
+    display: flex;
+    gap: 30px;
+}
+
+.order {
+    width: 168px;
+    height: 150px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.25);
+}
+
+.order-title {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.info {
+    font-size: 12px;
+}
+
+#unit {
+    font-weight: 600;
+}
+
+.arrow-icon {
+    width: 40px;
+    height: 40px;
+}
+
+.pagination img {
+    width: 50px;
+    padding-top: 40px;
+}

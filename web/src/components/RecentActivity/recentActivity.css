@@ -1,0 +1,31 @@
+.activity-heading {
+    font-size: 16px;
+    color: black;
+    margin-left: 310px;
+    padding-bottom: 10px;
+}
+.Activity {
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.data {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.field {
+    width: 770px;
+    padding: 12px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+}

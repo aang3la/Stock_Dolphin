@@ -1,16 +1,27 @@
 import "./dashboard.css";
 import Navigation from "../../components/Navigation/Navigation";
 import Header from "../../components/Header/Header";
+import Summary from "../../components/Summary/Summary";
+import RecentActivity from "../../components/RecentActivity/RecentActivity";
+import RecentOrders from "../../components/RecentOrders/RecentOrders";
+
 
 function Dashboard() {
-    return (
-      <div className="Dashboard">
+  return (
+    <div className="Dashboard">
+      <aside>
         <Navigation />
-        <div className="Header">
+      </aside>
+      <main>
+        <header>
           <Header title="Dashboard" />
-        </div>
-      </div>
-    );
-  }
-  
-  export default Dashboard;
+        </header>
+        <Summary />
+        <RecentActivity />
+        <RecentOrders />
+      </main>
+    </div>
+  );
+};
+
+export default Dashboard;

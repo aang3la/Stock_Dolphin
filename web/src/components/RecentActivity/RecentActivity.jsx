@@ -1,0 +1,29 @@
+import "./recentActivity.css";
+
+function RecentActivity() {
+  const data = [
+    "Admin has created item Office Pens in Office Supply  (Office Category)",
+    "Admin has created item A4 Paper in Office Supply  (Office Category)",
+    "Admin has deleted item Espresso in Kitchen Supply  (Kitchen Category)",
+    "Admin has moved item Mouse in Office Supply (Office Category)",
+  ];
+
+  return (
+    <div className="Activity">
+      <div className="activity-heading">
+        <h1>Recent Activity</h1>
+      </div>
+      <div className="data">
+        {data.map((field, i) => {
+          return (
+            <div key={i} className="field">
+              {field}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+export default RecentActivity;
