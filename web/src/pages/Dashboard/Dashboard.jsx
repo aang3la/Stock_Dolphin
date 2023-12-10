@@ -5,7 +5,6 @@ import Summary from "../../components/Summary/Summary";
 import RecentActivity from "../../components/RecentActivity/RecentActivity";
 import RecentOrders from "../../components/RecentOrders/RecentOrders";
 
-
 function Dashboard() {
   return (
     <div className="Dashboard">
@@ -16,12 +15,14 @@ function Dashboard() {
         <header>
           <Header title="Dashboard" />
         </header>
-        <Summary />
-        <RecentActivity />
-        <RecentOrders />
+        <div className="mainContent">
+          <Summary />
+          <RecentActivity />
+          <RecentOrders />
+        </div>
       </main>
     </div>
   );
-};
+}
 
 export default Dashboard;

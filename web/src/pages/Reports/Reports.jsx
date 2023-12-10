@@ -1,15 +1,22 @@
+import "./reports.css";
 import Navigation from "../../components/Navigation/Navigation";
 import Header from "../../components/Header/Header";
+import ReportsSection from "../../components/ReportsSection/ReportsSection";
 
 function Reports() {
-    return (
-      <>
+  return (
+    <div className="Reports">
+      <aside>
         <Navigation />
-        <div className="Header">
+      </aside>
+      <main>
+        <header>
           <Header title="Reports" />
-        </div>
-      </>
-    );
-  }
-  
-  export default Reports;
+        </header>
+        <ReportsSection />
+      </main>
+    </div>
+  );
+}
+
+export default Reports;

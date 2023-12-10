@@ -10,9 +10,7 @@ function RecentActivity() {
 
   return (
     <div className="Activity">
-      <div className="activity-heading">
-        <h1>Recent Activity</h1>
-      </div>
+      <h1 id="activity-title">Recent Activity</h1>
       <div className="data">
         {data.map((field, i) => {
           return (

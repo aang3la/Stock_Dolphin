@@ -5,6 +5,8 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import Inventory from './pages/Inventory/Inventory';
 import Reports from './pages/Reports/Reports';
 import Suppliers from './pages/Suppliers/Suppliers';
+import ActivityHistory from './pages/ActivityHistory/ActivityHistory';
+import InventorySummary from './pages/InventorySummary/InventorySummary';
 
 function App() {
   return (
@@ -15,7 +17,8 @@ function App() {
         <Route path='/inventory' element={<Inventory />} />
         <Route path='/reports' element={<Reports />} />
         <Route path='/suppliers' element={<Suppliers />} />
-      </Routes> 
+        <Route path='/activity-history' element={<ActivityHistory />} />
+        <Route path='/inventory-summary' element={<InventorySummary />} />      </Routes> 
     </>
   );
 }

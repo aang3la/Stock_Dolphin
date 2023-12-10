@@ -1,0 +1,27 @@
+.Reports-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: 400;
+    color: #5C5C5C;
+}
+
+p {
+    color: #5C5C5C;
+    font-size: 15px;
+}
+
+img {
+    width: 30px;
+}
+
+#activity, #inventory {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}

@@ -12,9 +12,7 @@ function RecentOrders() {
 
   return (
     <div className="Orders">
-      <div className="orders-heading">
-        <h1>Recent Orders</h1>
-      </div>
+      <h1 id="orders-heading">Recent Orders</h1>
       <div className="orders-section">
         <div className="orders">
           {orders.map((order, i) => {
@@ -29,12 +27,12 @@ function RecentOrders() {
             );
           })}
         </div>
-        <div className="arrow-icon">
-          <img src={arrow} alt="arrow-icon" />
+        <div className>
+          <img src={arrow} alt="arrow-icon" id="arrow" />
         </div>
       </div>
       <div className="pagination">
-        <img src={pagination} alt="pagination" />
+        <img src={pagination} alt="pagination" id="pagination" />
       </div>
     </div>
   );

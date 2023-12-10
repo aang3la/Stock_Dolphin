@@ -1,49 +1,53 @@
-.orders-heading {
+#orders-heading {
     font-size: 16px;
-    font-weight: 700;
+    font-weight: 600;
     color: black;
-    margin-left: 310px;
-    padding-bottom: 10px;
+    padding-bottom: 9px;
 }
 
 .orders-section {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 }
 
 .orders {
-    margin: 0 auto;
     display: flex;
-    gap: 30px;
+    gap: 18px;
 }
 
 .order {
-    width: 168px;
-    height: 150px;
+    width: 108px;
+    height: 115px;
     border-radius: 10px;
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.25);
 }
 
 .order-title {
-    font-size: 16px;
-    font-weight: 400;
+    font-size: 13px;
+    font-weight: 500;
 }
 
 .info {
-    font-size: 12px;
+    font-size: 10px;
 }
 
 #unit {
     font-weight: 600;
 }
 
-.arrow-icon {
-    width: 40px;
-    height: 40px;
+#arrow {
+    width: 30px;
+    padding-left: 20px;
 }
 
-.pagination img {
-    width: 50px;
-    padding-top: 40px;
+.pagination {
+    display: flex;
+    justify-content:space-evenly;
+}
+
+#pagination {
+    width: 38px;
+    padding-top: 16px;
+    padding-bottom: 8px;
 }

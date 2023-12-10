@@ -1,12 +1,12 @@
 .App-navigation {
-    width: 300px;
-    height: auto;
+    width: 250px;
+    height: 100%;
     background-color: #53A856;
 }
   
 .App-logo {
-    width: 300px;
-    height: 150px;
+    width: 250px;
+    height: 125px;
     align-self: center;
 }
 
@@ -17,36 +17,36 @@
     flex-direction: column;
     justify-content: center;
     gap: 20px;
-    padding-left: 28px;
+    padding-left: 20px;
 }
 .Nav-list a {
     text-decoration: none;
     color: inherit;
 }
 
-.Nav-list img{
-    width: 28px;
-    padding: 7px;
+.Nav-list img {
+    width: 25px;
+    padding: 8px;
 }
 
 .list-items, .custom-item {
     background-color: rgba(255, 255, 255, 0.4);
-    width: 230px;
-    height: 35px;
+    width: 200px;
+    height: 30px;
     border: none;
     border-radius: 10px;
     padding: 7px;
-    font-size: 20px;
+    font-size: 18px;
     display: flex;
     align-items: center;
 }
 
 #list-text {
-    margin-left: 43px;
+    margin-left: 38px;
 }
 
 
 .custom-item {
-    margin-top: 180px;
-    margin-bottom: 12px;
+    margin-top: 225px;
+    padding-bottom: 10px;
 }

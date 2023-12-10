@@ -1,15 +1,20 @@
+import "./suppliers.css";
 import Navigation from "../../components/Navigation/Navigation";
 import Header from "../../components/Header/Header";
 
 function Suppliers() {
-    return (
-      <>
+  return (
+    <div className="Suppliers">
+      <aside>
         <Navigation />
-        <div className="Header">
+      </aside>
+      <main>
+        <header>
           <Header title="Suppliers" />
-        </div>
-      </>
-    );
-  }
-  
-  export default Suppliers;
+        </header>
+      </main>
+    </div>
+  );
+}
+
+export default Suppliers;

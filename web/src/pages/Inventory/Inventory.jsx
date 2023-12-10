@@ -1,15 +1,20 @@
+import "./inventory.css";
 import Navigation from "../../components/Navigation/Navigation";
 import Header from "../../components/Header/Header";
 
 function Inventory() {
-    return (
-      <>
+  return (
+    <div className="Inventory">
+      <aside>
         <Navigation />
-        <div className="Header">
+      </aside>
+      <main>
+        <header>
           <Header title="Inventory" />
-        </div>
-      </>
-    );
-  }
-  
-  export default Inventory;
+        </header>
+      </main>
+    </div>
+  );
+}
+
+export default Inventory;

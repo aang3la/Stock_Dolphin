@@ -1,0 +1,9 @@
+.Suppliers {
+    display: flex;
+}
+
+main {
+    width: 1200px;
+    display: flex;
+    flex-direction: column;
+}
