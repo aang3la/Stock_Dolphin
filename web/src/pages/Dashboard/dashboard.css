@@ -1,6 +1,21 @@
 .Dashboard {
     display: flex;
 }
+/* 
+header {
+    display: flex;
+}
+
+.user-section {
+    display: flex;
+    align-items: center;
+}
+
+.user-section img {
+    width: 25px;
+    height: 25px;
+    padding-left: 2px;
+} */
 
 main {
     width: 1200px;

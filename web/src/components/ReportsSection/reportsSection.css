@@ -1,8 +1,14 @@
 .Reports-section {
+    width: 500px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-left: 10px;
+}
+
+.Activity-field, .Inventory-field {
+    width: 1000px;
 }
 
 h2 {
@@ -14,6 +20,7 @@ h2 {
 p {
     color: #5C5C5C;
     font-size: 15px;
+    margin-top: 1px;
 }
 
 img {
@@ -24,4 +31,9 @@ img {
     display: flex;
     align-items: center;
     gap: 5px;
+    margin-bottom: 1px;
+}
+
+.link {
+    text-decoration: none;
 }

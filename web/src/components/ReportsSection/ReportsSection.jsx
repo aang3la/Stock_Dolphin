@@ -9,7 +9,9 @@ function ReportsSection() {
       <div className="Activity-field">
         <div id="activity">
           <img src={activity_icon} alt="activity_icon" />
-          <Link to="/activity-history"><h2>Activity History</h2></Link>
+          <Link to="/activity-history" className="link">
+            <h2>Activity History</h2>
+          </Link>
         </div>
         <p>
           Activity history helps keep track of the things you do with your
@@ -20,7 +22,9 @@ function ReportsSection() {
       <div className="Inventory-field">
         <div id="inventory">
           <img src={inventory_icon} alt="inventory_icon" />
-          <Link to="/inventory-summary"><h2>Inventory Summary</h2></Link>
+          <Link to="/inventory-summary" className="link">
+            <h2>Inventory Summary</h2>
+          </Link>
         </div>
         <p>
           Inventory Summary provides detailed visualizations about the total
