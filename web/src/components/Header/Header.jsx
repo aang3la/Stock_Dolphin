@@ -1,6 +1,6 @@
 import "./header.css"
 
-function Header({ title }) {
+const Header = ({ title }) => {
     return(
         <>
             <h1>{title}</h1>

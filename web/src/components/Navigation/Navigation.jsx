@@ -6,7 +6,7 @@ import inventory_icon from "../../images/inventory_icon.png";
 import reports_icon from "../../images/reports_icon.png";
 import signout_icon from "../../images/signout_icon.png";
 
-function Navigation() {
+const Navigation = () => {
   return (
     <div className="App-navigation">
       <a href="/dashboard">

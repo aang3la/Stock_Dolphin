@@ -1,6 +1,6 @@
 import "./recentActivity.css";
 
-function RecentActivity() {
+const RecentActivity = () => {
   const data = [
     "Admin has created item Office Pens in Office Supply  (Office Category)",
     "Admin has created item A4 Paper in Office Supply  (Office Category)",

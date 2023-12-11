@@ -1,6 +1,7 @@
 import "./suppliers.css";
 import Navigation from "../../components/Navigation/Navigation";
 import Header from "../../components/Header/Header";
+import SupplierCard from "../../components/SupplierCard/SupplierCard";
 
 function Suppliers() {
   return (
@@ -11,6 +12,7 @@ function Suppliers() {
       <main>
         <header>
           <Header title="Suppliers" />
+          <SupplierCard />
         </header>
       </main>
     </div>

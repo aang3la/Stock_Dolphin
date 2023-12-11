@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import activity_icon from "../../images/activity-icon.png";
 import inventory_icon from "../../images/inventory_icon.png";
 
-function ReportsSection() {
+const ReportsSection = () => {
   return (
     <div className="Reports-Section">
       <div className="Activity-field">

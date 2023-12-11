@@ -1,6 +1,7 @@
 import "./inventory.css";
 import Navigation from "../../components/Navigation/Navigation";
 import Header from "../../components/Header/Header";
+import CategoryCard from "../../components/CategoryCard/CategoryCard";
 
 function Inventory() {
   return (
@@ -12,6 +13,7 @@ function Inventory() {
         <header>
           <Header title="Inventory" />
         </header>
+        <CategoryCard />
       </main>
     </div>
   );

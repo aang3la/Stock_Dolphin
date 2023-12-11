@@ -2,7 +2,7 @@ import "./recentOrders.css";
 import arrow from "../../images/arrow.png";
 import pagination from "../../images/pagination-example.png";
 
-function RecentOrders() {
+const RecentOrders = () => {
   const orders = [
     { title: "Office Mouse", unit: "7 Unit", price: "€ 133.00" },
     { title: "A4 Paper", unit: "917 Unit", price: "€ 28.00" },

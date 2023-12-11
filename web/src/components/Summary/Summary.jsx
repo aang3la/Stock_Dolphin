@@ -4,7 +4,7 @@ import items_icon from "../../images/items-icon.png";
 import orders_icon from "../../images/orders-icon.png";
 import cost_icon from "../../images/cost-icon.png";
 
-function Summary() {
+const Summary = () => {
   return (
     <div className="Summary">
       <h1 id="summary-heading">Inventory Summary</h1>
