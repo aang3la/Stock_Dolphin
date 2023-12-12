@@ -25,7 +25,7 @@ app.use(jwt.expressjwt({
     },
     })
     .unless({
-        path: []
+        path: ["/suppliers", "/suppliers/:id"]
     })
 );
 

@@ -1,14 +1,23 @@
-.suppliers {
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-    gap: 20px;
-}
-
 .supplier {
     width: 200px;
     height: 200px;
-    border: 2px solid black;
+    border: 1px solid black;
     border-radius: 10px;
     padding: 2px;
+}
+
+.supplier-name {
+    height: 50px;
+    padding: 1px;
+    background-color: #53A856;
+}
+
+.supplier-name h1 {
+    color: white;
+    text-align: center;
+    margin: 5px;
+}
+
+.supplier p {
+    font-size: 12px;
 }
