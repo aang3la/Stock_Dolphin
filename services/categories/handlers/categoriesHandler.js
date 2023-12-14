@@ -1,19 +1,18 @@
-const Items = require("../../../pkg/items/itemsSchema");
 const Category = require("../../../pkg/categories/categoriesSchema");
 
-// Show all items
-exports.getAllItems = async(req, res) => {
+// Show all categories
+exports.getAllCategories = async(req, res) => {
     try{
         const queryObj = {...req.query}
         let queryString = JSON.stringify(queryObj); 
         queryString = queryString.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`)
         const query = JSON.parse(queryString);
 
-        const items = await Items.find(query).populate("category");
+        const categories = await Category.find(query);
 
         res.status(200).json({
             status: "success",
-            data: items
+            data: categories
         });
     } catch(err) {
         res.status(404).json({
@@ -23,14 +22,14 @@ exports.getAllItems = async(req, res) => {
     }
 };
 
-// Show one item
-exports.getOneItem = async(req, res) => {
+// Show one category
+exports.getOneCategory = async(req, res) => {
     try{
-        const item = await Items.findById(req.params.id);
+        const category = await Category.findById(req.params.id);
         
         res.status(200).json({
             status: "success",
-            data: item
+            data: category
         });
     } catch(err) {
         res.status(404).json({
@@ -40,14 +39,14 @@ exports.getOneItem = async(req, res) => {
     }
 };
 
-// Create item
-exports.createItem = async(req, res) => {
+// Create category
+exports.createCategory = async(req, res) => {
     try{
-        const newItem = await Items.create(req.body);
+        const newCategory = await Category.create(req.body);
 
         res.status(200).json({
             status: "success",
-            data: newItem
+            data: newCategory
         });
 
     } catch(err) {
@@ -58,17 +57,17 @@ exports.createItem = async(req, res) => {
     }
 };
 
-// Make changes in a item
-exports.updateItem = async(req, res) => {
+// Make changes in a category
+exports.updateCategory = async(req, res) => {
     try{
-        const item = await Items.findByIdAndUpdate(req.params.id, req.body, {
+        const category = await Category.findByIdAndUpdate(req.params.id, req.body, {
             new: true,
             runValidators: true
         });
 
         res.status(201).json({
             status: "success",
-            data: item
+            data: category
         });
     } catch(err){
         res.status(404).json({
@@ -78,10 +77,10 @@ exports.updateItem = async(req, res) => {
     }
 };
 
-// Delete item
-exports.deleteItem = async(req, res) => {
+// Delete category
+exports.deleteCategory = async(req, res) => {
     try{
-        await Items.findByIdAndDelete(req.params.id);
+        await Category.findByIdAndDelete(req.params.id);
 
         res.status(201).json({
             status: "success",

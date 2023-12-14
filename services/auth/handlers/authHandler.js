@@ -35,7 +35,10 @@ exports.signup = async(req, res) => {
         // sending the token
         res.status(201).json({
             status: "success",
-            token
+            token,
+            data: {
+                user: newUser,
+            }
         });
     }catch(err){
         res.status(500).send(err);
