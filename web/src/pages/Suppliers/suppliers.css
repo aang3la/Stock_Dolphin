@@ -9,11 +9,14 @@ main {
 }
 
 .suppliers {
-    width: 900px;
+  width: 1000px;
+  height: 500px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   padding: 20px;
   gap: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
 }

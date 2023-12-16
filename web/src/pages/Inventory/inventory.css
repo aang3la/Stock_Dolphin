@@ -1,9 +1,13 @@
 .Inventory {
-    display: flex;
+  display: flex;
 }
 
-main {
-    width: 1200px;
-    display: flex;
-    flex-direction: column;
+.category-cards {
+  width: 1000px;
+  height: 500px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+  gap: 40px;
 }

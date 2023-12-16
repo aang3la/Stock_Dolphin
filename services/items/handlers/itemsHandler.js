@@ -9,7 +9,7 @@ exports.getAllItems = async(req, res) => {
         queryString = queryString.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`)
         const query = JSON.parse(queryString);
 
-        const items = await Items.find(query).populate("category");
+        const items = await Items.find(query).populate("categoryId");
 
         res.status(200).json({
             status: "success",
@@ -43,7 +43,14 @@ exports.getOneItem = async(req, res) => {
 // Create item
 exports.createItem = async(req, res) => {
     try{
-        const newItem = await Items.create(req.body);
+        const { name, image, categoryId } = req.body;
+
+        const newItem = await Items.create({ name, image, categoryId });
+
+        await Category.findByIdAndUpdate(categoryId, {
+            $push: { items: newItem}
+        });
+        
 
         res.status(200).json({
             status: "success",

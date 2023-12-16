@@ -1,23 +1,38 @@
 .supplier {
-    width: 200px;
-    height: 200px;
-    border: 1px solid black;
-    border-radius: 10px;
-    padding: 2px;
+  width: 200px;
+  height: 230px;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 2px;
 }
 
 .supplier-name {
-    height: 50px;
-    padding: 1px;
-    background-color: #53A856;
+  height: 50px;
+  background-color: #53a856;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  border-radius: 10px;
 }
 
 .supplier-name h1 {
-    color: white;
-    text-align: center;
-    margin: 5px;
+  color: white;
+  text-align: center;
+  margin: 5px;
 }
 
 .supplier p {
-    font-size: 12px;
+  font-size: 12px;
+}
+
+.title {
+  font-size: 15px;
+  font-weight: 500;
+  color: black;
+}
+
+.hrClass {
+  border: none;
+  width: 190px;
+  height: 1px;
+  background-color: #5c5c5c;
 }
