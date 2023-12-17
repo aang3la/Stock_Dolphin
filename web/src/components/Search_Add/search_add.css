@@ -33,6 +33,7 @@
     height: 45px;
     border-radius: 10px;
     background-color: #53A856;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.40);
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -41,11 +42,11 @@
 .add-button p {
     color: white;
     font-size: 0.85rem;
-    font-weight: 300;
+    font-weight: 200;
     margin-top: 12px;
 }
 
 .add-button img {
-    width: 30px;
-    height: 30px;
+    width: 2rem;
+    height: 2rem;
 }

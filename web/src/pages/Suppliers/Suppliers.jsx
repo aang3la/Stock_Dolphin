@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Navigation from "../../components/Navigation/Navigation";
 import Header from "../../components/Header/Header";
 import SupplierCard from "../../components/SupplierCard/SupplierCard";
+import Search_Add from "../../components/Search_Add/Search_Add";
 
 const Suppliers = () => {
   const [suppliers, setSuppliers] = useState([]);
@@ -20,7 +21,7 @@ const Suppliers = () => {
         const data = await response.json();
 
         if (response.ok) {
-          console.log('API Response:', data);
+          console.log("API Response:", data);
           setSuppliers(data.data);
         } else {
           console.log("Error");
@@ -40,11 +41,14 @@ const Suppliers = () => {
       <main>
         <header>
           <Header title="Suppliers" />
+          <Search_Add searchText="Search Suppliers" text="ADD SUPPLIER" />
         </header>
-        <div className="suppliers">
-          {suppliers.map((supplier) => (
-            <SupplierCard key={supplier.id} supplier={supplier} />
-          ))}
+        <div className="suppliers-container">
+          <div className="suppliers">
+            {suppliers.map((supplier) => (
+              <SupplierCard key={supplier.id} supplier={supplier} />
+            ))}
+          </div>
         </div>
       </main>
     </div>

@@ -30,11 +30,11 @@ app.use(cors());
 // );
 
 // Routes
-app.get("/items", items.getAllItems);
-app.get("/items/:id", items.getOneItem);
-app.post("/items", items.createItem);
-app.patch("/items/:id", items.updateItem);
-app.delete("/items/:id", items.deleteItem);
+app.get("/inventory/:categoryName", items.getAllItems);
+app.get("/inventory/:categoryName/:id", items.getOneItem);
+app.post("/inventory/:categoryName", items.createItem);
+app.patch("/inventory/:categoryName/:id", items.updateItem);
+app.delete("/inventory/:categoryName/:id", items.deleteItem);
 
 app.listen(process.env.PORT_ITEMS, (err) => {
     if(err) {

@@ -4,6 +4,7 @@ import Navigation from "../../components/Navigation/Navigation";
 import Header from "../../components/Header/Header";
 import CategoryCard from "../../components/CategoryCard/CategoryCard";
 import Search_Add from "../../components/Search_Add/Search_Add";
+import InventorySummary from "../../components/InventorySummary/InventorySummary";
 
 const Inventory = () => {
   const [categories, setCategories] = useState([]);
@@ -32,7 +33,6 @@ const Inventory = () => {
     };
     fetchCategories();
   }, []);
-
   return (
     <div className="Inventory">
       <aside>
@@ -42,6 +42,7 @@ const Inventory = () => {
         <header>
           <Header title="Inventory" />
           <Search_Add searchText="Search Categories" text="ADD CATEGORY" />
+          <InventorySummary categories={categories} />
         </header>
         <div className="category-cards">
           {categories.map((category) => (

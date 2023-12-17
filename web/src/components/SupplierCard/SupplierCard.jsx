@@ -1,4 +1,6 @@
 import "./supplierCard.css";
+import edit_icon from "../../images/edit-icon.png";
+import delete_icon from "../../images/delete-icon.png";
 
 const SupplierCard = ({ supplier }) => {
   return (
@@ -19,8 +21,10 @@ const SupplierCard = ({ supplier }) => {
           <span className="title">E-mail:</span> {supplier.email}
         </p>
         <hr className="hrClass" />
-        <button>Edit</button>
-        <button>Delete</button>
+        <span className="supplier-buttons">
+          <img src={edit_icon} />
+          <img src={delete_icon} />
+        </span>
       </div>
     </div>
   );

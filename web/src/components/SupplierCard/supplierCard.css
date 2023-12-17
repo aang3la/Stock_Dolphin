@@ -1,31 +1,32 @@
 .supplier {
-  width: 200px;
-  height: 230px;
+  width: 210px;
+  height: 220px;
   border: 1px solid black;
   border-radius: 10px;
-  padding: 2px;
 }
 
 .supplier-name {
-  height: 50px;
+  height: 55px;
   background-color: #53a856;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
-  border-radius: 10px;
+  border-radius: 10px 5px 5px;
 }
 
 .supplier-name h1 {
   color: white;
   text-align: center;
-  margin: 5px;
+  margin: 7px;
+  font-size: 1.5rem;
 }
 
 .supplier p {
-  font-size: 12px;
+  font-size: 11px;
+  padding-left: 4px;
 }
 
 .title {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
   color: black;
 }
