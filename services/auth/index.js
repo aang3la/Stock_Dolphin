@@ -3,6 +3,7 @@ const express = require("express");
 const database = require("../../pkg/database/index");
 const jwt = require("express-jwt");
 const cookieParser = require("cookie-parser");
+const cors = require("cors");
 
 // calling the handlers
 const authHandler = require("./handlers/authHandler");
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(cookieParser());
+app.use(cors());
 
 // function for connecting with the database
 database.init();

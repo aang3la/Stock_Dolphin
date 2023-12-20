@@ -32,6 +32,7 @@
     width: 160px;
     height: 45px;
     border-radius: 10px;
+    border: none;
     background-color: #53A856;
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.40);
     display: flex;

@@ -50,7 +50,6 @@ exports.createItem = async(req, res) => {
         await Category.findByIdAndUpdate(categoryId, {
             $push: { items: newItem}
         });
-        
 
         res.status(200).json({
             status: "success",

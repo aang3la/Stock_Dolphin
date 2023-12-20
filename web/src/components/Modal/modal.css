@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
+.Modal {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(218, 214, 214, 0.8);
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-container {
+    width: 350px;
+    height: 280px;
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal-title {
+    width: 350px;
+    height: 30px;
+    border-radius: 20px 20px 0px 0px;
+    background-color: #53A856;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 7px;
+}
+
+.modal-title h1 {
+    font-size: 16px;
+    color: white;
+    margin-left: 20px;
+}
+
+.modal-title button {
+    background: none;
+    border: none;
+}
+
+.close-icon {
+    width: 20px;
+    margin-top: 13px;
+    margin-right: 8px;
+}
+
+.modal-body {
+    width: 100%;
+}
+
+.input-container {
+    height: 60px;
+}
+
+.input-container input {
+    width: 280px;
+    margin-top: 20px;
+    margin-bottom: 1px;
+    border: none;
+    margin-left: 28px;
+    font-size: 15px;
+    font-family: Poppins;
+}
+
+#custom_hr {
+    width: 290px;
+    border: 1px solid #999999;
+}
+
+.img-container {
+    height: 60px;
+    padding: 10px;
+}
+
+.modal-image {
+    margin: 0 auto;
+    width: 290px;
+    height: 60px;
+    border: 2px solid #999999;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-image p {
+    font-size: 13px;
+    font-weight: 500;
+    color: #3E4153;
+}
+
+.modal-footer {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-footer button {
+    width: 120px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    font-size: 12px;
+    font-weight: 500;
+    margin: 20px;
+    font-family: Poppins;
+}
+
+#cancel-btn {
+    background-color: #D9D9D9;
+}
+
+#add-btn {
+    background-color: #53A856;
+    color: white;
+}

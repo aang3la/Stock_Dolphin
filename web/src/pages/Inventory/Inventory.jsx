@@ -5,6 +5,7 @@ import Header from "../../components/Header/Header";
 import CategoryCard from "../../components/CategoryCard/CategoryCard";
 import Search_Add from "../../components/Search_Add/Search_Add";
 import InventorySummary from "../../components/InventorySummary/InventorySummary";
+import Modal from "../../components/Modal/Modal";
 
 const Inventory = () => {
   const [categories, setCategories] = useState([]);

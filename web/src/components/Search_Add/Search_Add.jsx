@@ -1,10 +1,13 @@
-import "./search_add.css"
+import "./search_add.css";
 import { useState } from "react";
 import plus_icon from "../../images/plus.png";
-import search_icon from "../../images/search_icon.png"
+import search_icon from "../../images/search_icon.png";
+import Modal from "../Modal/Modal";
 
 const Search_Add = ({ searchText, text }) => {
   const [search, setSearch] = useState(" ");
+
+  const [openModal, setOpenModal] = useState(false);
 
   const handleSearch = (event) => {
     setSearch(event.target.value);
@@ -21,10 +24,11 @@ const Search_Add = ({ searchText, text }) => {
           onChange={handleSearch}
         />
       </div>
-      <div className="add-button">
+      <button className="add-button" onClick={() => setOpenModal(true)}>
         <img src={plus_icon} alt="plus icon" />
         <p>{text}</p>
-      </div>
+      </button>
+      {openModal && <Modal closeModal={setOpenModal} btnName="ADD CATEGORY" />}
     </div>
   );
 };
