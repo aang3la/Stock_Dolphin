@@ -41,7 +41,12 @@ const Suppliers = () => {
       <main>
         <header>
           <Header title="Suppliers" />
-          <Search_Add searchText="Search Suppliers" text="ADD SUPPLIER" />
+          <Search_Add
+            searchText="Search Suppliers"
+            text="ADD SUPPLIER"
+            modalHeading="Add Supplier"
+            modalBtn="ADD SUPPLIER"
+          />
         </header>
         <div className="suppliers-container">
           <div className="suppliers">

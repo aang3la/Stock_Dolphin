@@ -50,7 +50,7 @@ const Items = () => {
       <main>
         <header>
           <Header title={`Inventory > ${categoryName}`} />
-          <Search_Add searchText="Search Items" text="ADD ITEM" />
+          <Search_Add searchText="Search Items" text="ADD ITEM" modalHeading="Add Item" modalBtn="ADD ITEM" />
         </header>
         <div className="item-cards">
           {items.map((item) => (

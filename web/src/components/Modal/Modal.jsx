@@ -2,12 +2,12 @@ import add_image from "../../images/add-image.png";
 import close from "../../images/close.png";
 import "./modal.css";
 
-const Modal = ({ closeModal, btnName }) => {
+const Modal = ({ heading, closeModal, btnName }) => {
   return (
-    <div className="Modal">
+    <dialog open>
       <div className="modal-container">
         <div className="modal-title">
-          <h1>Add Category</h1>
+          <h1>{heading}</h1>
           <button onClick={() => closeModal(false)}>
             <img src={close} className="close-icon" alt="close-icon" />
           </button>
@@ -33,7 +33,7 @@ const Modal = ({ closeModal, btnName }) => {
           <button id="add-btn">{btnName}</button>
         </div>
       </div>
-    </div>
+    </dialog>
   );
 };
 

@@ -4,9 +4,8 @@ import plus_icon from "../../images/plus.png";
 import search_icon from "../../images/search_icon.png";
 import Modal from "../Modal/Modal";
 
-const Search_Add = ({ searchText, text }) => {
-  const [search, setSearch] = useState(" ");
-
+const Search_Add = ({ searchText, text, modalHeading, modalBtn }) => {
+  const [search, setSearch] = useState();
   const [openModal, setOpenModal] = useState(false);
 
   const handleSearch = (event) => {
@@ -15,7 +14,7 @@ const Search_Add = ({ searchText, text }) => {
 
   return (
     <div className="search-add">
-      <div className="search-container">
+      <label className="search-container">
         <img src={search_icon} alt="search icon" />
         <input
           type="text"
@@ -23,12 +22,12 @@ const Search_Add = ({ searchText, text }) => {
           value={search}
           onChange={handleSearch}
         />
-      </div>
+      </label>
       <button className="add-button" onClick={() => setOpenModal(true)}>
         <img src={plus_icon} alt="plus icon" />
         <p>{text}</p>
       </button>
-      {openModal && <Modal closeModal={setOpenModal} btnName="ADD CATEGORY" />}
+      {openModal && <Modal heading={modalHeading} closeModal={setOpenModal} btnName={modalBtn} />}
     </div>
   );
 };

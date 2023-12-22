@@ -1,23 +1,13 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins');
-
-.Modal {
-    width: 100%;
-    height: 100%;
-    background-color: rgba(218, 214, 214, 0.8);
-    position: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-container {
-    width: 350px;
-    height: 280px;
+dialog {
+    border: none;
+    width: 320px;
+    height: 250px;
     background-color: white;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .modal-title {
@@ -28,7 +18,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 7px;
+    padding-bottom: 8px;
 }
 
 .modal-title h1 {
@@ -40,12 +30,13 @@
 .modal-title button {
     background: none;
     border: none;
+    cursor: pointer;
 }
 
 .close-icon {
     width: 20px;
     margin-top: 13px;
-    margin-right: 8px;
+    margin-right: 7px;
 }
 
 .modal-body {
@@ -53,21 +44,20 @@
 }
 
 .input-container {
-    height: 60px;
+    height: 65px;
 }
 
 .input-container input {
     width: 280px;
     margin-top: 20px;
-    margin-bottom: 1px;
     border: none;
-    margin-left: 28px;
-    font-size: 15px;
+    margin-left: 18px;
+    font-size: 16px;
     font-family: Poppins;
 }
 
 #custom_hr {
-    width: 290px;
+    width: 310px;
     border: 1px solid #999999;
 }
 
@@ -78,28 +68,34 @@
 
 .modal-image {
     margin: 0 auto;
-    width: 290px;
-    height: 60px;
+    width: 310px;
+    height: 55px;
     border: 2px solid #999999;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+}
+
+.modal-image img {
+    padding-top: 10px;
 }
 
 .modal-image p {
-    font-size: 13px;
-    font-weight: 500;
+    font-size: 12px;
+    font-weight: 600;
     color: #3E4153;
 }
 
 .modal-footer {
     width: 100%;
-    height: 60px;
+    height: 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 15px;
 }
 
 .modal-footer button {
@@ -107,10 +103,11 @@
     height: 40px;
     border-radius: 10px;
     border: none;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 500;
     margin: 20px;
     font-family: Poppins;
+    cursor: pointer;
 }
 
 #cancel-btn {
