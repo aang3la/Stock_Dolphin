@@ -1,0 +1,10 @@
+.InventorySummary {
+    margin-left: 80px;
+    margin-top: 15px;
+    display: flex;
+    gap: 50px;
+}
+
+.InventorySummary p {
+    font-size: 15px;
+}

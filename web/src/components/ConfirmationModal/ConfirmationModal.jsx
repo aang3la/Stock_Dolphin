@@ -1,11 +1,12 @@
-// import "./ConfirmationModal.css";
+import "./confirmationModal.css";
 
-const ConfirmationModal = ({ content, buttonName, closeModal }) => {
+const ConfirmationModal = ({ content, content2, buttonName, closeModal }) => {
   return (
-    <dialog open>
-      <div className="confirmation-modal">
+    <dialog open className="confirmation-modal">
+      <div>
         <div className="confModal-content">
           <p>{content}</p>
+          <p>{content2}</p>
         </div>
         <div className="confModal-footer">
           <button id="cancel-btn" onClick={() => closeModal(false)}>CANCEL</button>

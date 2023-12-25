@@ -1,12 +1,51 @@
 .Category-Card {
-  width: 190px;
-  height: 210px;
+  width: 200px;
+  height: 220px;
   border-radius: 10px;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.25);
   background-color: white;
 }
 
-.Category-Card h1 {
+.categoryCard-images {
+  height: 110px;
+}
+
+.categoryCard-content h1 {
     font-size: 1.1rem;
     font-weight: 500;
+    margin-left: 15px;
+    margin-top: 7px;
+    text-decoration: none;
+}
+
+.custom-link-title {
+  text-decoration: none;
+}
+
+.categoryCard-content p {
+  font-size: 13px;
+  margin-left: 15px;
+  margin-bottom: 1px;
+}
+
+.categoryCard-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-right: 5px;
+}
+
+.categoryCard-footer p {
+  font-size: 15px;
+}
+
+#categoryCard-date {
+  color: #333544;
+  font-weight: 600;
+}
+
+.delete-btn {
+  cursor: pointer;
+  width: 35px;
+  height: 35px;
 }

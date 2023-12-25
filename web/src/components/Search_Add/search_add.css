@@ -1,6 +1,7 @@
 .search-add {
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
     margin-left: 80px;
     margin-top: 20px;
 }
@@ -47,6 +48,7 @@
     font-size: 0.85rem;
     font-weight: 200;
     margin-top: 12px;
+    font-family: Poppins;
 }
 
 .add-button img {

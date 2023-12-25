@@ -4,10 +4,11 @@
 
 .category-cards {
   width: 1000px;
-  height: 500px;
+  height: 350px;
+  margin-left: 34px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 20px;
+  padding: 5px;
   gap: 40px;
 }
