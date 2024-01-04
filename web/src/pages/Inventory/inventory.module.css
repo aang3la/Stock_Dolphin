@@ -1,0 +1,47 @@
+.Inventory {
+  display: flex;
+}
+
+.cards-section {
+  display: flex;
+  justify-content: space-between;
+}
+
+.gridView {
+  width: 1000px;
+  height: 350px;
+  margin-left: 34px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 5px;
+  gap: 40px;
+}
+
+.listView {
+  width: 1000px;
+  height: 350px;
+  margin-left: 34px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.grid-list-view button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.activeButton {
+  color: green; 
+  border: none;
+}
+
+.grid-list-view {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-top: -20px;
+}

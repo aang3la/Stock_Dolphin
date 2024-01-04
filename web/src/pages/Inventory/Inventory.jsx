@@ -1,6 +1,7 @@
-import "./inventory.css";
+import styles from "./inventory.module.css";
 import { useState, useEffect } from "react";
-import Navigation from "../../components/Navigation/Navigation";
+import listView from "../../images/listView.png";
+import gridView from "../../images/gridView.png";
 import Header from "../../components/Header/Header";
 import CategoryCard from "../../components/CategoryCard/CategoryCard";
 import Search_Add from "../../components/Search_Add/Search_Add";
@@ -8,6 +9,12 @@ import InventorySummary from "../../components/InventorySummary/InventorySummary
 
 const Inventory = () => {
   const [categories, setCategories] = useState([]);
+  const [isGridView, setGridView] = useState(true);
+
+  const toggleView = () => {
+    console.log('Toggle View Clicked');
+    setGridView((prevView) => !prevView);
+  };
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -46,11 +53,21 @@ const Inventory = () => {
           />
           <InventorySummary categories={categories} />
         </header>
-        <div className="category-cards">
-          {categories.map((category) => (
-            <CategoryCard key={category.id} category={category} />
-          ))}
-        </div>
+        <section className="cards-section">
+          <div className={isGridView ? styles.gridView : styles.listView}>
+            {categories.map((category) => (
+              <CategoryCard key={category.id} category={category} />
+            ))}
+          </div>
+          <div className="grid-list-view">
+            <button className={isGridView ? styles.activeButton : ""} onClick={() => setGridView(true)}>
+              <img src={gridView} alt="gridView-icon" />
+            </button>
+            <button className={!isGridView ? styles.activeButton : ""} onClick={() => setGridView(false)}>
+              <img src={listView} alt="listView-icon" />
+            </button>
+          </div>
+        </section>
       </main>
     </div>
   );

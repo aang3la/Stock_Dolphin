@@ -69,7 +69,7 @@ function Login() {
         <span className="signup-section">
           Don't have an account?
           <button>
-            <Link to="/create-account">Sign up</Link>
+            <Link to="/">Sign up</Link>
           </button>
         </span>
       </header>

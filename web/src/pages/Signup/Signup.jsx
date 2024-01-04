@@ -71,7 +71,7 @@ function Signup() {
         <span className="login-section">
           Already have an account?
           <button>
-            <Link to="/">Login</Link>
+            <Link to="/login">Login</Link>
           </button>
         </span>
       </header>

@@ -15,8 +15,8 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/create-account" element={<Signup />} />
+        <Route path="/" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
         <Route element={<Navigation />}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/inventory" element={<Inventory />} />
@@ -29,6 +29,6 @@ function App() {
       </Routes>
     </>
   );
-};
+}
 
 export default App;
