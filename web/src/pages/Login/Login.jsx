@@ -1,5 +1,5 @@
 import "./login.css";
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../images/logo.png";
 
@@ -10,6 +10,8 @@ function Login() {
   };
 
   const [data, setData] = useState(initData);
+  const [isSubmit, setIsSubmit] = useState(false);
+  const [formErrors, setFormErrors] = useState({});
 
   const dataChange = (event) => {
     setData({
@@ -18,7 +20,11 @@ function Login() {
     });
   };
 
-  const login = async () => {
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
+
+  const handleLogin = async (event) => {
     try {
       let response = await fetch("/api/auth/login", {
         method: "POST",
@@ -28,11 +34,32 @@ function Login() {
         },
       });
       if (response.ok) {
-        alert("Login successfully!");
+        event.preventDefault();
+        setFormErrors(validate(data));
+        setIsSubmit(true);
       }
     } catch (err) {
       console.log(err);
     }
+  };
+
+  const validate = (values) => {
+    const regex = /^[^\s@]+@[^\s@]+[^\s@]{2,}$/i;
+    const errors = {};
+
+    if (!values.email) {
+      errors.email = "E-mail required!";
+    } else if (!regex.test(values.email)) {
+      errors.email = "This email is invalid!";
+    }
+    if (!values.password) {
+      errors.password = "Password is required!";
+    } else if (values.password.length < 8) {
+      errors.password = "Password must be 8 characters or longer!";
+    }
+
+    console.log(errors);
+    return errors;
   };
 
   return (
@@ -48,8 +75,11 @@ function Login() {
       </header>
       <form className="Login-form">
         <h1>Welcome back!</h1>
+        {Object.keys(formErrors).length === 0 && isSubmit && (
+          <div>Signed in successfully!</div>
+        )}
         <div className="login-email">
-          <label>Email</label>
+          <label htmlFor="email">Email</label>
           <input
             type="email"
             name="email"
@@ -57,9 +87,10 @@ function Login() {
             onChange={dataChange}
             placeholder="Enter your email"
           />
+          <p>{formErrors.email}</p>
         </div>
         <div className="login-password">
-          <label>Password</label>
+          <label htmlFor="password">Password</label>
           <input
             type="password"
             name="password"
@@ -67,8 +98,9 @@ function Login() {
             onChange={dataChange}
             placeholder="Enter password"
           />
+          <p>{formErrors.password}</p>
         </div>
-        <button onClick={login}>Log In</button>
+        <button onClick={handleLogin}>Log In</button>
       </form>
     </div>
   );

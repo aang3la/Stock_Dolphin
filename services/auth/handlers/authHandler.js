@@ -1,7 +1,7 @@
 //* Handler for authentication
 
 // connecting with the schema
-const User = require("../../../pkg/users/userSchema");
+const Users = require("../../../pkg/users/userSchema");
 
 // packages
 const jwt = require("jsonwebtoken");
@@ -9,7 +9,7 @@ const bcrypt = require("bcryptjs");
 
 exports.signup = async (req, res) => {
   try {
-    const newUser = await User.create({
+    const newUser = await Users.create({
       name: req.body.name,
       email: req.body.email,
       password: req.body.password,
@@ -48,7 +48,7 @@ exports.login = async (req, res) => {
     }
 
     // checking if the user exists
-    const user = await User.findOne({ email });
+    const user = await Users.findOne({ email });
     if (!user)
       return res.status(400).send("This user with this email doesn't exist.");
 

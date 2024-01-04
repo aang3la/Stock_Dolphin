@@ -14,6 +14,7 @@
 }
 
 .signup-section button {
+    width: 80px;
     background-color: #53A856;
     padding: 10px;
     margin-left: 10px;
@@ -32,7 +33,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 30px;
+    gap: 15px;
 }
 
 .Login-form h1 {
@@ -48,13 +49,14 @@
 
 .Login-form label {
     font-size: 13px;
+    padding-bottom: 2px;
 }
 
 .Login-form input {
     width: 300px;
     height: 35px;
     padding-left: 10px;
-    border: 1px solid rgb(144, 144, 144);
+    border: 1px solid #53A856;
     border-radius: 10px;
 }
 
