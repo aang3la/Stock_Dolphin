@@ -1,7 +1,7 @@
 //* Handler for authentication
 
 // connecting with the schema
-const Users = require("../../../pkg/users/userSchema");
+const User = require("../../../pkg/users/userSchema");
 
 // packages
 const jwt = require("jsonwebtoken");
@@ -48,7 +48,7 @@ exports.login = async (req, res) => {
     }
 
     // checking if the user exists
-    const user = await Users.findOne({ email });
+    const user = await User.findOne({ email });
     if (!user)
       return res.status(400).send("This user with this email doesn't exist.");
 

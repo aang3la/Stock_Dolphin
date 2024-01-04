@@ -1,5 +1,6 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
+import Login from "./pages/Login/Login";
 import Signup from "./pages/Signup/Signup";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Inventory from "./pages/Inventory/Inventory";
@@ -14,7 +15,8 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Signup />} />
+        <Route path="/" element={<Login />} />
+        <Route path="/create-account" element={<Signup />} />
         <Route element={<Navigation />}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/inventory" element={<Inventory />} />

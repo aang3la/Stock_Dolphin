@@ -1,9 +1,19 @@
+.Signup {
+    background-color: #53A856;
+}
+
 .Signup-form {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
+    justify-content: center;
     align-items: center;
-    background-color: #53A856;
+}
+
+.Signup-form h1 {
+    color: white;
+    font-size: 30px;
+    padding: 20px;
 }
 
 .Signup-form input {
