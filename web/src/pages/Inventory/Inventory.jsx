@@ -35,9 +35,6 @@ const Inventory = () => {
   }, []);
   return (
     <div className="Inventory">
-      <aside>
-        <Navigation />
-      </aside>
       <main>
         <header>
           <Header title="Inventory" />

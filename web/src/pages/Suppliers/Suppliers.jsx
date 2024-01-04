@@ -35,9 +35,6 @@ const Suppliers = () => {
 
   return (
     <div className="Suppliers">
-      <aside>
-        <Navigation />
-      </aside>
       <main>
         <header>
           <Header title="Suppliers" />

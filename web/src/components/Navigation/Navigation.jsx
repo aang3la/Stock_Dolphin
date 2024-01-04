@@ -1,4 +1,4 @@
-// import { Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import "./navigation.css";
 import logo from "../../images/logo.png";
 import dashboard_icon from "../../images/dashboard_icon.png";
@@ -8,6 +8,7 @@ import signout_icon from "../../images/signout_icon.png";
 
 const Navigation = () => {
   return (
+    <>
     <div className="App-navigation">
       <a href="/dashboard">
         <img src={logo} className="App-logo" alt="logo" />
@@ -42,6 +43,8 @@ const Navigation = () => {
         </li>
       </ul>
     </div>
+    <Outlet />
+    </>
   );
 }
 

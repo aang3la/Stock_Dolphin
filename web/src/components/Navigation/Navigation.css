@@ -2,6 +2,7 @@
     width: 250px;
     height: 100%;
     background-color: #53A856;
+    float: left;
 }
   
 .App-logo {
