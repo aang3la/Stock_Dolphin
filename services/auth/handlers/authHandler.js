@@ -22,9 +22,7 @@ exports.signup = async (req, res) => {
     );
 
     res.cookie("jwt", token, {
-      expires: new Date(
-        Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000
-      ),
+      expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000),
       secure: false,
       httpOnly: true,
     });
@@ -34,6 +32,7 @@ exports.signup = async (req, res) => {
       token,
     });
   } catch (err) {
+    console.error(err);
     return res.status(500).send(err);
   }
 };
@@ -68,9 +67,7 @@ exports.login = async (req, res) => {
 
     // sending the cookie with the token
     res.cookie("jwt", token, {
-      expires: new Date(
-        Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000
-      ),
+      expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000),
       secure: false,
       httpOnly: true,
     });
@@ -81,6 +78,7 @@ exports.login = async (req, res) => {
       token,
     });
   } catch (err) {
+    console.error(err);
     res.status(500).send("Internal server error");
   }
 };

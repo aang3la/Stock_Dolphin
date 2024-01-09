@@ -1,10 +1,11 @@
 import "./activityHistory.css";
+import Header from "../../components/Header/Header";
 
 function ActivityHistory() {
   return (
     <div className="Activity-history">
       <main>
-        <header>{/* <Header title="Activity History" /> */}</header>
+        <header><Header title="Reports > Activity History" /></header>
       </main>
     </div>
   );

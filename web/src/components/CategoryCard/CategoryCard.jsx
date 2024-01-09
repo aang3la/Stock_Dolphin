@@ -5,19 +5,23 @@ import { useState } from "react";
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
 const moment = require("moment");
 
-const CategoryCard = ({ category }) => {
+const CategoryCard = ({ category, isListView }) => {
   const [openModal, setOpenModal] = useState(false);
 
-  const formattedDate = moment(category.date).format('MM/DD/YYYY HH:mm');
+  const formattedDate = moment(category.date).format("MM/DD/YYYY HH:mm");
 
   return (
-    <div className="Category-Card">
+    <div className={`Category-Card ${isListView ? "listView" : "gridView"}`}>
       <div className="categoryCard-images"></div>
-      <div className="categoryCard-content">
-        <Link to={`/inventory/${category.title}`} className="custom-link-title">
+      <div className={`categoryCard-content ${isListView ? "listView" : "gridView"}`}>
+        <Link
+          to={`/inventory/${category.title}`}
+          className={`custom-link-title ${
+            isListView ? "listView" : "gridView"
+          }`}>
           <h1>{category.title}</h1>
         </Link>
-        <p>3 Items  | € 338.00</p>
+        <p>3 Items | € 338.00</p>
         <div className="categoryCard-footer">
           <p>
             Updated at: <br />

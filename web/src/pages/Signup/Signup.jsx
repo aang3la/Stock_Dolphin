@@ -1,5 +1,6 @@
 import "./signup.css";
 import React, { useState, useEffect } from "react";
+import { Navigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import logo from "../../images/logo.png";
 import check_icon from "../../images/checkIcon.png";
@@ -28,7 +29,7 @@ function Signup() {
 
   const handleSignup = async (event) => {
     try {
-      let response = await fetch("/api/auth/signup", {
+      let response = await fetch("http://localhost:10000/api/auth/signup", {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
@@ -46,12 +47,17 @@ function Signup() {
   };
 
   const validate = (values) => {
-    const regex = /^[^\s@]+@[^\s@]+[^\s@]{2,}$/i;
+    const emailRegex = /^[^\s@]+@[^\s@]+[^\s@]{2,}$/i;
     const errors = {};
 
+    if(!values.name) {
+      errors.name = "Name is required.";
+    } else if(values.name.length < 3) {
+      errors.name = "Name must be greather than 3 characters."
+    }
     if (!values.email) {
       errors.email = "E-mail required!";
-    } else if (!regex.test(values.email)) {
+    } else if (!emailRegex.test(values.email)) {
       errors.email = "This email is invalid!";
     }
     if (!values.password) {
@@ -71,14 +77,14 @@ function Signup() {
         <span className="login-section">
           Already have an account?
           <button>
-            <Link to="/login">Login</Link>
+            <Link to="/login" replace>Login</Link>
           </button>
         </span>
       </header>
       <form className="Signup-form">
         <h1>You’re one click away from less inefficiency.</h1>
         {Object.keys(formErrors).length === 0 && isSubmit && (
-          <div>Created account successfully!</div>
+          <Navigate to="/dashboard" />
         )}
         <div className="signup-name">
           <label htmlFor="name">Name</label>

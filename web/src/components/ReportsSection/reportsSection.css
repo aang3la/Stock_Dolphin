@@ -4,11 +4,15 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-left: 10px;
 }
 
 .Activity-field, .Inventory-field {
     width: 1000px;
+    margin-left: 40px;
+}
+
+.Activity-field {
+    padding-top: 20px;
 }
 
 h2 {

@@ -1,24 +1,46 @@
 .Category-Card {
-  width: 200px;
-  height: 220px;
   border-radius: 10px;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.25);
   background-color: white;
+}
+
+.gridView
+.Category-Card {
+  width: 210px;
+  height: 200px;
+}
+
+.listView
+.Category-Card {
+  width: 600px;
+  height: 50px;
 }
 
 .categoryCard-images {
   height: 110px;
 }
 
-.categoryCard-content h1 {
-    font-size: 1.1rem;
-    font-weight: 500;
-    margin-left: 15px;
-    margin-top: 7px;
-    text-decoration: none;
+.categoryCard-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.listView
+.categoryCard-content {
+  display: flex;
 }
 
 .custom-link-title {
+  font-size: 10px;
+  text-decoration: none;
+}
+
+.listView
+.custom-link-title h1 {
+  font-size: 18px;
+  font-weight: 500;
+  margin-left: 15px;
+  margin-top: 7px;
   text-decoration: none;
 }
 
@@ -31,7 +53,7 @@
 .categoryCard-footer {
   display: flex;
   justify-content: space-between;
-  align-items: end;
+  align-items: flex-end;
   margin-right: 5px;
 }
 

@@ -9,8 +9,7 @@
 
 .gridView {
   width: 1000px;
-  height: 350px;
-  margin-left: 34px;
+  height: 300px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -19,13 +18,13 @@
 }
 
 .listView {
-  width: 1000px;
-  height: 350px;
-  margin-left: 34px;
+  width: 700px;
+  height: 300px;
+  margin-left: 80px;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   justify-content: center;
+  gap: 10px;
 }
 
 .grid-list-view button {

@@ -1,6 +1,6 @@
 import "./login.css";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import logo from "../../images/logo.png";
 
 function Login() {
@@ -26,7 +26,7 @@ function Login() {
 
   const handleLogin = async (event) => {
     try {
-      let response = await fetch("/api/auth/login", {
+      let response = await fetch("http://localhost:10000/api/auth/login", {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
@@ -44,12 +44,12 @@ function Login() {
   };
 
   const validate = (values) => {
-    const regex = /^[^\s@]+@[^\s@]+[^\s@]{2,}$/i;
+    const emailRegex = /^[^\s@]+@[^\s@]+[^\s@]{2,}$/i;
     const errors = {};
 
     if (!values.email) {
       errors.email = "E-mail required!";
-    } else if (!regex.test(values.email)) {
+    } else if (!emailRegex.test(values.email)) {
       errors.email = "This email is invalid!";
     }
     if (!values.password) {
@@ -76,7 +76,7 @@ function Login() {
       <form className="Login-form">
         <h1>Welcome back!</h1>
         {Object.keys(formErrors).length === 0 && isSubmit && (
-          <div>Signed in successfully!</div>
+          <Navigate to="/dashboard" />
         )}
         <div className="login-email">
           <label htmlFor="email">Email</label>
@@ -100,7 +100,9 @@ function Login() {
           />
           <p>{formErrors.password}</p>
         </div>
-        <button onClick={handleLogin}>Log In</button>
+        <button type="button" onClick={handleLogin}>
+          Log In
+        </button>
       </form>
     </div>
   );

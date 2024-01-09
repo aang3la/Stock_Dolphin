@@ -12,7 +12,6 @@ const Inventory = () => {
   const [isGridView, setGridView] = useState(true);
 
   const toggleView = () => {
-    console.log('Toggle View Clicked');
     setGridView((prevView) => !prevView);
   };
 
@@ -56,14 +55,14 @@ const Inventory = () => {
         <section className="cards-section">
           <div className={isGridView ? styles.gridView : styles.listView}>
             {categories.map((category) => (
-              <CategoryCard key={category.id} category={category} />
+              <CategoryCard key={category.id} category={category} isListView={isGridView} />
             ))}
           </div>
           <div className="grid-list-view">
-            <button className={isGridView ? styles.activeButton : ""} onClick={() => setGridView(true)}>
+            <button onClick={() => setGridView(true)}>
               <img src={gridView} alt="gridView-icon" />
             </button>
-            <button className={!isGridView ? styles.activeButton : ""} onClick={() => setGridView(false)}>
+            <button onClick={() => setGridView(false)}>
               <img src={listView} alt="listView-icon" />
             </button>
           </div>
