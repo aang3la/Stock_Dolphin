@@ -1,4 +1,45 @@
 .Items {
     display: flex;
-  }
-  
+    flex-direction: column;
+}
+
+.item-cards {
+  width: 900px;
+  height: 400px;
+  margin-left: 43px;
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px 25px;
+}
+
+.edit-category-btn {
+  width: 160px;
+  height: 48px;
+  border-radius: 6px;
+  border: none;
+  background-color: #53A856;
+  display: flex;
+  justify-content: space-around;
+  cursor: pointer;
+}
+
+.edit-category-btn img {
+  width: 45px;
+  height: 45px;
+}
+
+.edit-category-btn p {
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 200;
+  margin-top: 12px;
+  font-family: Poppins;
+}
+
+footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 70px;
+  margin-top: 65px;
+}

@@ -1,14 +1,17 @@
 import "./items.css";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import Navigation from "../../components/Navigation/Navigation";
 import Header from "../../components/Header/Header";
 import Search_Add from "../../components/Search_Add/Search_Add";
 import ItemCard from "../../components/ItemCard/ItemCard";
+import Modal from "../../components/Modal/Modal";
+import edit_green_icon from "../../images/edit-green-icon.png";
 
 const Items = () => {
   const { categoryName } = useParams();
   const [items, setItems] = useState([]);
+
+  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -60,6 +63,22 @@ const Items = () => {
           ))}
         </div>
       </main>
+      <footer>
+        <button
+          className="edit-category-btn"
+          onClick={() => setOpenModal(true)}
+        >
+          <img src={edit_green_icon} alt="edit-icon" />
+          <p>Edit Category</p>
+        </button>
+        {openModal && (
+          <Modal
+            heading="Edit Category"
+            closeModal={setOpenModal}
+            btnName="SAVE CHANGES"
+          />
+        )}
+      </footer>
     </div>
   );
 };

@@ -1,0 +1,34 @@
+.Item-Card {
+  width: 200px;
+  height: 195px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.25);
+  background-color: white;
+}
+
+.itemCard-images {
+  height: 100px;
+}
+
+.itemCard-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.itemCard-content h1 {
+  font-size: 16px;
+  font-weight: 500;
+  margin-left: 12px;
+  margin-top: 7px;
+  text-decoration: none;
+}
+
+.itemCard-content p {
+  font-size: 11px;
+  margin-left: 12px;
+  margin-bottom: 1px;
+}
+
+.footer-item-card {
+    margin-right: 10px;
+}
