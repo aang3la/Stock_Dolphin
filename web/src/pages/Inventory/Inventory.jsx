@@ -53,7 +53,7 @@ const Inventory = () => {
           <InventorySummary categories={categories} />
         </header>
         <section className="cards-section">
-          <div className={isGridView ? styles.gridView : styles.listView}>
+          <div className={isGridView ? styles.gridView : `${styles.listView} ${styles.scrollList}`}>
             {categories.map((category) => (
               <CategoryCard key={category.id} category={category} isListView={isGridView} />
             ))}

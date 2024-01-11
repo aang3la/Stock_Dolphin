@@ -4,43 +4,58 @@
 
 .cards-section {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
 }
 
 .gridView {
-  width: 1000px;
-  height: 300px;
+  width: 900px;
+  height: 450px;
+  margin-left: 73px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   padding: 5px;
   gap: 40px;
 }
 
 .listView {
-  width: 700px;
-  height: 300px;
+  width: 800px;
+  height: 500px;
   margin-left: 80px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 10px;
+  gap: 14px;
+}
+
+.scrollList {
+  overflow-y: auto;
+  max-height: 480px;
+}
+
+.scrollList::-webkit-scrollbar {
+  width: 7px;
+}
+
+.scrollList::-webkit-scrollbar-thumb {
+  background-color: #d7d7d7;
+  border-radius: 5px;
+}
+
+.scrollList::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+.grid-list-view {
+  display: flex;
+  flex-direction: row;
+  gap: 3px;
 }
 
 .grid-list-view button {
   border: none;
-  background: none;
   cursor: pointer;
 }
 
 .activeButton {
   color: green; 
   border: none;
-}
-
-.grid-list-view {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  margin-top: -20px;
 }

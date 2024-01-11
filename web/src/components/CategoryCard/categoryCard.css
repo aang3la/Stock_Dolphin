@@ -4,48 +4,62 @@
   background-color: white;
 }
 
+.gridView {
+  width: 190px;
+  height: 210px;
+}
+
+.listView {
+  width: 600px;
+  height: 180px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .gridView
-.Category-Card {
-  width: 210px;
-  height: 200px;
+.categoryCard-images {
+  height: 115px;
+  background-color: grey;
+  border-radius: 10px 10px 0 0;
+}
+
+.listView 
+.categoryCard-images {
+  width: 190px;
+  background-color: red;
 }
 
 .listView
-.Category-Card {
-  width: 600px;
-  height: 50px;
-}
-
-.categoryCard-images {
-  height: 110px;
-}
-
 .categoryCard-content {
+  width: 500px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.listView
+.title-p-card {
   display: flex;
   flex-direction: column;
-}
-
-.listView
-.categoryCard-content {
-  display: flex;
+  gap: 10px;
 }
 
 .custom-link-title {
-  font-size: 10px;
   text-decoration: none;
 }
 
-.listView
 .custom-link-title h1 {
-  font-size: 18px;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 600;
   margin-left: 15px;
   margin-top: 7px;
   text-decoration: none;
 }
 
 .categoryCard-content p {
-  font-size: 13px;
+  font-size: 12px;
   margin-left: 15px;
   margin-bottom: 1px;
 }
@@ -54,11 +68,23 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-right: 5px;
 }
 
 .categoryCard-footer p {
-  font-size: 15px;
+  font-size: 13px;
+}
+
+.listView
+.categoryCard-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.listView
+.categoryCard-footer p {
+  font-size: 12px;
 }
 
 #categoryCard-date {
@@ -70,4 +96,9 @@
   cursor: pointer;
   width: 35px;
   height: 35px;
+}
+
+.listView
+.delete-btn {
+  margin-right: 5px;
 }
