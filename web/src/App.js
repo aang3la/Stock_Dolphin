@@ -4,6 +4,7 @@ import Login from "./pages/Login/Login";
 import Signup from "./pages/Signup/Signup";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Inventory from "./pages/Inventory/Inventory";
+import Orders from "./pages/Orders/Orders";
 import Reports from "./pages/Reports/Reports";
 import Suppliers from "./pages/Suppliers/Suppliers";
 import ActivityHistory from "./pages/ActivityHistory/ActivityHistory";
@@ -21,6 +22,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/inventory" element={<Inventory />} />
           <Route path="/inventory/:categoryName" element={<Items />} />
+          <Route path="/inventory/:categoryName/:itemName" element={<Orders />} />
           <Route path="/reports" element={<Reports />} />
           <Route path="/suppliers" element={<Suppliers />} />
           <Route path="/activity-history" element={<ActivityHistory />} />

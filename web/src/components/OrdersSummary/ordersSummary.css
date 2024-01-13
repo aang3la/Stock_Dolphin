@@ -1,0 +1,10 @@
+.OrdersSummary {
+    margin-left: 40px;
+    margin-top: 15px;
+    display: flex;
+    gap: 50px;
+}
+
+.OrdersSummary p {
+    font-size: 15px;
+}

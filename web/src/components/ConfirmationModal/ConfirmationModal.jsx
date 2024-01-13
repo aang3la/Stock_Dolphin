@@ -2,6 +2,7 @@ import "./confirmationModal.css";
 
 const ConfirmationModal = ({ content, content2, buttonName, closeModal }) => {
   return (
+    <div className="overlay-container">
     <dialog open className="confirmation-modal">
       <div>
         <div className="confModal-content">
@@ -14,6 +15,7 @@ const ConfirmationModal = ({ content, content2, buttonName, closeModal }) => {
         </div>
       </div>
     </dialog>
+    </div>
   );
 };
 

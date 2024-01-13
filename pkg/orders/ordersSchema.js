@@ -1,9 +1,13 @@
 const mongoose = require("mongoose");
 
 const ordersSchema = new mongoose.Schema({
-    itemID: {
+    itemId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Items',
+    },
+    categoryId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Categories",
     },
     supplier: {
         type: mongoose.Schema.Types.ObjectId,

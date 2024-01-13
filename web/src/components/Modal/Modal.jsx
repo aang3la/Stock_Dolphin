@@ -4,8 +4,8 @@ import "./modal.css";
 
 const Modal = ({ heading, closeModal, btnName }) => {
   return (
-    <dialog open>
-      <div className="modal-container">
+    <div className="overlay-container">
+      <dialog open>
         <div className="modal-title">
           <h1>{heading}</h1>
           <button onClick={() => closeModal(false)}>
@@ -32,8 +32,8 @@ const Modal = ({ heading, closeModal, btnName }) => {
           </button>
           <button id="add-btn">{btnName}</button>
         </div>
-      </div>
-    </dialog>
+      </dialog>
+    </div>
   );
 };
 

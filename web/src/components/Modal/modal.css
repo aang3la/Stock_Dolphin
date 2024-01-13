@@ -8,10 +8,14 @@ dialog {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    z-index: 2;
+    left: 50%;
+    top: 50%;
+    transform: translate(-100%, -50%);
 }
 
 .modal-title {
-    width: 350px;
+    width: 352px;
     height: 30px;
     border-radius: 20px 20px 0px 0px;
     background-color: #53A856;

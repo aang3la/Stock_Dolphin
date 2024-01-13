@@ -1,0 +1,161 @@
+.Orders {
+  width: 1200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.orders-summary-container {
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.add-order-btn {
+    width: 160px;
+    height: 45px;
+    border-radius: 10px;
+    border: none;
+    background-color: #53A856;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.40);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    cursor: pointer;
+}
+
+.add-order-btn p {
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 200;
+    margin-top: 12px;
+    font-family: Poppins;
+}
+
+.add-order-btn img {
+    width: 2rem;
+    height: 2rem;
+}
+
+.orders-title-section {
+    width: 860px;
+    height: 45px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.invoice-btn {
+    width: 150px;
+  height: 38px;
+  background-color: #53a856;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-family: Poppins;
+  cursor: pointer;
+}
+
+.order-hr {
+    width: 825px;
+    margin: 10px;
+    border: none;
+    height: 1px;
+    background-color:#5C5C5C;
+    margin-left: 40px;
+}
+
+.orders-table {
+  width: 950px;
+  height: 450px;
+  margin-left: 40px;
+  padding-bottom: 10px;
+  border: none;
+  border-radius: 8px;
+  background-color: #ffffff;
+  text-align: center;
+  table-layout: fixed;
+}
+
+.orders-table th {
+  font-size: 19px;
+  font-weight: 500;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid black;
+}
+
+.cell-styling {
+    height: 50px;
+    font-size: 14px;
+    color: #3E4153;
+    font-weight: 600;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+}
+
+.choosen-item {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.example-pic {
+  width: 300px;
+  height: 270px;
+  background-color: grey;
+  border-radius: 8px;
+  margin-bottom: 28px;
+}
+
+.choosen-item-name {
+  width: 300px;
+  height: 40px;
+  border: 2px solid black;
+  border-radius: 8px;
+  margin-bottom: 55px;
+  display: flex;
+  align-items: center;
+  align-self: center;
+}
+
+.choosen-item-name p {
+  font-size: 18px;
+  padding-left: 10px;
+  color: black;
+}
+
+.choosen-item-buttons {
+    width: 300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.move-item {
+  width: 55px;
+  height: 37px;
+  background-color: #53a856;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.move-item img {
+  width: 23px;
+}
+
+.save-button {
+  width: 110px;
+  height: 38px;
+  background-color: #53a856;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-family: Poppins;
+  cursor: pointer;
+}

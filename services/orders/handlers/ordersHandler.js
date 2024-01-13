@@ -3,7 +3,7 @@ const Orders = require("../../../pkg/orders/ordersSchema");
 // Show all orders
 exports.getAllOrders = async(req, res) => {
     try{
-        const orders = await Orders.find();
+        const orders = await Orders.find(query).populate("itemId");
 
         res.status(200).json({
             status: "success",
@@ -37,7 +37,9 @@ exports.getOneOrder = async(req, res) => {
 // Create order
 exports.createOrder = async(req, res) => {
     try{
-        const newOrder = await Orders.create(req.body);
+        const { name, itemId } = req.body;
+
+        const newOrder = await Orders.create({ name, itemId });
 
         res.status(200).json({
             status: "success",

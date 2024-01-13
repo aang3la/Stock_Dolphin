@@ -30,11 +30,11 @@ app.use(jwt.expressjwt({
 );
 
 // Routes
-app.get("/orders", orders.getAllOrders);
-app.get("/orders/:id", orders.getOneOrder);
-app.post("/orders", orders.createOrder);
-app.patch("/orders/:id", orders.updateOrder);
-app.delete("/orders/:id", orders.deleteOrder);
+app.get("/inventory/:categoryName/:itemName", orders.getAllOrders);
+app.get("/inventory/:categoryName/:itemName/:id", orders.getOneOrder);
+app.post("/inventory/:categoryName/:itemName", orders.createOrder);
+app.patch("/inventory/:categoryName/:itemName/:id", orders.updateOrder);
+app.delete("/inventory/:categoryName/:itemName/:id", orders.deleteOrder);
 
 app.listen(process.env.PORT_ORDERS, (err) => {
     if(err) {
