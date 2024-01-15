@@ -45,6 +45,7 @@
 }
 
 .grid-list-view {
+  width: 80px;
   display: flex;
   flex-direction: row;
   gap: 3px;
@@ -53,9 +54,4 @@
 .grid-list-view button {
   border: none;
   cursor: pointer;
-}
-
-.activeButton {
-  color: green; 
-  border: none;
 }

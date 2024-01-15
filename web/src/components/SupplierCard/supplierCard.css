@@ -37,3 +37,7 @@
   height: 1px;
   background-color: #5c5c5c;
 }
+
+#edit_icon, #delete_icon {
+  cursor: pointer;
+}

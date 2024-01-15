@@ -99,7 +99,7 @@ const Orders = () => {
   }, []);
 
   return (
-    <div className="Orders">
+    <div className="Orders-container">
       <header>
         <Header title={`Inventory > ${categoryName} > ${itemName}`} />
         <div className="orders-summary-container">

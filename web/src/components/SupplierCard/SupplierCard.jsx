@@ -1,8 +1,12 @@
 import "./supplierCard.css";
 import edit_icon from "../../images/edit-icon.png";
 import delete_icon from "../../images/delete-icon.png";
+import { useState } from "react";
+import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
 
 const SupplierCard = ({ supplier }) => {
+  const [openConfModal, setOpenConfModal] = useState(false);
+
   return (
     <div className="Supplier-card">
       <div key={supplier.id} className="supplier">
@@ -22,10 +26,24 @@ const SupplierCard = ({ supplier }) => {
         </p>
         <hr className="hrClass" />
         <span className="supplier-buttons">
-          <img src={edit_icon} />
-          <img src={delete_icon} />
+          <img
+            src={edit_icon}
+            id="edit_icon"
+          />
+          <img
+            src={delete_icon}
+            id="delete_icon"
+            onClick={() => setOpenConfModal(true)}
+          />
         </span>
       </div>
+      {openConfModal && (
+        <ConfirmationModal 
+          closeModal={setOpenConfModal}
+          content="Do you want to delete this supplier?"
+          buttonName="CONFIRM"
+        />)
+      }
     </div>
   );
 };

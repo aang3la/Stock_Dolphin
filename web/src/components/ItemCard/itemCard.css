@@ -1,13 +1,19 @@
 .Item-Card {
   width: 200px;
-  height: 195px;
+  height: 205px;
   border-radius: 10px;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.25);
   background-color: white;
 }
 
+.custom-link-item {
+  text-decoration: none;
+}
+
 .itemCard-images {
-  height: 100px;
+  height: 110px;
+  background-color: grey;
+  border-radius: 10px 10px 0 0;
 }
 
 .itemCard-content {
@@ -31,4 +37,9 @@
 
 .footer-item-card {
     margin-right: 10px;
+}
+
+.footer-item-card {
+  margin-top: 5px;
+  float: right;
 }
