@@ -10,6 +10,10 @@ const CategoryCard = ({ category, isListView }) => {
 
   const formattedDate = moment(category.date).format("MM/DD/YYYY HH:mm");
 
+  const categoryItems = () => {
+    return category.items.length;
+  };
+
   return (
     <div className={`Category-Card ${isListView ? "gridView" : "listView"}`}>
       <div className="categoryCard-images"></div>
@@ -17,10 +21,11 @@ const CategoryCard = ({ category, isListView }) => {
         <section className="title-p-card">
           <Link
             to={`/inventory/${category.title}`}
-            className="custom-link-title">
+            className="custom-link-title"
+          >
             <h1>{category.title}</h1>
           </Link>
-          <p>3 Items | € 338.00</p>
+          <p>{categoryItems()} Items | € 338.00</p>
         </section>
         <div className="categoryCard-footer">
           <p>

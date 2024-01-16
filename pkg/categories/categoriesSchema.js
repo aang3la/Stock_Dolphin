@@ -14,12 +14,6 @@ const categoriesSchema = new mongoose.Schema({
       ref: "Items",
     },
   ],
-  orders: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Orders",
-    },
-  ],
   date: {
     type: Date,
     default: Date.now,

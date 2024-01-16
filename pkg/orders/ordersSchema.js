@@ -5,10 +5,6 @@ const ordersSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Items',
     },
-    categoryId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Categories",
-    },
     supplier: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Suppliers',
@@ -23,7 +19,8 @@ const ordersSchema = new mongoose.Schema({
         type: Number
     },
     date: {
-        type: Date
+        type: Date,
+        default: Date.now,
     }
 });
 

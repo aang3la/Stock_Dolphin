@@ -16,14 +16,19 @@ const itemsSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  // numberOrders: {
-  //     type: mongoose.Schema.Types.ObjectId,
-  //     ref: 'Orders',
-  // },
+  totalAmount: {
+    type: Number,
+  },
+  orders: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Orders",
+    },
+  ],
   // totalCost: {
-  //     type: mongoose.Schema.Types.ObjectId,
-  //     ref: 'Orders',
-  // }
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: "Orders",
+  // },
 });
 
 const Items = mongoose.model("Items", itemsSchema);

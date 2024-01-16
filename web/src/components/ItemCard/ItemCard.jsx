@@ -10,34 +10,50 @@ const ItemCard = ({ item }) => {
   const [openModal, setOpenModal] = useState(false);
 
   const handleDelete = async () => {
-    try{
-      console.log('Deleting item...');
+    try {
+      console.log("Deleting item...");
 
-      const response = await fetch(`http://127.0.0.1:10003/inventory/${categoryName}/${item.id}`, {
-        method: "DELETE",
-        headers: {
-          'Content-Type': 'application/json',
+      const response = await fetch(
+        `http://127.0.0.1:10003/inventory/${categoryName}/${item.id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
-      });
-      console.log('Response:', response);
-      if(!response.ok) {
-        console.log('Error deleting item:', response.statusText);
+      );
+      console.log("Response:", response);
+      if (!response.ok) {
+        console.log("Error deleting item:", response.statusText);
         return;
       }
       setOpenModal(false);
-    } catch(err) {
+    } catch (err) {
       console.log("Error deleting item.");
     }
-  }
+  };
+
+  const numberOfOrders = () => {
+    return item.orders.length;
+  };
+
+  const totalAmount = () => {
+    return item.totalAmount;
+  };
 
   return (
     <div className="Item-Card">
       <div className="itemCard-images"></div>
       <div className="itemCard-content">
-        <Link className="custom-link-item" to={`/inventory/${categoryName}/${item.name}`}>
+        <Link
+          className="custom-link-item"
+          to={`/inventory/${categoryName}/${item.name}`}
+        >
           <h1>{item.name}</h1>
         </Link>
-        <p>7 Purchase Records | € 338.00</p>
+        <p>
+          {numberOfOrders()} Purchase Records | € {totalAmount()}
+        </p>
       </div>
       <div className="footer-item-card">
         <img

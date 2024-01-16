@@ -5,16 +5,28 @@ const InventorySummary = ({ categories }) => {
     const totalCategories = () => {
         return categories.length;
     };
-    // const totalItems = () => {
-    //     return items.length;
-    // };
+
+    const totalItems = () => {
+        return categories.reduce((total, category) => 
+            total + category.items.length, 0);
+    }
+
+    const totalCost = () => {
+        //TODO: Implement totalCost
+        return 100;
+    }
+
+    const totalNumberOfOrders = () => {
+        //TODO: Implement number of orders
+        return 100;
+    }
 
     return(
         <div className="InventorySummary">
          <p>Categories: <b>{totalCategories()}</b> </p>
-         <p>Items:</p>
-         <p>Total Orders:</p>
-         <p>Total Cost:</p>
+         <p>Items: <b>{totalItems()}</b></p>
+         <p>Total Orders: <b>{totalCost()}</b></p>
+         <p>Total Cost: <b>{totalNumberOfOrders()}</b></p>
         </div>
     )
 };
