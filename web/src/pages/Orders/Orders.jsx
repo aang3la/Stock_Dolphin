@@ -5,10 +5,12 @@ import Header from "../../components/Header/Header";
 import OrdersSummary from "../../components/OrdersSummary/OrdersSummary";
 import move_item from "../../images/move-item-icon.png";
 import plus_icon from "../../images/plus.png";
+import OrderModal from "../../components/OrderModal/OrderModal";
 
 const Orders = () => {
   const { categoryName, itemName } = useParams();
   const [orders, setOrders] = useState([]);
+  const [openOrdersModal, setOpenOrdersModal] = useState(false);
 
   const orderExample = [
     {
@@ -104,10 +106,11 @@ const Orders = () => {
         <Header title={`Inventory > ${categoryName} > ${itemName}`} />
         <div className="orders-summary-container">
           <OrdersSummary orders={orders} />
-          <button className="add-order-btn">
+          <button className="add-order-btn" onClick={() => setOpenOrdersModal(true)}>
             <img src={plus_icon} alt="plus icon" />
             <p>ADD ORDER</p>
           </button>
+          {openOrdersModal && <OrderModal closeModal={setOpenOrdersModal} />}
         </div>
       </header>
       <div className="orders-title-section">
@@ -142,7 +145,7 @@ const Orders = () => {
           <div className="choosen-item">
             <div className="example-pic"></div>
             <div className="choosen-item-name">
-              <p>Name: Mouse</p>
+              <p>Name: {itemName}</p>
             </div>
             <div className="choosen-item-buttons">
               <button className="move-item">

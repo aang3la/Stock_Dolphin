@@ -41,10 +41,6 @@ const Items = () => {
     fetchItems();
   }, []);
 
-  //   const selectedCategory = categories.find(
-  //     (category) => category.title === categoryName
-  //   );
-
   return (
     <div className="Items">
       <main>
