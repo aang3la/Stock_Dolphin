@@ -1,6 +1,7 @@
 const Items = require("../../../pkg/items/itemsSchema");
 const Category = require("../../../pkg/categories/categoriesSchema");
 const Categories = require("../../../pkg/categories/categoriesSchema");
+// const Activity = require("../../../pkg/activity/activitySchema");
 
 // Show all items
 exports.getAllItems = async (req, res) => {
@@ -59,7 +60,17 @@ exports.createItem = async (req, res) => {
   try {
     const { name, image, categoryId } = req.body;
 
-    const newItem = await Items.create({ name, image, categoryId });
+    const newItem = await Items.create({
+      name,
+      image,
+      categoryId,
+    });
+
+    // const newActivity = new Activity({
+    //   activity: "created",
+    //   item: name,
+    // });
+    // await newActivity.save();
 
     await Category.findByIdAndUpdate(categoryId, {
       $push: { items: newItem },

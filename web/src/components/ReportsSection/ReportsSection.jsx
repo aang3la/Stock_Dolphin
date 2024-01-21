@@ -9,7 +9,7 @@ const ReportsSection = () => {
       <div className="Activity-field">
         <div id="activity">
           <img src={activity_icon} alt="activity_icon" />
-          <Link to="/activity-history" className="link">
+          <Link to="/reports/activity-history" className="link">
             <h2>Activity History</h2>
           </Link>
         </div>
@@ -22,7 +22,7 @@ const ReportsSection = () => {
       <div className="Inventory-field">
         <div id="inventory">
           <img src={inventory_icon} alt="inventory_icon" />
-          <Link to="/inventory-summary" className="link">
+          <Link to="/reports/inventory-summary" className="link">
             <h2>Inventory Summary</h2>
           </Link>
         </div>

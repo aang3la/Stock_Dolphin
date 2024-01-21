@@ -1,15 +1,16 @@
 import "./orders.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import OrdersSummary from "../../components/OrdersSummary/OrdersSummary";
 import move_item from "../../images/move-item-icon.png";
 import plus_icon from "../../images/plus.png";
 import OrderModal from "../../components/OrderModal/OrderModal";
+import { Context } from "../../components/uttils/FetchContextProvider";
 
 const Orders = () => {
+  const { orders } = useContext(Context);
   const { categoryName, itemName } = useParams();
-  const [orders, setOrders] = useState([]);
   const [openOrdersModal, setOpenOrdersModal] = useState(false);
 
   const orderExample = [
@@ -70,35 +71,6 @@ const Orders = () => {
       supplier: "Amazon Ltd Electronics",
     },
   ];
-
-  useEffect(() => {
-    const fetchOrders = async () => {
-      try {
-        const response = await fetch(
-          `http://127.0.0.1:10004/inventory/${categoryName}/${itemName}`,
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          }
-        );
-        console.log("Fetching orders for category:", categoryName);
-        console.log("Fetching orders for an item:", itemName);
-
-        const data = await response.json();
-
-        if (response.ok) {
-          console.log("API Response:", data);
-          setOrders(data.data);
-        } else {
-          console.log("Error");
-        }
-      } catch (err) {
-        console.log("Error fetching orders.", err);
-      }
-    };
-    fetchOrders();
-  }, []);
 
   return (
     <div className="Orders-container">

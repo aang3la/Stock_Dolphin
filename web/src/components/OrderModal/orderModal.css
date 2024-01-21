@@ -1,7 +1,7 @@
 #order-dialog {
     border: none;
     width: 300px;
-    height: 290px;
+    height: 310px;
     background-color: white;
     border-radius: 20px;
     display: flex;
@@ -44,6 +44,16 @@
     height: 50px;
 }
 
+.order-select-container {
+    height: 30px;
+    width: 290px;
+    margin-top: 10px;
+    font-family: Poppins;    
+    border: none;
+    color: grey;
+    font-size: 16px;
+}
+
 .order-input-container input {
     width: 280px;
     margin-top: 20px;
@@ -62,6 +72,7 @@
     height: 27px;
     border: 2px solid #999999;
     border-radius: 5px;
+    font-family: Poppins;
 }
 
 hr {

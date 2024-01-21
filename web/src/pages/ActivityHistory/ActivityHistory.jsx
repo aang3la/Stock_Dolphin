@@ -5,7 +5,11 @@ function ActivityHistory() {
   return (
     <div className="Activity-history">
       <main>
-        <header><Header title="Reports > Activity History" /></header>
+        <header>
+          <Header title="Reports > Activity History" />
+        </header>
+        <section>
+        </section>
       </main>
     </div>
   );

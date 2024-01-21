@@ -2,10 +2,6 @@ import "./inventorySummary.css";
 import { useState } from "react";
 
 const InventorySummary = ({ categories }) => {
-    const totalCategories = () => {
-        return categories.length;
-    };
-
     const totalItems = () => {
         return categories.reduce((total, category) => 
             total + category.items.length, 0);
@@ -23,7 +19,7 @@ const InventorySummary = ({ categories }) => {
 
     return(
         <div className="InventorySummary">
-         <p>Categories: <b>{totalCategories()}</b> </p>
+         <p>Categories: <b>{categories.length}</b> </p>
          <p>Items: <b>{totalItems()}</b></p>
          <p>Total Orders: <b>{totalCost()}</b></p>
          <p>Total Cost: <b>{totalNumberOfOrders()}</b></p>

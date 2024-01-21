@@ -1,15 +1,19 @@
 const mongoose = require("mongoose");
 
 const activitySchema = new mongoose.Schema({
-    itemID: {
+    action: {
+        type: String,
+        required: true,
+        enum: ["moved", "edited", "deleted", "created", "ordered"],
+    },
+    date: {
+        type: Date,
+        default: Date.now,
+    },
+    itemId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Items',
     },
-    activity: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Users',
-    }
-    // tuka da se zemat i od databaza created, deleted, moved.. **ref: User
 });
 
 const Activity = mongoose.model("Activity", activitySchema);

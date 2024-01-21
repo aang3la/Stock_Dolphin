@@ -1,4 +1,4 @@
-import { Link, Outlet, useHistory } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import "./navigation.css";
 import logo from "../../images/logo.png";
 import dashboard_icon from "../../images/dashboard_icon.png";
