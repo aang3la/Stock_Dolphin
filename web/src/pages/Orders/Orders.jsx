@@ -7,11 +7,15 @@ import move_item from "../../images/move-item-icon.png";
 import plus_icon from "../../images/plus.png";
 import OrderModal from "../../components/OrderModal/OrderModal";
 import { Context } from "../../components/uttils/FetchContextProvider";
+import InvoiceModal from "../../components/InvoiceModal/InvoiceModal";
+import MoveItemModal from "../../components/MoveItemModal/MoveItemModal";
 
 const Orders = () => {
   const { orders } = useContext(Context);
   const { categoryName, itemName } = useParams();
   const [openOrdersModal, setOpenOrdersModal] = useState(false);
+  const [openInvoiceModal, setOpenInvoiceModal] = useState(false);
+  const [openMoveItemModal, setOpenMoveItemModal] = useState(false);
 
   const orderExample = [
     {
@@ -87,7 +91,8 @@ const Orders = () => {
       </header>
       <div className="orders-title-section">
         <h1>Orders</h1>
-        <button className="invoice-btn">Generate Invoice</button>
+        <button className="invoice-btn" onClick={() => setOpenInvoiceModal(true)}>Generate Invoice</button>
+        {openInvoiceModal && <InvoiceModal closeModal={setOpenInvoiceModal} />}
       </div>
       <hr className="order-hr" />
       <main>
@@ -120,9 +125,10 @@ const Orders = () => {
               <p>Name: {itemName}</p>
             </div>
             <div className="choosen-item-buttons">
-              <button className="move-item">
+              <button className="move-item" onClick={() => setOpenMoveItemModal(true)}>
                 <img src={move_item} />
               </button>
+              {openMoveItemModal && <MoveItemModal closeModal={setOpenMoveItemModal} />}
               <button className="save-button">SAVE</button>
             </div>
           </div>

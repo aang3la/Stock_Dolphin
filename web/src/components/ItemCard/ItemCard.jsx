@@ -33,14 +33,6 @@ const ItemCard = ({ item }) => {
     }
   };
 
-  const numberOfOrders = () => {
-    return item.orders.length;
-  };
-
-  const totalAmount = () => {
-    return item.totalAmount;
-  };
-
   return (
     <div className="Item-Card">
       <div className="itemCard-images"></div>
@@ -52,7 +44,7 @@ const ItemCard = ({ item }) => {
           <h1>{item.name}</h1>
         </Link>
         <p>
-          {numberOfOrders()} Purchase Records | € {totalAmount()}
+          {item.orders.length} Purchase Records | € {item.totalAmount}
         </p>
       </div>
       <div className="footer-item-card">

@@ -1,0 +1,77 @@
+#invoice-dialog {
+    border: none;
+    width: 280px;
+    height: 330px;
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+    left: 50%;
+    top: 50%;
+    transform: translate(-100%, -50%);
+}
+
+.invoice-modal-title {
+    width: 312px;
+    height: 30px;
+    border-radius: 20px 20px 0px 0px;
+    background-color: #53A856;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 8px;
+}
+
+.invoice-modal-title h1 {
+    font-size: 16px;
+    color: white;
+    margin-left: 20px;
+}
+
+.invoice-modal-title button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.invoice-input-container input {
+    width: 270px;
+    margin-top: 20px;
+    border: none;
+    font-size: 16px;
+    color: #3E4153;
+    font-family: Poppins;
+}
+
+.invoice-select-container {
+    height: 30px;
+    width: 280px;
+    margin-top: 10px;
+    font-family: Poppins;    
+    border: none;
+    color: #3E4153;
+    font-size: 16px;
+}
+
+.invoice-input-date {
+    padding-top: 10px;
+    padding-bottom: 8px;
+}
+
+.invoice-input-date input {
+    width: 120px;
+    height: 27px;
+    border: 2px solid #999999;
+    border-radius: 5px;
+    font-family: Poppins;
+}
+
+#invoice-hr {
+    width: 275px;
+    border: 1px solid #999999;
+}
+
+#footer-hr {
+    margin-top: 30px;
+}
