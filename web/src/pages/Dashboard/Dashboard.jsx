@@ -9,11 +9,11 @@ function Dashboard() {
   return (
     <div className="Dashboard">
       <main>
-        <header>
+        <header className="dashboard-header">
           <Header title="Dashboard" />
           <div className="user-section">
-            {/* <p>Welcome back Name Surname!</p>
-            <img src={user_icon} /> */}
+            <p>Welcome back Name Surname!</p>
+            <img src={user_icon} />
           </div>
         </header>
         <div className="mainContent">

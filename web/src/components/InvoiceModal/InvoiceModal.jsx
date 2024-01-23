@@ -39,7 +39,7 @@ const InvoiceModal = ({ closeModal }) => {
           </select>
           <hr id="invoice-hr" />
           <div className="invoice-input-date">
-            <input type="date" placeholder="DD/MM/YY*" />
+            <input type="date" />
           </div>
           <select className="invoice-select-container">
             <option value="">Select Orders</option>

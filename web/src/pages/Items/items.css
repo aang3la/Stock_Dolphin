@@ -1,9 +1,8 @@
 .Items {
     display: flex;
-    flex-direction: column;
 }
 
-.item-cards {
+.gridView {
   width: 900px;
   height: 400px;
   margin-left: 55px;
@@ -11,6 +10,15 @@
   display: flex;
   flex-wrap: wrap;
   gap: 25px 25px;
+}
+
+.listView {
+  width: 800px;
+  height: 500px;
+  margin-left: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
 .edit-category-btn {

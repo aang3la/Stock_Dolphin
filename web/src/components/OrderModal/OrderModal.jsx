@@ -1,7 +1,16 @@
 import "./orderModal.css";
 import close from "../../images/close.png";
+import { useContext, useState } from "react";
+import { Context } from "../uttils/FetchContextProvider";
 
 const OrderModal = ({ closeModal }) => {
+  const { suppliers } = useContext(Context);
+  const [selectedSupplier, setSelectedSupplier] = useState("");
+
+  const handleSelect = (event) => {
+    setSelectedSupplier(event.target.value);
+  };
+
   return (
     <div className="overlay-container">
       <dialog id="order-dialog" open>
@@ -12,12 +21,23 @@ const OrderModal = ({ closeModal }) => {
           </button>
         </div>
         <div className="modal-body">
-          <select className="order-select-container">
-            <option value="">Supplier*</option>
+          <select
+            value={selectedSupplier}
+            onChange={handleSelect}
+            className="order-select-container"
+          >
+            <option value="" hidden>
+              Supplier*
+            </option>
+            {suppliers.map((supplier) => (
+              <option key={supplier.id} value={supplier.id}>
+                {supplier.name}
+              </option>
+            ))}
           </select>
           <hr id="custom-hr" />
           <div className="order-input-container">
-            <input type="text" placeholder="Quantity*" required />
+            <input type="number" placeholder="Quantity*" required />
             <hr id="custom-hr" />
           </div>
           <div className="order-input-container">
@@ -25,7 +45,7 @@ const OrderModal = ({ closeModal }) => {
             <hr id="custom-hr" />
           </div>
           <div className="order-input-date">
-            <input type="date" placeholder="DD/MM/YY*" />
+            <input type="date" />
           </div>
           <hr />
         </div>

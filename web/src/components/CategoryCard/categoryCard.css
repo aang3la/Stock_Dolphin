@@ -4,42 +4,42 @@
   background-color: white;
 }
 
-.gridView {
+.gridViewCard {
   width: 190px;
   height: 210px;
 }
 
-.listView {
-  width: 600px;
-  height: 180px;
+.listViewCard {
+  width: 620px;
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.gridView
+.gridViewCard
 .categoryCard-images {
   height: 115px;
   background-color: grey;
   border-radius: 10px 10px 0 0;
 }
 
-.listView 
+.listViewCard 
 .categoryCard-images {
   width: 190px;
-  background-color: red;
+  background-color: grey;
 }
 
-.listView
+.listViewCard
 .categoryCard-content {
   width: 500px;
+  height: 110px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
 
-.listView
+.listViewCard
 .title-p-card {
   display: flex;
   flex-direction: column;
@@ -74,17 +74,20 @@
   font-size: 13px;
 }
 
-.listView
+.listViewCard
 .categoryCard-footer {
+  width: 160px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  gap: 10px;
+  gap: 5px;
 }
 
-.listView
+.listViewCard
 .categoryCard-footer p {
   font-size: 12px;
+  padding-right: 30px;
+  padding-top: 30px;
 }
 
 #categoryCard-date {
@@ -98,7 +101,7 @@
   height: 35px;
 }
 
-.listView
+.listViewCard
 .delete-btn {
   margin-right: 5px;
 }

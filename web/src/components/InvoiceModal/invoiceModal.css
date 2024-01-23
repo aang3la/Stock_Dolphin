@@ -60,11 +60,12 @@
 }
 
 .invoice-input-date input {
-    width: 120px;
+    width: 130px;
     height: 27px;
     border: 2px solid #999999;
     border-radius: 5px;
     font-family: Poppins;
+    text-transform: uppercase;
 }
 
 #invoice-hr {

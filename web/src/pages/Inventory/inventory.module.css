@@ -3,8 +3,7 @@
 }
 
 .cards-section {
-  display: flex;
-  flex-direction: column;
+  width: 800px;
 }
 
 .gridView {
@@ -47,7 +46,7 @@
 .grid-list-view {
   width: 80px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 3px;
 }
 

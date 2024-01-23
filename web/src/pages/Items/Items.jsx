@@ -6,12 +6,18 @@ import Search_Add from "../../components/Search_Add/Search_Add";
 import ItemCard from "../../components/ItemCard/ItemCard";
 import Modal from "../../components/Modal/Modal";
 import edit_green_icon from "../../images/edit-green-icon.png";
+import listView from "../../images/listView.png";
+import gridView from "../../images/gridView.png";
 
 const Items = () => {
   const { categoryName } = useParams();
   const [items, setItems] = useState([]);
-
   const [openModal, setOpenModal] = useState(false);
+  const [isGridView, setGridView] = useState(true);
+
+  const toggleView = () => {
+    setGridView((prevView) => !prevView);
+  };
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -53,10 +59,22 @@ const Items = () => {
             modalBtn="ADD ITEM"
           />
         </header>
-        <div className="item-cards">
+        <div className={
+                isGridView
+                  ? "gridView"
+                  : "listView" + "scrollList"
+              }>
           {items.map((item) => (
-            <ItemCard key={item.id} item={item} />
+            <ItemCard key={item.id} item={item} isGridView={isGridView} />
           ))}
+        </div>
+        <div className="grid-list-view">
+          <button onClick={() => setGridView(true)}>
+            <img src={gridView} alt="gridView-icon" />
+          </button>
+          <button onClick={() => setGridView(false)}>
+            <img src={listView} alt="listView-icon" />
+          </button>
         </div>
       </main>
       <footer>

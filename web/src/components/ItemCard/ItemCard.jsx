@@ -5,7 +5,7 @@ import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
 import delete_icon from "../../images/delete-icon.png";
 import { Link } from "react-router-dom";
 
-const ItemCard = ({ item }) => {
+const ItemCard = ({ item, isGridView }) => {
   const { categoryName } = useParams();
   const [openModal, setOpenModal] = useState(false);
 
@@ -34,7 +34,7 @@ const ItemCard = ({ item }) => {
   };
 
   return (
-    <div className="Item-Card">
+    <div className={`Item-Card ${isGridView ? "gridViewCard" : "listViewCard"}`}>
       <div className="itemCard-images"></div>
       <div className="itemCard-content">
         <Link

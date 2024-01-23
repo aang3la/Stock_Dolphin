@@ -52,12 +52,24 @@ const Inventory = () => {
           />
           <InventorySummary categories={categories} />
         </header>
-        <section className="cards-section">
-          <div className={isGridView ? styles.gridView : `${styles.listView} ${styles.scrollList}`}>
-            {categories.map((category) => (
-              <CategoryCard key={category._id} category={category} isListView={isGridView} />
-            ))}
-          </div>
+        <div className="main-cards-container">
+          <section className="cards-section">
+            <div
+              className={
+                isGridView
+                  ? styles.gridView
+                  : `${styles.listView} ${styles.scrollList}`
+              }
+            >
+              {categories.map((category) => (
+                <CategoryCard
+                  key={category._id}
+                  category={category}
+                  isGridView={isGridView}
+                />
+              ))}
+            </div>
+          </section>
           <div className="grid-list-view">
             <button onClick={() => setGridView(true)}>
               <img src={gridView} alt="gridView-icon" />
@@ -66,7 +78,7 @@ const Inventory = () => {
               <img src={listView} alt="listView-icon" />
             </button>
           </div>
-        </section>
+        </div>
       </main>
     </div>
   );

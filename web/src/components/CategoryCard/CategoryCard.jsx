@@ -5,7 +5,7 @@ import { useState } from "react";
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
 const moment = require("moment");
 
-const CategoryCard = ({ category, isListView }) => {
+const CategoryCard = ({ category, isGridView }) => {
   const [openModal, setOpenModal] = useState(false);
 
   const formattedDate = moment(category.date).format("MM/DD/YYYY HH:mm");
@@ -15,7 +15,7 @@ const CategoryCard = ({ category, isListView }) => {
   };
 
   return (
-    <div className={`Category-Card ${isListView ? "gridView" : "listView"}`}>
+    <div className={`Category-Card ${isGridView ? "gridViewCard" : "listViewCard"}`}>
       <div className="categoryCard-images"></div>
       <div className="categoryCard-content">
         <section className="title-p-card">
