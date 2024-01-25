@@ -59,11 +59,7 @@ const Items = () => {
             modalBtn="ADD ITEM"
           />
         </header>
-        <div className={
-                isGridView
-                  ? "gridView"
-                  : "listView" + "scrollList"
-              }>
+        <div className={isGridView ? "gridView" : "listView scrollList"}>
           {items.map((item) => (
             <ItemCard key={item.id} item={item} isGridView={isGridView} />
           ))}

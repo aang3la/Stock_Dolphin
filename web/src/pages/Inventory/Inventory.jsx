@@ -1,4 +1,4 @@
-import styles from "./inventory.module.css";
+import "./inventory.css";
 import { useState, useEffect } from "react";
 import listView from "../../images/listView.png";
 import gridView from "../../images/gridView.png";
@@ -54,13 +54,7 @@ const Inventory = () => {
         </header>
         <div className="main-cards-container">
           <section className="cards-section">
-            <div
-              className={
-                isGridView
-                  ? styles.gridView
-                  : `${styles.listView} ${styles.scrollList}`
-              }
-            >
+            <div className={isGridView ? "gridView" : "listView scrollList"}>
               {categories.map((category) => (
                 <CategoryCard
                   key={category._id}
@@ -70,14 +64,14 @@ const Inventory = () => {
               ))}
             </div>
           </section>
-          <div className="grid-list-view">
+          <section className="grid-list-view">
             <button onClick={() => setGridView(true)}>
               <img src={gridView} alt="gridView-icon" />
             </button>
             <button onClick={() => setGridView(false)}>
               <img src={listView} alt="listView-icon" />
             </button>
-          </div>
+          </section>
         </div>
       </main>
     </div>
