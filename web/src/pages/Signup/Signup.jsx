@@ -50,10 +50,10 @@ function Signup() {
     const emailRegex = /^[^\s@]+@[^\s@]+[^\s@]{2,}$/i;
     const errors = {};
 
-    if(!values.name) {
+    if (!values.name) {
       errors.name = "Name is required.";
-    } else if(values.name.length < 3) {
-      errors.name = "Name must be greather than 3 characters."
+    } else if (values.name.length < 3) {
+      errors.name = "Name must be greather than 3 characters.";
     }
     if (!values.email) {
       errors.email = "E-mail required!";
@@ -77,49 +77,53 @@ function Signup() {
         <span className="login-section">
           Already have an account?
           <button>
-            <Link to="/login" replace>Login</Link>
+            <Link to="/login" replace>
+              Login
+            </Link>
           </button>
         </span>
       </header>
-      <form className="Signup-form">
-        <h1>You’re one click away from less inefficiency.</h1>
-        {Object.keys(formErrors).length === 0 && isSubmit && (
-          <Navigate to="/dashboard" />
-        )}
-        <div className="signup-name">
-          <label htmlFor="name">Name</label>
-          <input
-            type="name"
-            name="name"
-            value={data.name}
-            onChange={dataChange}
-            placeholder="Enter your name"
-          />
-        </div>
-        <div className="signup-email">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            name="email"
-            value={data.email}
-            onChange={dataChange}
-            placeholder="Enter your email"
-          />
-          <p>{formErrors.email}</p>
-        </div>
-        <div className="signup-password">
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            name="password"
-            value={data.password}
-            onChange={dataChange}
-            placeholder="Enter your password"
-          />
-          <p>{formErrors.password}</p>
-        </div>
-        <button onClick={handleSignup}>Sign up</button>
-      </form>
+      {Object.keys(formErrors).length === 0 && isSubmit ? (
+        <Navigate to="/dashboard" />
+      ) : (
+        <form className="Signup-form">
+          <h1>You’re one click away from less inefficiency.</h1>
+          <div className="signup-name">
+            <label htmlFor="name">Name</label>
+            <input
+              type="name"
+              name="name"
+              value={data.name}
+              onChange={dataChange}
+              placeholder="Enter your name"
+            />
+            <p>{formErrors.name}</p>
+          </div>
+          <div className="signup-email">
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              name="email"
+              value={data.email}
+              onChange={dataChange}
+              placeholder="Enter your email"
+            />
+            <p>{formErrors.email}</p>
+          </div>
+          <div className="signup-password">
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              name="password"
+              value={data.password}
+              onChange={dataChange}
+              placeholder="Enter your password"
+            />
+            <p>{formErrors.password}</p>
+          </div>
+          <button onClick={handleSignup}>Sign up</button>
+        </form>
+      )}
       <section className="signup-info">
         <div>
           <img src={check_icon} />
@@ -136,6 +140,6 @@ function Signup() {
       </section>
     </div>
   );
-};
+}
 
 export default Signup;

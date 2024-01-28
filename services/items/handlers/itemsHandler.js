@@ -1,7 +1,7 @@
 const Items = require("../../../pkg/items/itemsSchema");
 const Category = require("../../../pkg/categories/categoriesSchema");
 const Categories = require("../../../pkg/categories/categoriesSchema");
-// const Activity = require("../../../pkg/activity/activitySchema");
+const Activity = require("../../../pkg/activity/activitySchema");
 
 // Show all items
 exports.getAllItems = async (req, res) => {
@@ -66,11 +66,12 @@ exports.createItem = async (req, res) => {
       categoryId,
     });
 
-    // const newActivity = new Activity({
-    //   activity: "created",
-    //   item: name,
-    // });
-    // await newActivity.save();
+    const newActivity = new Activity.create({
+      activity: "created",
+      name,
+      categoryId,
+      date: new Date(),
+    });
 
     await Category.findByIdAndUpdate(categoryId, {
       $push: { items: newItem },
@@ -78,7 +79,10 @@ exports.createItem = async (req, res) => {
 
     res.status(200).json({
       status: "success",
-      data: newItem,
+      data: {
+        newItem,
+        newActivity
+      }
     });
   } catch (err) {
     res.status(404).json({
@@ -90,15 +94,27 @@ exports.createItem = async (req, res) => {
 
 // Make changes in a item
 exports.updateItem = async (req, res) => {
+  const { name, categoryId } = req.body;
+
   try {
     const item = await Items.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
       runValidators: true,
     });
 
+    const newActivity = new Activity.create({
+      activity: "edited",
+      name,
+      categoryId,
+      date: new Date(),
+    });
+
     res.status(201).json({
       status: "success",
-      data: item,
+      data: {
+        item,
+        newActivity
+      }
     });
   } catch (err) {
     res.status(404).json({
@@ -110,12 +126,24 @@ exports.updateItem = async (req, res) => {
 
 // Delete item
 exports.deleteItem = async (req, res) => {
+  const { name, categoryId } = req.body;
+
   try {
     await Items.findByIdAndDelete(req.params.id);
 
+    const newActivity = new Activity.create({
+      activity: "deleted",
+      name,
+      categoryId,
+      date: new Date(),
+    });
+
     res.status(201).json({
       status: "success",
-      data: null,
+      data: {
+        item: null,
+        activity: newActivity
+      }
     });
   } catch (err) {
     res.status(404).json({

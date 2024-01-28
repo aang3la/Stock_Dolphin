@@ -25,10 +25,10 @@ const itemsSchema = new mongoose.Schema({
       ref: "Orders",
     },
   ],
-//   activity: {
-//     type: String,
-//     enum: ["moved", "edited", "deleted", "created", "ordered"],
-// },
+  activity: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Activity",
+},
   // totalCost: {
   //   type: mongoose.Schema.Types.ObjectId,
   //   ref: "Orders",

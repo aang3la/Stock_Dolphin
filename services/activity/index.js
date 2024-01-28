@@ -32,7 +32,7 @@ app.use(cors());
 // Routes
 app.get("/activities", activities.getAllActivities);
 app.get("/activities/:id", activities.getActivity);
-app.post("/activities", activities.createItem);
+app.post("/activities", activities.createActivity);
 
 app.listen(process.env.PORT_ACTIVITY, (err) => {
     if(err) {

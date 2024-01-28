@@ -6,6 +6,7 @@ export const Context = React.createContext();
 const FetchContextProvider = ({ children }) => {
   const [suppliers, setSuppliers] = useState([]);
   const [orders, setOrders] = useState([]);
+  const [activities, setActivities] = useState([]);
 
   const { categoryName, itemName } = useParams();
 
@@ -59,10 +60,36 @@ const FetchContextProvider = ({ children }) => {
       }
     };
     fetchOrders();
+
+    const fetchActivities = async () => {
+      try {
+        const response = await fetch(
+          "http://127.0.0.1:10006/activities",
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
+        console.log("Fetching activities:", response);
+
+        const activitiesData = await response.json();
+
+        if (response.ok) {
+          console.log("API Response:", ordersData);
+          setActivities(activitiesData.data);
+        } else {
+          console.log("Error");
+        }
+      } catch (err) {
+        console.log("Error fetching activities.", err);
+      }
+    };
+    fetchActivities();
   }, []);
 
   return (
-    <Context.Provider value={{ suppliers, orders }}>
+    <Context.Provider value={{ suppliers, orders, activities }}>
       {children}
     </Context.Provider>
   );

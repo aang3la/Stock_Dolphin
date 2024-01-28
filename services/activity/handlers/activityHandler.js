@@ -1,4 +1,5 @@
 const Activity = require("../../../pkg/activity/activitySchema");
+const Items = require("../../../pkg/items/itemsSchema");
 
 exports.getAllActivities = async (req, res) => {
   try {
@@ -34,11 +35,12 @@ exports.getActivity = async (req, res) => {
 
 exports.createActivity = async (req, res) => {
   try {
-    const { action, itemId } = req.body;
+    const { itemId } = req.body;
+    // const item = await Items.findOne({ name });
 
     const newActivity = await Activity.create({
-      action,
       itemId,
+      date: new Date(),
     });
 
     res.status(200).json({
