@@ -16,21 +16,18 @@
   align-items: center;
 }
 
-.gridViewCard
-.categoryCard-images {
+.gridViewCard .categoryCard-images {
   height: 115px;
   background-color: grey;
   border-radius: 10px 10px 0 0;
 }
 
-.listViewCard 
-.categoryCard-images {
+.listViewCard .categoryCard-images {
   width: 190px;
   background-color: grey;
 }
 
-.listViewCard
-.categoryCard-content {
+.listViewCard .categoryCard-content {
   width: 500px;
   height: 110px;
   display: flex;
@@ -39,8 +36,8 @@
   align-items: center;
 }
 
-.listViewCard
-.title-p-card {
+.listViewCard .title-p-card {
+  width: 300px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -74,20 +71,34 @@
   font-size: 13px;
 }
 
-.listViewCard
-.categoryCard-footer {
-  width: 160px;
+.listViewDivider {
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.listViewDividerLine {
+  height: 95px;
+  width: 100%;
+  margin: 0;
+  background-color: #000; 
+  flex: 1;
+  transform: rotateY();
+}
+
+.listViewCard .categoryCard-footer {
+  width: 180px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   gap: 5px;
 }
 
-.listViewCard
-.categoryCard-footer p {
+.listViewCard .categoryCard-footer p {
   font-size: 12px;
-  padding-right: 30px;
+  padding-right: 45px;
   padding-top: 30px;
+  text-align: center;
 }
 
 #categoryCard-date {
@@ -101,7 +112,6 @@
   height: 35px;
 }
 
-.listViewCard
-.delete-btn {
+.listViewCard .delete-btn {
   margin-right: 5px;
 }

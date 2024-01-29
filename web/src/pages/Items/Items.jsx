@@ -59,18 +59,22 @@ const Items = () => {
             modalBtn="ADD ITEM"
           />
         </header>
-        <div className={isGridView ? "gridView" : "listView scrollList"}>
-          {items.map((item) => (
-            <ItemCard key={item.id} item={item} isGridView={isGridView} />
-          ))}
-        </div>
-        <div className="grid-list-view">
-          <button onClick={() => setGridView(true)}>
-            <img src={gridView} alt="gridView-icon" />
-          </button>
-          <button onClick={() => setGridView(false)}>
-            <img src={listView} alt="listView-icon" />
-          </button>
+        <div className="main-itemCards-container">
+          <section className="itemCards-section">
+            <div className={isGridView ? "gridView" : "listView scrollList"}>
+              {items.map((item) => (
+                <ItemCard key={item.id} item={item} isGridView={isGridView} />
+              ))}
+            </div>
+          </section>
+          <section className="grid-list-view">
+            <button onClick={() => setGridView(true)}>
+              <img src={gridView} alt="gridView-icon" />
+            </button>
+            <button onClick={() => setGridView(false)}>
+              <img src={listView} alt="listView-icon" />
+            </button>
+          </section>
         </div>
       </main>
       <footer>

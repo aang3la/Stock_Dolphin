@@ -4,10 +4,13 @@ import { useState } from "react";
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
 import delete_icon from "../../images/delete-icon.png";
 import { Link } from "react-router-dom";
+const moment = require("moment");
 
 const ItemCard = ({ item, isGridView }) => {
   const { categoryName } = useParams();
   const [openModal, setOpenModal] = useState(false);
+
+  const formattedDate = moment(item.date).format("MM/DD/YYYY HH:mm");
 
   const handleDelete = async () => {
     try {
@@ -34,19 +37,32 @@ const ItemCard = ({ item, isGridView }) => {
   };
 
   return (
-    <div className={`Item-Card ${isGridView ? "gridViewCard" : "listViewCard"}`}>
+    <div
+      className={`Item-Card ${isGridView ? "gridViewCard" : "listViewCard"}`}
+    >
       <div className="itemCard-images"></div>
       <div className="itemCard-content">
-        <Link
-          className="custom-link-item"
-          to={`/inventory/${categoryName}/${item.name}`}
-        >
-          <h1>{item.name}</h1>
-        </Link>
-        <p>
-          {item.orders.length} Purchase Records | € {item.totalAmount}
-        </p>
+        <section className="title-p-item">
+          <Link
+            className="custom-link-item"
+            to={`/inventory/${categoryName}/${item.name}`}
+          >
+            <h1>{item.name}</h1>
+          </Link>
+          <p>
+            {item.orders.length} Purchase Records | € {item.totalAmount}
+          </p>
+        </section>
       </div>
+      {!isGridView && (
+          <div className="listViewDivider">
+            <hr className="listViewDividerLine" />
+            <p>
+            Updated At: <br />
+            <span id="itemCard-date">{formattedDate}</span>
+            </p>
+          </div>
+        )}
       <div className="footer-item-card">
         <img
           src={delete_icon}

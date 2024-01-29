@@ -27,9 +27,14 @@ const CategoryCard = ({ category, isGridView }) => {
           </Link>
           <p>{categoryItems()} Items | € 338.00</p>
         </section>
+        {!isGridView && (
+          <div className="listViewDivider">
+            <hr className="listViewDividerLine" />
+          </div>
+        )}
         <div className="categoryCard-footer">
           <p>
-            Updated at: <br />
+            Updated At: <br />
             <span id="categoryCard-date">{formattedDate}</span>
           </p>
           <img
