@@ -1,7 +1,7 @@
 import "./activityHistory.css";
 import { useContext } from "react";
 import Header from "../../components/Header/Header";
-import { Context } from "../../components/uttils/FetchContextProvider";
+import { Context } from "../../uttils/FetchContextProvider";
 
 function ActivityHistory() {
   const { activities } = useContext(Context);

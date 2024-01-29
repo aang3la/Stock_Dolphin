@@ -3,7 +3,7 @@ import edit_icon from "../../images/edit-icon.png";
 import delete_icon from "../../images/delete-icon.png";
 import { useState, useContext, useEffect } from "react";
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
-import { Context } from "../../components/uttils/FetchContextProvider";
+import { Context } from "../../uttils/FetchContextProvider";
 
 const SupplierCard = ({ supplier }) => {
   const [openConfModal, setOpenConfModal] = useState(false);

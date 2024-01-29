@@ -1,7 +1,7 @@
 import "./orderModal.css";
 import close from "../../images/close.png";
 import { useContext, useState } from "react";
-import { Context } from "../uttils/FetchContextProvider";
+import { Context } from "../../uttils/FetchContextProvider";
 
 const OrderModal = ({ closeModal }) => {
   const { suppliers } = useContext(Context);

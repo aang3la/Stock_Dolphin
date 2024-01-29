@@ -6,7 +6,7 @@ import OrdersSummary from "../../components/OrdersSummary/OrdersSummary";
 import move_item from "../../images/move-item-icon.png";
 import plus_icon from "../../images/plus.png";
 import OrderModal from "../../components/OrderModal/OrderModal";
-import { Context } from "../../components/uttils/FetchContextProvider";
+import { Context } from "../../uttils/FetchContextProvider";
 import InvoiceModal from "../../components/InvoiceModal/InvoiceModal";
 import MoveItemModal from "../../components/MoveItemModal/MoveItemModal";
 

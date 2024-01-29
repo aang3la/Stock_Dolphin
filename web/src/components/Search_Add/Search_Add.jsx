@@ -5,7 +5,7 @@ import search_icon from "../../images/search_icon.png";
 import Modal from "../Modal/Modal";
 
 const Search_Add = ({ searchText, text, modalHeading, modalBtn }) => {
-  const [search, setSearch] = useState();
+  const [search, setSearch] = useState("");
   const [openModal, setOpenModal] = useState(false);
 
   const handleSearch = (event) => {

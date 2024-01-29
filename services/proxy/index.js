@@ -1,10 +1,15 @@
 const express = require("express");
 const proxy = require("express-http-proxy");
 const cors = require('cors');
-// dotenv
+const dotenv = require('dotenv');
+
+dotenv.config({path: `${__dirname}/../config/config.env`});
 
 const app = express();
-app.use(cors()); // Cross-Origin Resource Sharing
+app.use(cors({
+    origin: 'http://localhost:3000'
+})); 
+
 
 const authProxy = proxy("http://localhost:10000", {
     proxyReqPathResolver: (req) => {
@@ -18,15 +23,15 @@ const suppliersProxy = proxy("http://localhost:10001", {
     },
 });
 
-const itemsProxy = proxy("http://localhost:10003", {
+const categoryProxy = proxy("http://localhost:10005", {
     proxyReqPathResolver: (req) => {
-        return `/inventory/:categoryName${req.url}`;
+        return `/inventory${req.url}`;
     },
 });
 
-const categoryProxy = proxy("http://localhost:10003", {
+const itemsProxy = proxy("http://localhost:10003", {
     proxyReqPathResolver: (req) => {
-        return `/inventory${req.url}`;
+        return `/inventory/:categoryName${req.url}`;
     },
 });
 
@@ -43,10 +48,10 @@ const activityProxy = proxy("http://localhost:10006", {
 });
 
 app.use("/api/auth/", authProxy);
-app.use("/suppliers/", suppliersProxy);
-app.use("/inventory/:categoryName/", itemsProxy);
+app.use("/suppliers", suppliersProxy);
+app.use("/inventory/:categoryName", itemsProxy);
 app.use("/inventory/", categoryProxy);
-app.use("/inventory/:categoryName/:itemName/", ordersProxy);
+app.use("/inventory/:categoryName/:itemName", ordersProxy);
 app.use("/activities/", activityProxy);
 
 app.listen(process.env.PORTPROXY, (err) => {

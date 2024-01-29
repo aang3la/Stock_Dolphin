@@ -12,29 +12,29 @@ const ItemCard = ({ item, isGridView }) => {
 
   const formattedDate = moment(item.date).format("MM/DD/YYYY HH:mm");
 
-  const handleDelete = async () => {
-    try {
-      console.log("Deleting item...");
+  // const handleDelete = async () => {
+  //   try {
+  //     console.log("Deleting item...");
 
-      const response = await fetch(
-        `http://127.0.0.1:10003/inventory/${categoryName}/${item.id}`,
-        {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      console.log("Response:", response);
-      if (!response.ok) {
-        console.log("Error deleting item:", response.statusText);
-        return;
-      }
-      setOpenModal(false);
-    } catch (err) {
-      console.log("Error deleting item.");
-    }
-  };
+  //     const response = await fetch(
+  //       `http://127.0.0.1:10003/inventory/${categoryName}/${item.id}`,
+  //       {
+  //         method: "DELETE",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //       }
+  //     );
+  //     console.log("Response:", response);
+  //     if (!response.ok) {
+  //       console.log("Error deleting item:", response.statusText);
+  //       return;
+  //     }
+  //     setOpenModal(false);
+  //   } catch (err) {
+  //     console.log("Error deleting item.");
+  //   }
+  // };
 
   return (
     <div

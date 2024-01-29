@@ -12,7 +12,7 @@ import ActivityHistory from "./pages/ActivityHistory/ActivityHistory";
 import InventorySummary from "./pages/InventorySummary/InventorySummary";
 import Items from "./pages/Items/Items";
 import Navigation from "./components/Navigation/Navigation";
-import FetchContextProvider from "./components/uttils/FetchContextProvider";
+import FetchContextProvider from "./uttils/FetchContextProvider";
 
 function App() {
   return (

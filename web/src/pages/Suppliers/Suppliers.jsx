@@ -3,7 +3,7 @@ import { useContext } from "react";
 import Header from "../../components/Header/Header";
 import SupplierCard from "../../components/SupplierCard/SupplierCard";
 import Search_Add from "../../components/Search_Add/Search_Add";
-import { Context } from "../../components/uttils/FetchContextProvider";
+import { Context } from "../../uttils/FetchContextProvider";
 
 const Suppliers = () => {
   const { suppliers } = useContext(Context);
