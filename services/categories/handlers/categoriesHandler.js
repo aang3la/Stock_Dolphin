@@ -1,4 +1,4 @@
-const Category = require("../../../pkg/categories/categoriesSchema");
+const Categories = require("../../../pkg/categories/categoriesSchema");
 
 // Show all categories
 exports.getAllCategories = async(req, res) => {
@@ -8,7 +8,7 @@ exports.getAllCategories = async(req, res) => {
         queryString = queryString.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`)
         const query = JSON.parse(queryString);
 
-        const categories = await Category.find(query);
+        const categories = await Categories.find(query);
 
         res.status(200).json({
             status: "success",
@@ -25,7 +25,7 @@ exports.getAllCategories = async(req, res) => {
 // Show one category
 exports.getOneCategory = async(req, res) => {
     try{
-        const category = await Category.findById(req.params.id);
+        const category = await Categories.findById(req.params.id);
         
         res.status(200).json({
             status: "success",
@@ -43,7 +43,7 @@ exports.getOneCategory = async(req, res) => {
 exports.createCategory = async(req, res) => {
     try{
 
-        const newCategory = await Category.create(req.body);
+        const newCategory = await Categories.create(req.body);
 
         res.status(200).json({
             status: "success",
@@ -61,7 +61,7 @@ exports.createCategory = async(req, res) => {
 // Make changes in a category
 exports.updateCategory = async(req, res) => {
     try{
-        const category = await Category.findByIdAndUpdate(req.params.id, req.body, {
+        const category = await Categories.findByIdAndUpdate(req.params.id, req.body, {
             new: true,
             runValidators: true
         });
@@ -81,7 +81,7 @@ exports.updateCategory = async(req, res) => {
 // Delete category
 exports.deleteCategory = async(req, res) => {
     try{
-        await Category.findByIdAndDelete(req.params.id);
+        await Categories.findByIdAndDelete(req.params.id);
 
         res.status(201).json({
             status: "success",

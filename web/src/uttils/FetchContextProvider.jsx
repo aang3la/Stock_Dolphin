@@ -7,7 +7,7 @@ const FetchContextProvider = ({ children }) => {
   const { categoryName, itemName } = useParams();
 
   const [categories, setCategories] = useState([]);
-  const [items, setItems] = useState([]);
+  // const [items, setItems] = useState([]);
   const [suppliers, setSuppliers] = useState([]);
   const [orders, setOrders] = useState([]);
   const [activities, setActivities] = useState([]);
@@ -34,33 +34,32 @@ const FetchContextProvider = ({ children }) => {
         console.log("Error fetching categories", err);
       }
     };
-    fetchCategories();
 
-    const fetchItems = async () => {
-      try {
-        const response = await fetch(
-          `http://127.0.0.1:10003/inventory/${categoryName}`,
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          }
-        );
-        console.log("Fetching items for category:", categoryName);
+    // const fetchItems = async () => {
+    //   try {
+    //     const response = await fetch(
+    //       `http://127.0.0.1:10003/inventory/${categoryName}`,
+    //       {
+    //         headers: {
+    //           Authorization: `Bearer ${localStorage.getItem("token")}`,
+    //         },
+    //       }
+    //     );
+    //     console.log("Fetching items for category:", categoryName);
 
-        const itemsData = await response.json();
+    //     const itemsData = await response.json();
 
-        if (response.ok) {
-          console.log("API Response for items:", itemsData);
-          setItems(itemsData.data);
-        } else {
-          console.log("Error - items");
-        }
-      } catch (err) {
-        console.log("Error fetching items.", err);
-      }
-    };
-    fetchItems();
+    //     if (response.ok) {
+    //       console.log("API Response for items:", itemsData);
+    //       setItems(itemsData.data);
+    //     } else {
+    //       console.log("Error - items");
+    //     }
+    //   } catch (err) {
+    //     console.log("Error fetching items.", err);
+    //   }
+    // };
+    // fetchItems();
 
     const fetchSuppliers = async () => {
       try {
@@ -83,7 +82,6 @@ const FetchContextProvider = ({ children }) => {
         console.error("Error fetching suppliers", err);
       }
     };
-    fetchSuppliers();
 
     const fetchOrders = async () => {
       try {
@@ -110,7 +108,6 @@ const FetchContextProvider = ({ children }) => {
         console.log("Error fetching orders.", err);
       }
     };
-    fetchOrders();
 
     const fetchActivities = async () => {
       try {
@@ -123,7 +120,7 @@ const FetchContextProvider = ({ children }) => {
         const activitiesData = await response.json();
     
         if (response.ok) {
-          console.log("API Response for ctivities:", activitiesData);
+          console.log("API Response for activities:", activitiesData);
           setActivities(activitiesData.data);
         } else {
           console.log("Error - Activities API");
@@ -132,13 +129,16 @@ const FetchContextProvider = ({ children }) => {
         console.log("Error fetching activities.", err);
       }
     };
+
+    fetchCategories();
+    // fetchItems();
+    fetchSuppliers();
+    fetchOrders();
     fetchActivities();
-  }, []);
+  }, [categoryName, itemName]);
 
   return (
-    <Context.Provider
-      value={{ categories, items, suppliers, orders, activities }}
-    >
+    <Context.Provider value={{ categories, suppliers, orders, activities }}>
       {children}
     </Context.Provider>
   );

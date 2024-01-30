@@ -9,38 +9,13 @@ import InventorySummary from "../../components/InventorySummary/InventorySummary
 import { Context } from "../../uttils/FetchContextProvider";
 
 const Inventory = () => {
-  // const [categories, setCategories] = useState([]);
   const { categories } = useContext(Context);
   const [isGridView, setGridView] = useState(true);
 
   const toggleView = () => {
     setGridView((prevView) => !prevView);
   };
-
-  // useEffect(() => {
-  //   const fetchCategories = async () => {
-  //     try {
-  //       const response = await fetch("http://127.0.0.1:10005/inventory", {
-  //         headers: {
-  //           Authorization: `Bearer ${localStorage.getItem("token")}`,
-  //         },
-  //       });
-  //       console.log("Response:", response);
-
-  //       const data = await response.json();
-
-  //       if (response.ok) {
-  //         console.log("API Response:", data);
-  //         setCategories(data.data);
-  //       } else {
-  //         console.log("Error");
-  //       }
-  //     } catch (err) {
-  //       console.log("Error fetching categories", err);
-  //     }
-  //   };
-  //   fetchCategories();
-  // }, []);
+  
   return (
     <div className="Inventory">
       <main>

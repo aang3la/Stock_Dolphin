@@ -1,5 +1,4 @@
 const Items = require("../../../pkg/items/itemsSchema");
-const Category = require("../../../pkg/categories/categoriesSchema");
 const Categories = require("../../../pkg/categories/categoriesSchema");
 const Activity = require("../../../pkg/activity/activitySchema");
 
@@ -73,7 +72,7 @@ exports.createItem = async (req, res) => {
       date: new Date(),
     });
 
-    await Category.findByIdAndUpdate(categoryId, {
+    await Categories.findByIdAndUpdate(categoryId, {
       $push: { items: newItem },
     });
 

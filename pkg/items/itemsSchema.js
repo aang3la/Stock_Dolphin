@@ -28,7 +28,7 @@ const itemsSchema = new mongoose.Schema({
   activity: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Activity",
-},
+  },
   // totalCost: {
   //   type: mongoose.Schema.Types.ObjectId,
   //   ref: "Orders",

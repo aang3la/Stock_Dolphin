@@ -1,5 +1,5 @@
 import "./orders.css";
-import { useEffect, useState, useContext } from "react";
+import { useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import OrdersSummary from "../../components/OrdersSummary/OrdersSummary";
