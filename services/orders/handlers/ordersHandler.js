@@ -1,9 +1,20 @@
 const Orders = require("../../../pkg/orders/ordersSchema");
+const Items = require("../../../pkg/items/itemsSchema");
 
 // Show all orders
 exports.getAllOrders = async(req, res) => {
     try{
-        const orders = await Orders.find(query).populate("itemId");
+        const item = await Items.findOne({
+            name: req.params.itemName
+        });
+        if(!item) {
+            res.status(408).json({
+                status: "fail",
+                message: "item not found " + req.params.itemName
+            });
+        }
+
+        const orders = await Orders.find({ itemId: item._id});
 
         res.status(200).json({
             status: "success",
@@ -40,6 +51,10 @@ exports.createOrder = async(req, res) => {
         const { name, itemId } = req.body;
 
         const newOrder = await Orders.create({ name, itemId });
+
+        await Items.findByIdAndUpdate(itemId, {
+            $push: { orders: newOrder },
+        });
 
         res.status(200).json({
             status: "success",

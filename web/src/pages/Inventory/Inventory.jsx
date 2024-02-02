@@ -1,5 +1,5 @@
 import "./inventory.css";
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
 import listView from "../../images/listView.png";
 import gridView from "../../images/gridView.png";
 import Header from "../../components/Header/Header";

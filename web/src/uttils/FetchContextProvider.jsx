@@ -9,7 +9,7 @@ const FetchContextProvider = ({ children }) => {
   const [categories, setCategories] = useState([]);
   // const [items, setItems] = useState([]);
   const [suppliers, setSuppliers] = useState([]);
-  const [orders, setOrders] = useState([]);
+  // const [orders, setOrders] = useState([]);
   const [activities, setActivities] = useState([]);
 
   useEffect(() => {
@@ -35,32 +35,6 @@ const FetchContextProvider = ({ children }) => {
       }
     };
 
-    // const fetchItems = async () => {
-    //   try {
-    //     const response = await fetch(
-    //       `http://127.0.0.1:10003/inventory/${categoryName}`,
-    //       {
-    //         headers: {
-    //           Authorization: `Bearer ${localStorage.getItem("token")}`,
-    //         },
-    //       }
-    //     );
-    //     console.log("Fetching items for category:", categoryName);
-
-    //     const itemsData = await response.json();
-
-    //     if (response.ok) {
-    //       console.log("API Response for items:", itemsData);
-    //       setItems(itemsData.data);
-    //     } else {
-    //       console.log("Error - items");
-    //     }
-    //   } catch (err) {
-    //     console.log("Error fetching items.", err);
-    //   }
-    // };
-    // fetchItems();
-
     const fetchSuppliers = async () => {
       try {
         const response = await fetch("http://127.0.0.1:10001/suppliers", {
@@ -80,32 +54,6 @@ const FetchContextProvider = ({ children }) => {
         }
       } catch (err) {
         console.error("Error fetching suppliers", err);
-      }
-    };
-
-    const fetchOrders = async () => {
-      try {
-        const response = await fetch(
-          `http://127.0.0.1:10004/inventory/${categoryName}/${itemName}`,
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          }
-        );
-        console.log("Fetching orders for category:", categoryName);
-        console.log("Fetching orders for an item:", itemName);
-
-        const ordersData = await response.json();
-
-        if (response.ok) {
-          console.log("API Response for orders:", ordersData);
-          setOrders(ordersData.data);
-        } else {
-          console.log("Error");
-        }
-      } catch (err) {
-        console.log("Error fetching orders.", err);
       }
     };
 
@@ -131,14 +79,12 @@ const FetchContextProvider = ({ children }) => {
     };
 
     fetchCategories();
-    // fetchItems();
     fetchSuppliers();
-    fetchOrders();
     fetchActivities();
   }, [categoryName, itemName]);
 
   return (
-    <Context.Provider value={{ categories, suppliers, orders, activities }}>
+    <Context.Provider value={{ categories, suppliers, activities }}>
       {children}
     </Context.Provider>
   );

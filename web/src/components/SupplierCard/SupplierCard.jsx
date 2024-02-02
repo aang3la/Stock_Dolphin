@@ -32,7 +32,7 @@ const SupplierCard = ({ supplier }) => {
 
   return (
     <div className="Supplier-card">
-      <div key={supplier.id} className="supplier">
+      <div key={supplier._id} className="supplier">
         <div className="supplier-name">
           <h1>{supplier.name}</h1>
         </div>

@@ -1,6 +1,6 @@
 import "./items.css";
 import { useParams } from "react-router-dom";
-import { useState, useEffect, useContext } from "react";
+import { useState } from "react";
 import Header from "../../components/Header/Header";
 import Search_Add from "../../components/Search_Add/Search_Add";
 import ItemCard from "../../components/ItemCard/ItemCard";
@@ -8,46 +8,17 @@ import Modal from "../../components/Modal/Modal";
 import edit_green_icon from "../../images/edit-green-icon.png";
 import listView from "../../images/listView.png";
 import gridView from "../../images/gridView.png";
-import { Context } from "../../uttils/FetchContextProvider";
+import { useFetchItemsData } from "../../uttils/FetchData";
 
 const Items = () => {
   const { categoryName } = useParams();
-  // const { items } = useContext(Context);
-  const [items, setItems] = useState([]);
+  const { items } = useFetchItemsData();  
   const [openModal, setOpenModal] = useState(false);
   const [isGridView, setGridView] = useState(true);
 
   const toggleView = () => {
     setGridView((prevView) => !prevView);
   };
-
-  useEffect(() => {
-    const fetchItems = async () => {
-      try {
-        const response = await fetch(
-          `http://127.0.0.1:10003/inventory/${categoryName}`,
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          }
-        );
-        console.log("Fetching items for category:", categoryName);
-
-        const data = await response.json();
-
-        if (response.ok) {
-          console.log("API Response:", data);
-          setItems(data.data);
-        } else {
-          console.log("Error");
-        }
-      } catch (err) {
-        console.log("Error fetching items.", err);
-      }
-    };
-    fetchItems();
-  }, []);
 
   return (
     <div className="Items">

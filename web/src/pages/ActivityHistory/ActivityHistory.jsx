@@ -27,7 +27,7 @@ function ActivityHistory() {
             <hr />
             <form className="activity-form">
               <label>
-                <input type="radio" name="selectedFilter" checked />
+                <input type="radio" name="selectedFilter" defaultChecked />
                 All Activity
               </label>
               <label>

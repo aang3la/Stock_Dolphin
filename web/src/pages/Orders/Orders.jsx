@@ -1,80 +1,22 @@
 import "./orders.css";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import OrdersSummary from "../../components/OrdersSummary/OrdersSummary";
 import move_item from "../../images/move-item-icon.png";
 import plus_icon from "../../images/plus.png";
 import OrderModal from "../../components/OrderModal/OrderModal";
-import { Context } from "../../uttils/FetchContextProvider";
 import InvoiceModal from "../../components/InvoiceModal/InvoiceModal";
 import MoveItemModal from "../../components/MoveItemModal/MoveItemModal";
+import { useFetchItemsData } from "../../uttils/FetchData";
 
 const Orders = () => {
-  const { orders } = useContext(Context);
   const { categoryName, itemName } = useParams();
+  const { orders } = useFetchItemsData();
+
   const [openOrdersModal, setOpenOrdersModal] = useState(false);
   const [openInvoiceModal, setOpenInvoiceModal] = useState(false);
   const [openMoveItemModal, setOpenMoveItemModal] = useState(false);
-
-  const orderExample = [
-    {
-      quantity: "1292 units",
-      totalPrice: "€1999",
-      pricePerUnit: "€1.99",
-      date: "10/10/2023",
-      supplier: "Amazon Ltd Electronics",
-    },
-    {
-      quantity: "1292 units",
-      totalPrice: "€1999",
-      pricePerUnit: "€1.99",
-      date: "10/10/2023",
-      supplier: "Amazon Ltd Electronics",
-    },
-    {
-      quantity: "1292 units",
-      totalPrice: "€1999",
-      pricePerUnit: "€1.99",
-      date: "10/10/2023",
-      supplier: "Amazon Ltd Electronics",
-    },
-    {
-      quantity: "1292 units",
-      totalPrice: "€1999",
-      pricePerUnit: "€1.99",
-      date: "10/10/2023",
-      supplier: "Amazon Ltd Electronics",
-    },
-    {
-      quantity: "1292 units",
-      totalPrice: "€1999",
-      pricePerUnit: "€1.99",
-      date: "10/10/2023",
-      supplier: "Amazon Ltd Electronics",
-    },
-    {
-      quantity: "1292 units",
-      totalPrice: "€1999",
-      pricePerUnit: "€1.99",
-      date: "10/10/2023",
-      supplier: "Amazon Ltd Electronics",
-    },
-    {
-      quantity: "1292 units",
-      totalPrice: "€1999",
-      pricePerUnit: "€1.99",
-      date: "10/10/2023",
-      supplier: "Amazon Ltd Electronics",
-    },
-    {
-      quantity: "1292 units",
-      totalPrice: "€1999",
-      pricePerUnit: "€1.99",
-      date: "10/10/2023",
-      supplier: "Amazon Ltd Electronics",
-    },
-  ];
 
   return (
     <div className="Orders-container">
@@ -108,11 +50,11 @@ const Orders = () => {
               </tr>
             </thead>
             <tbody>
-              {orderExample.map((order, index) => (
+              {orders.map((order, index) => (
                 <tr key={index}>
-                  <td className="cell-styling">{order.quantity}</td>
-                  <td className="cell-styling">{order.totalPrice}</td>
-                  <td className="cell-styling">{order.pricePerUnit}</td>
+                  <td className="cell-styling">{order.quantity} units</td>
+                  <td className="cell-styling">€{order.totalPrice}</td>
+                  <td className="cell-styling">€{order.pricePerUnit}</td>
                   <td className="cell-styling">{order.date}</td>
                   <td className="cell-styling">{order.supplier}</td>
                 </tr>

@@ -1,5 +1,5 @@
 import "./inventorySummary.css";
-import { useState } from "react";
+
 
 const InventorySummary = ({ categories }) => {
     const totalItems = () => {

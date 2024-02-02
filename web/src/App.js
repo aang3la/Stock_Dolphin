@@ -9,7 +9,7 @@ import Orders from "./pages/Orders/Orders";
 import Reports from "./pages/Reports/Reports";
 import Suppliers from "./pages/Suppliers/Suppliers";
 import ActivityHistory from "./pages/ActivityHistory/ActivityHistory";
-import InventorySummary from "./pages/InventorySummary/InventorySummary";
+import InventorySummaryReport from "./pages/InventorySummaryReport/InventorySummaryReport";
 import Items from "./pages/Items/Items";
 import Navigation from "./components/Navigation/Navigation";
 import FetchContextProvider from "./uttils/FetchContextProvider";
@@ -29,7 +29,7 @@ function App() {
             <Route path="/reports" element={<Reports />} />
             <Route path="/suppliers" element={<Suppliers />} />
             <Route path="/reports/activity-history" element={<ActivityHistory />} />
-            <Route path="/reports/inventory-summary" element={<InventorySummary />} />
+            <Route path="/reports/inventory-summary" element={<InventorySummaryReport />} />
           </Route>
         </Routes>
       </FetchContextProvider>

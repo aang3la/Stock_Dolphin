@@ -1,10 +1,10 @@
-import "./inventorySummary.css";
+import "./InventorySummaryReport.css";
 import Header from "../../components/Header/Header";
 import LineChart from "../../components/LineChart/LineChart";
 import { useState } from "react";
 import {dataExample} from "../../components/LineChart/dataExample";
 
-function InventorySummary() {
+function InventorySummaryReport() {
   const [dataInventory, setDataInventory] = useState({
     labels: dataExample.map((data) => data.date),
     datasets: [
@@ -30,4 +30,4 @@ function InventorySummary() {
   );
 }
 
-export default InventorySummary;
+export default InventorySummaryReport;

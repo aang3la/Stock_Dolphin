@@ -16,9 +16,9 @@ const itemsSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  totalAmount: {
-    type: Number,
-  },
+  // totalAmount: {
+  //   type: Number,
+  // },
   orders: [
     {
       type: mongoose.Schema.Types.ObjectId,
