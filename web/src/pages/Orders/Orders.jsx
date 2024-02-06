@@ -8,11 +8,11 @@ import plus_icon from "../../images/plus.png";
 import OrderModal from "../../components/OrderModal/OrderModal";
 import InvoiceModal from "../../components/InvoiceModal/InvoiceModal";
 import MoveItemModal from "../../components/MoveItemModal/MoveItemModal";
-import { useFetchItemsData } from "../../uttils/FetchData";
+import { useFetchData } from "../../uttils/FetchData";
 
 const Orders = () => {
   const { categoryName, itemName } = useParams();
-  const { orders } = useFetchItemsData();
+  const { orders } = useFetchData();
 
   const [openOrdersModal, setOpenOrdersModal] = useState(false);
   const [openInvoiceModal, setOpenInvoiceModal] = useState(false);

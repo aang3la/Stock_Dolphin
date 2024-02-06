@@ -23,7 +23,7 @@ const Suppliers = () => {
         <div className="suppliers-container">
           <div className="suppliers">
             {suppliers.map((supplier) => (
-              <SupplierCard key={supplier.id} supplier={supplier} />
+              <SupplierCard key={supplier._id} supplier={supplier} />
             ))}
           </div>
         </div>

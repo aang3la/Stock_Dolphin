@@ -5,7 +5,7 @@ const ordersSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Items',
     },
-    supplier: {
+    supplierId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Suppliers',
     },

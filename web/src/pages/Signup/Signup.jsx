@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import logo from "../../images/logo.png";
 import check_icon from "../../images/checkIcon.png";
 
-function Signup() {
+export const Signup = () => {
   const initData = {
     name: "",
     email: "",
@@ -29,17 +29,21 @@ function Signup() {
 
   const handleSignup = async (event) => {
     try {
-      let response = await fetch("http://localhost:10000/api/auth/signup", {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-type": "application/json",
-        },
-      });
-      if (response.ok) {
+      event.preventDefault();
+      setFormErrors(validate(data));
+      if (Object.keys(formErrors).length === 0) {
+        let response = await fetch("http://localhost:10000/api/auth/signup", {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            "Content-type": "application/json",
+          },
+        });
+        if (response.ok) {
+          setIsSubmit(true);
+        }
+      } else {
         event.preventDefault();
-        setFormErrors(validate(data));
-        setIsSubmit(true);
       }
     } catch (err) {
       console.log(err);
@@ -86,7 +90,7 @@ function Signup() {
       {Object.keys(formErrors).length === 0 && isSubmit ? (
         <Navigate to="/dashboard" />
       ) : (
-        <form className="Signup-form">
+        <form className="Signup-form" onSubmit={handleSignup}>
           <h1>You’re one click away from less inefficiency.</h1>
           <div className="signup-name">
             <label htmlFor="name">Name</label>
@@ -121,7 +125,7 @@ function Signup() {
             />
             <p>{formErrors.password}</p>
           </div>
-          <button onClick={handleSignup}>Sign up</button>
+          <button type="submit">Sign up</button>
         </form>
       )}
       <section className="signup-info">
@@ -140,6 +144,4 @@ function Signup() {
       </section>
     </div>
   );
-}
-
-export default Signup;
+};

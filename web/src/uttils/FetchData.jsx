@@ -1,40 +1,42 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-// Custom hook
-export const useFetchItemsData = () => {
+export const useFetchData = () => {
   const { categoryName, itemName } = useParams();
+  // const [categories, setCategories] = useState([]);
   const [items, setItems] = useState([]);
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    const fetchItems = async () => {
-      try {
-        const response = await fetch(
-          `http://127.0.0.1:10003/inventory/${categoryName}`,
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
+    if (categoryName) {
+      const fetchItems = async () => {
+        try {
+          const response = await fetch(
+            `http://127.0.0.1:10003/inventory/${categoryName}`,
+            {
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+              },
+            }
+          );
+          console.log("Fetching items for category:", categoryName);
+
+          const itemData = await response.json();
+
+          if (response.ok) {
+            console.log("API Response:", itemData);
+            setItems(itemData.data);
+          } else {
+            console.log("Error");
           }
-        );
-        console.log("Fetching items for category:", categoryName);
-
-        const itemData = await response.json();
-
-        if (response.ok) {
-          console.log("API Response:", itemData);
-          setItems(itemData.data);
-        } else {
-          console.log("Error");
+        } catch (err) {
+          console.log("Error fetching items.", err);
         }
-      } catch (err) {
-        console.log("Error fetching items.", err);
-      }
-    };
-    fetchItems();
+      };
+      fetchItems();
+    }
 
-    if (itemName) {
+    if (categoryName && itemName) {
       const fetchOrders = async () => {
         try {
           const response = await fetch(
@@ -64,5 +66,5 @@ export const useFetchItemsData = () => {
     }
   }, [categoryName, itemName]);
 
-  return {items, orders};
+  return { items, orders };
 };

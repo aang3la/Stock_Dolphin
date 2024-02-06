@@ -20,7 +20,7 @@
 .Signup-form {
     margin: 0 auto;
     width: 490px;
-    height: 410px;
+    height: 430px;
     padding-top: 10px;
     background-color: white;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
@@ -34,6 +34,7 @@
 .Signup-form h1 {
     font-size: 25px;
     text-align: center;
+    padding-right: 30px;
     color: #53A856;
 }
 
@@ -58,6 +59,7 @@
 .Signup-form button {
     width: 310px;
     height: 40px;
+    margin-top: 15px;
     background-color: #53A856;
     color: white;
     border: 1px solid rgb(144, 144, 144);

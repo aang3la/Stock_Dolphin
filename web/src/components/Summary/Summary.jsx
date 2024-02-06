@@ -3,11 +3,13 @@ import categories_icon from "../../images/categories-icon.png";
 import items_icon from "../../images/items-icon.png";
 import orders_icon from "../../images/orders-icon.png";
 import cost_icon from "../../images/cost-icon.png";
-import { useContext } from "react";
 import { Context } from "../../uttils/FetchContextProvider";
+import { useContext } from "react";
+import { useFetchData } from "../../uttils/FetchData";
 
 const Summary = () => {
   const { categories } = useContext(Context);
+  // const { orders } = useFetchData();
 
   const totalItems = () => {
     return categories.reduce((total, category) => 

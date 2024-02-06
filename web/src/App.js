@@ -2,7 +2,7 @@ import "./App.css";
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Login from "./pages/Login/Login";
-import Signup from "./pages/Signup/Signup";
+import { Signup } from "./pages/Signup/Signup";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Inventory from "./pages/Inventory/Inventory";
 import Orders from "./pages/Orders/Orders";

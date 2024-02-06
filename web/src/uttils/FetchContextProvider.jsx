@@ -4,12 +4,8 @@ import { useParams } from "react-router-dom";
 export const Context = React.createContext();
 
 const FetchContextProvider = ({ children }) => {
-  const { categoryName, itemName } = useParams();
-
   const [categories, setCategories] = useState([]);
-  // const [items, setItems] = useState([]);
   const [suppliers, setSuppliers] = useState([]);
-  // const [orders, setOrders] = useState([]);
   const [activities, setActivities] = useState([]);
 
   useEffect(() => {
@@ -81,7 +77,7 @@ const FetchContextProvider = ({ children }) => {
     fetchCategories();
     fetchSuppliers();
     fetchActivities();
-  }, [categoryName, itemName]);
+  }, []);
 
   return (
     <Context.Provider value={{ categories, suppliers, activities }}>

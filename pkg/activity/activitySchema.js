@@ -5,6 +5,7 @@ const activitySchema = new mongoose.Schema({
         type: String,
         required: true,
         enum: ["moved", "edited", "deleted", "created", "ordered"],
+        default: "created"
     },
     date: {
         type: Date,

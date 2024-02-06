@@ -57,22 +57,25 @@ exports.getOneItem = async (req, res) => {
 // Create item
 exports.createItem = async (req, res) => {
   try {
-    const { name, image, categoryId } = req.body;
+    const { name, image } = req.body;
+
+    const category = await Categories.findOne({
+      title: req.params.categoryName
+    });
 
     const newItem = await Items.create({
       name,
       image,
-      categoryId,
+      categoryId: category._id,
     });
 
-    const newActivity = new Activity.create({
-      activity: "created",
-      name,
-      categoryId,
+    const newActivity = await Activity.create({
+      action: "created",
+      itemId: newItem._id,
       date: new Date(),
     });
 
-    await Categories.findByIdAndUpdate(categoryId, {
+    await Categories.findByIdAndUpdate(category._id, {
       $push: { items: newItem },
     });
 

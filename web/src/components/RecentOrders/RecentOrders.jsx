@@ -18,7 +18,7 @@ const RecentOrders = () => {
           {orders.map((order, i) => {
             return (
               <div key={i} className="order">
-                <div className="order-image">{/* {order.image} */}</div>
+                {/* <div className="order-image">{/* {order.image} */}
                 <div className="order-title">{order.title}</div>
                 <div className="info">
                   <span id="unit">{order.unit}</span> | {order.price}
@@ -27,7 +27,7 @@ const RecentOrders = () => {
             );
           })}
         </div>
-        <div className>
+        <div>
           <img src={arrow} alt="arrow-icon" id="arrow" />
         </div>
       </div>

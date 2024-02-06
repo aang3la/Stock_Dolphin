@@ -1,5 +1,5 @@
 import "./inventory.css";
-import { useState, useContext } from "react";
+import { useContext, useState } from "react";
 import listView from "../../images/listView.png";
 import gridView from "../../images/gridView.png";
 import Header from "../../components/Header/Header";
@@ -7,9 +7,11 @@ import CategoryCard from "../../components/CategoryCard/CategoryCard";
 import Search_Add from "../../components/Search_Add/Search_Add";
 import InventorySummary from "../../components/InventorySummary/InventorySummary";
 import { Context } from "../../uttils/FetchContextProvider";
+import { fetchCategories1 } from "../../uttils/FetchData";
 
 const Inventory = () => {
   const { categories } = useContext(Context);
+  // const { categories } =  useFetchData();
   const [isGridView, setGridView] = useState(true);
 
   const toggleView = () => {

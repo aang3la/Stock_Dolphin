@@ -8,11 +8,11 @@ import Modal from "../../components/Modal/Modal";
 import edit_green_icon from "../../images/edit-green-icon.png";
 import listView from "../../images/listView.png";
 import gridView from "../../images/gridView.png";
-import { useFetchItemsData } from "../../uttils/FetchData";
+import { useFetchData } from "../../uttils/FetchData";
 
 const Items = () => {
   const { categoryName } = useParams();
-  const { items } = useFetchItemsData();  
+  const { items } = useFetchData();  
   const [openModal, setOpenModal] = useState(false);
   const [isGridView, setGridView] = useState(true);
 
