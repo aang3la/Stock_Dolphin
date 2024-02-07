@@ -7,11 +7,9 @@ import CategoryCard from "../../components/CategoryCard/CategoryCard";
 import Search_Add from "../../components/Search_Add/Search_Add";
 import InventorySummary from "../../components/InventorySummary/InventorySummary";
 import { Context } from "../../uttils/FetchContextProvider";
-import { fetchCategories1 } from "../../uttils/FetchData";
 
 const Inventory = () => {
   const { categories } = useContext(Context);
-  // const { categories } =  useFetchData();
   const [isGridView, setGridView] = useState(true);
 
   const toggleView = () => {

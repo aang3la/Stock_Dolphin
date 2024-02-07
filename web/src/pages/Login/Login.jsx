@@ -26,17 +26,22 @@ function Login() {
 
   const handleLogin = async (event) => {
     try {
-      let response = await fetch("http://localhost:10000/api/auth/login", {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-type": "application/json",
-        },
-      });
-      if (response.ok) {
+      event.preventDefault();
+      setFormErrors(validate(data));
+
+      if (Object.keys(formErrors).length === 0) {
+        let response = await fetch("http://localhost:10000/api/auth/login", {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            "Content-type": "application/json",
+          },
+        });
+        if (response.ok) {
+          setIsSubmit(true);
+        }
+      } else {
         event.preventDefault();
-        setFormErrors(validate(data));
-        setIsSubmit(true);
       }
     } catch (err) {
       console.log(err);
@@ -87,7 +92,7 @@ function Login() {
             onChange={dataChange}
             placeholder="Enter your email"
           />
-          <p>{formErrors.email}</p>
+          <p className="form-error">{formErrors.email}</p>
         </div>
         <div className="login-password">
           <label htmlFor="password">Password</label>
@@ -98,7 +103,7 @@ function Login() {
             onChange={dataChange}
             placeholder="Enter password"
           />
-          <p>{formErrors.password}</p>
+          <p className="form-error">{formErrors.password}</p>
         </div>
         <button type="button" onClick={handleLogin}>
           Log In

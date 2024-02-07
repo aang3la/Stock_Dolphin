@@ -31,6 +31,7 @@ export const Signup = () => {
     try {
       event.preventDefault();
       setFormErrors(validate(data));
+
       if (Object.keys(formErrors).length === 0) {
         let response = await fetch("http://localhost:10000/api/auth/signup", {
           method: "POST",
@@ -55,7 +56,7 @@ export const Signup = () => {
     const errors = {};
 
     if (!values.name) {
-      errors.name = "Name is required.";
+      errors.name = "Name is required!";
     } else if (values.name.length < 3) {
       errors.name = "Name must be greather than 3 characters.";
     }
@@ -101,7 +102,7 @@ export const Signup = () => {
               onChange={dataChange}
               placeholder="Enter your name"
             />
-            <p>{formErrors.name}</p>
+            <p className="form-error">{formErrors.name}</p>
           </div>
           <div className="signup-email">
             <label htmlFor="email">Email</label>
@@ -112,7 +113,7 @@ export const Signup = () => {
               onChange={dataChange}
               placeholder="Enter your email"
             />
-            <p>{formErrors.email}</p>
+            <p className="form-error">{formErrors.email}</p>
           </div>
           <div className="signup-password">
             <label htmlFor="password">Password</label>
@@ -123,7 +124,7 @@ export const Signup = () => {
               onChange={dataChange}
               placeholder="Enter your password"
             />
-            <p>{formErrors.password}</p>
+            <p className="form-error">{formErrors.password}</p>
           </div>
           <button type="submit">Sign up</button>
         </form>

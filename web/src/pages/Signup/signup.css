@@ -1,6 +1,8 @@
 .signup-header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    height: 100px;
 }
 
 .login-section {
@@ -19,9 +21,9 @@
 
 .Signup-form {
     margin: 0 auto;
-    width: 490px;
-    height: 430px;
-    padding-top: 10px;
+    width: 480px;
+    height: 440px;
+    padding-top: 15px;
     background-color: white;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
@@ -70,7 +72,7 @@
     display: flex;
     justify-content: center;
     gap: 10px;
-    padding-top: 60px;
+    padding-top: 50px;
 }
 
 .signup-info div {
@@ -87,4 +89,9 @@
     font-size: 12px;
     padding-left: 5px;
     color: rgb(99, 99, 99);
+}
+
+.form-error {
+    font-size: 10px;
+    color: rgb(255, 95, 95);
 }

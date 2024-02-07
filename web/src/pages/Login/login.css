@@ -1,6 +1,8 @@
 .login-header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    height: 100px;
 }
 
 #logo {
@@ -24,9 +26,10 @@
 
 .Login-form {
     margin: 0 auto;
-    width: 480px;
-    height: 400px;
+    width: 450px;
+    height: 370px;
     padding-top: 20px;
+    margin-top: 60px;
     background-color: white;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
@@ -39,6 +42,7 @@
 .Login-form h1 {
     font-size: 30px;
     padding-bottom: 10px;
+    padding-right: 30px;
     color: #53A856;
 }
 

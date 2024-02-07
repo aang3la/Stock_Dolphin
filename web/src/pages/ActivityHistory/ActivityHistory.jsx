@@ -15,7 +15,7 @@ function ActivityHistory() {
         <section className="activities-container">
           <div className="activities">
             {activities.map((activity) => (
-              <div key={activity.id}>
+              <div key={activity._id} className="activity-line">
                 <p>
                   Admin has {activity.action} item {activity.itemId} in{" "}
                 </p>
