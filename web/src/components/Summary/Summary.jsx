@@ -9,12 +9,12 @@ import { useFetchData } from "../../uttils/FetchData";
 
 const Summary = () => {
   const { categories } = useContext(Context);
-  // const { orders } = useFetchData();
+  const { orders } = useFetchData();
 
   const totalItems = () => {
     return categories.reduce((total, category) => 
         total + category.items.length, 0);
-  }
+  };
 
   return (
     <div className="Summary">
@@ -32,7 +32,7 @@ const Summary = () => {
         </div>
         <div className="Orders square">
           <img src={orders_icon} alt="orders-icon" />
-          <h3>TO-DO</h3>
+          <h3>{orders.length}</h3>
           <p>Total Orders</p>
         </div>
         <div className="Cost square">

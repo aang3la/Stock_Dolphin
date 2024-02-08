@@ -1,6 +1,6 @@
 import "./items.css";
 import { useParams } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "../../components/Header/Header";
 import Search_Add from "../../components/Search_Add/Search_Add";
 import ItemCard from "../../components/ItemCard/ItemCard";
@@ -13,8 +13,21 @@ import { useFetchData } from "../../uttils/FetchData";
 const Items = () => {
   const { categoryName } = useParams();
   const { items } = useFetchData();  
+  const [filteredItems, setFilteredItems] = useState([]);
+  const [query, setQuery] = useState("");
   const [openModal, setOpenModal] = useState(false);
   const [isGridView, setGridView] = useState(true);
+
+  useEffect(() => {
+    if(query) {
+      const filtered = items.filter((item) => {
+        return item.name.toLowerCase().includes(query.toLowerCase());
+      });
+      setFilteredItems(filtered);
+    } else {
+      setFilteredItems([]);
+    }
+  }, [query]);
 
   const toggleView = () => {
     setGridView((prevView) => !prevView);
@@ -30,12 +43,14 @@ const Items = () => {
             text="ADD ITEM"
             modalHeading="Add Item"
             modalBtn="ADD ITEM"
+            query={query}
+            onQueryChange={myQuery => setQuery(myQuery)}
           />
         </header>
         <div className="main-itemCards-container">
           <section className="itemCards-section">
             <div className={isGridView ? "gridView" : "listView scrollList"}>
-              {items.map((item) => (
+              {(query ? filteredItems : items).map((item) => (
                 <ItemCard key={item._id} item={item} isGridView={isGridView} />
               ))}
             </div>

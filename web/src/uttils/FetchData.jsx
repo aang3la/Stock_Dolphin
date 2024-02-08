@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 
 export const useFetchData = () => {
   const { categoryName, itemName } = useParams();
-  // const [categories, setCategories] = useState([]);
   const [items, setItems] = useState([]);
   const [orders, setOrders] = useState([]);
 

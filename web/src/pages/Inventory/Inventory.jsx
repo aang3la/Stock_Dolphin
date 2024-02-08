@@ -1,5 +1,5 @@
 import "./inventory.css";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import listView from "../../images/listView.png";
 import gridView from "../../images/gridView.png";
 import Header from "../../components/Header/Header";
@@ -11,11 +11,24 @@ import { Context } from "../../uttils/FetchContextProvider";
 const Inventory = () => {
   const { categories } = useContext(Context);
   const [isGridView, setGridView] = useState(true);
+  const [filteredCategories, setFilteredCategories] = useState([]);
+  const [query, setQuery] = useState("");
+
+  useEffect(() => {
+    if(query) {
+      const filtered = categories.filter((category) => {
+        return category.title.toLowerCase().includes(query.toLowerCase());
+      });
+      setFilteredCategories(filtered);
+    } else {
+      setFilteredCategories([]);
+    }
+  }, [query]);
 
   const toggleView = () => {
     setGridView((prevView) => !prevView);
   };
-  
+
   return (
     <div className="Inventory">
       <main>
@@ -26,13 +39,15 @@ const Inventory = () => {
             text="ADD CATEGORY"
             modalHeading="Add Category"
             modalBtn="ADD CATEGORY"
+            query={query}
+            onQueryChange={myQuery => setQuery(myQuery)}
           />
           <InventorySummary categories={categories} />
         </header>
         <div className="main-cards-container">
           <section className="cards-section">
             <div className={isGridView ? "gridView" : "listView scrollList"}>
-              {categories.map((category) => (
+              {(query ? filteredCategories : categories).map((category) => (
                 <CategoryCard
                   key={category._id}
                   category={category}

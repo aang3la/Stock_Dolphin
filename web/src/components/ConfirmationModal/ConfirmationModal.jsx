@@ -1,6 +1,6 @@
 import "./confirmationModal.css";
 
-const ConfirmationModal = ({ content, content2, buttonName, closeModal }) => {
+const ConfirmationModal = ({ content, content2, buttonName, closeModal, handleConfirm }) => {
   return (
     <div className="overlay-container">
     <dialog open className="confirmation-modal">
@@ -11,7 +11,7 @@ const ConfirmationModal = ({ content, content2, buttonName, closeModal }) => {
         </div>
         <div className="confModal-footer">
           <button id="cancel-btn" onClick={() => closeModal(false)}>CANCEL</button>
-          <button id="confirm-btn">{buttonName}</button>
+          <button id="confirm-btn"onClick={handleConfirm}>{buttonName}</button>
         </div>
       </div>
     </dialog>

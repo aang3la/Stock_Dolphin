@@ -80,7 +80,7 @@ const FetchContextProvider = ({ children }) => {
   }, []);
 
   return (
-    <Context.Provider value={{ categories, suppliers, activities }}>
+    <Context.Provider value={{ categories, setCategories, suppliers, setSuppliers, activities }}>
       {children}
     </Context.Provider>
   );
