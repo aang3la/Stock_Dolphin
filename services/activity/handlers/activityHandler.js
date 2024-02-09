@@ -36,10 +36,11 @@ exports.getActivity = async (req, res) => {
 exports.createActivity = async (req, res) => {
   try {
     const { itemId } = req.body;
-    // const item = await Items.findOne({ name });
+    const item = await Items.findById(itemId);
 
     const newActivity = await Activity.create({
       itemId,
+      itemName: item.name,
       date: new Date(),
     });
 

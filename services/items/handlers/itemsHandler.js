@@ -71,6 +71,7 @@ exports.createItem = async (req, res) => {
 
     const newActivity = await Activity.create({
       action: "created",
+      name,
       itemId: newItem._id,
       date: new Date(),
     });
@@ -104,10 +105,10 @@ exports.updateItem = async (req, res) => {
       runValidators: true,
     });
 
-    const newActivity = new Activity.create({
+    const newActivity = await Activity.create({
       activity: "edited",
-      name,
-      categoryId,
+      itemId: item._id,
+      itemName: item.name,
       date: new Date(),
     });
 
@@ -133,10 +134,11 @@ exports.deleteItem = async (req, res) => {
   try {
     await Items.findByIdAndDelete(req.params.id);
 
-    const newActivity = new Activity.create({
+    const newActivity = await Activity.create({
       activity: "deleted",
       name,
       categoryId,
+      itemId: item._id,
       date: new Date(),
     });
 

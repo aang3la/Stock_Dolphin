@@ -17,7 +17,7 @@ function ActivityHistory() {
             {activities.map((activity) => (
               <div key={activity._id} className="activity-line">
                 <p>
-                  Admin has {activity.action} item {activity.itemId} in{" "}
+                  Admin has {activity.action} item {activity.itemName} in{" "}
                 </p>
               </div>
             ))}

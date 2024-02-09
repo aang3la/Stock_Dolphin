@@ -11,7 +11,7 @@ const activitySchema = new mongoose.Schema({
         type: Date,
         default: Date.now,
     },
-    itemId: {
+    items: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Items',
     },

@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import "./navigation.css";
 import logo from "../../images/logo.png";
 import dashboard_icon from "../../images/dashboard_icon.png";
@@ -7,9 +7,12 @@ import reports_icon from "../../images/reports_icon.png";
 import signout_icon from "../../images/signout_icon.png";
 
 const Navigation = () => {
-  // const history = useHistory();
+  const navigate = useNavigate();
 
-  // const handleSignOut = 
+  const handleSignOut = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
 
   return (
     <>
@@ -42,7 +45,7 @@ const Navigation = () => {
             </li>
           </Link>
           <Link to="/login">
-            <li className="custom-item">
+            <li className="custom-item" onClick={handleSignOut}>
               <img src={signout_icon} alt="signout_icon" />
               Sign Out
             </li>
