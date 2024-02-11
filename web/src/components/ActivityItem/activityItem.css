@@ -1,0 +1,32 @@
+.activity-line {
+    height: 38px;
+    background-color: white;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.25);
+    margin-bottom: 13px;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 10px;
+}
+
+.activity-line p {
+    font-size: 13px;
+    padding-top: 9px;
+    padding-left: 5px;
+    color: black;
+}
+
+.dashboard-activity {
+    width: 540px;
+    height: 16px;
+    padding: 7px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 500;
+}

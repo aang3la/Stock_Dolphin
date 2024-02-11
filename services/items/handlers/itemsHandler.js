@@ -71,7 +71,7 @@ exports.createItem = async (req, res) => {
 
     const newActivity = await Activity.create({
       action: "created",
-      name,
+      itemName: newItem.name,
       itemId: newItem._id,
       date: new Date(),
     });

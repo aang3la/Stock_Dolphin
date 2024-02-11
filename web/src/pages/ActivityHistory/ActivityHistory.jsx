@@ -2,6 +2,8 @@ import "./activityHistory.css";
 import { useContext } from "react";
 import Header from "../../components/Header/Header";
 import { Context } from "../../uttils/FetchContextProvider";
+import sort_icon from "../../images/sort_icon.png";
+import ActivityItem from "../../components/ActivityItem/ActivityItem";
 
 function ActivityHistory() {
   const { activities } = useContext(Context);
@@ -13,14 +15,13 @@ function ActivityHistory() {
           <Header title="Reports > Activity History" />
         </header>
         <section className="activities-container">
-          <div className="activities">
-            {activities.map((activity) => (
-              <div key={activity._id} className="activity-line">
-                <p>
-                  Admin has {activity.action} item {activity.itemName} in{" "}
-                </p>
-              </div>
-            ))}
+          <div className="left-part">
+            <img src={sort_icon} id="sort-icon" />
+            <div className="activities">
+              {activities.map((activity) => (
+                <ActivityItem key={activity._id} activity={activity} />
+              ))}
+            </div>
           </div>
           <div className="activity-filter">
             <h1>Filter Activities</h1>

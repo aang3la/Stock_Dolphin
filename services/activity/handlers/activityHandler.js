@@ -36,17 +36,20 @@ exports.getActivity = async (req, res) => {
 exports.createActivity = async (req, res) => {
   try {
     const { itemId } = req.body;
-    const item = await Items.findById(itemId);
+    const item = await Items.findById(itemId).populate("categoryId");
 
     const newActivity = await Activity.create({
       itemId,
       itemName: item.name,
+      categoryName: item.categoryId.title,
       date: new Date(),
     });
 
     res.status(200).json({
       status: "success",
-      data: newActivity,
+      data: {
+        newActivity
+      },     
     });
   } catch (err) {
     res.status(404).json({

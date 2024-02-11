@@ -11,9 +11,15 @@ const activitySchema = new mongoose.Schema({
         type: Date,
         default: Date.now,
     },
-    items: {
+    itemId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Items',
+    },
+    itemName: {
+        type: String,
+    },
+    categoryName: { 
+        type: String,
     },
 });
 
