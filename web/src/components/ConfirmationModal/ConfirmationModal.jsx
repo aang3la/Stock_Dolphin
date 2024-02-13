@@ -11,7 +11,7 @@ const ConfirmationModal = ({ content, content2, buttonName, closeModal, handleCo
         </div>
         <div className="confModal-footer">
           <button id="cancel-btn" onClick={() => closeModal(false)}>CANCEL</button>
-          <button id="confirm-btn"onClick={handleConfirm}>{buttonName}</button>
+          <button id="confirm-btn" onClick={handleConfirm}>{buttonName}</button>
         </div>
       </div>
     </dialog>

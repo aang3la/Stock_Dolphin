@@ -97,18 +97,18 @@ exports.createItem = async (req, res) => {
 
 // Make changes in a item
 exports.updateItem = async (req, res) => {
-  const { name, categoryId } = req.body;
-
   try {
+    const { name, categoryId } = req.body;
+
     const item = await Items.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
       runValidators: true,
     });
 
     const newActivity = await Activity.create({
-      activity: "edited",
-      itemId: item._id,
+      action: "edited",
       itemName: item.name,
+      itemId: item._id,
       date: new Date(),
     });
 
@@ -129,15 +129,13 @@ exports.updateItem = async (req, res) => {
 
 // Delete item
 exports.deleteItem = async (req, res) => {
-  const { name, categoryId } = req.body;
-
   try {
-    await Items.findByIdAndDelete(req.params.id);
+    const { name, categoryId } = req.body;
+    const item = await Items.findByIdAndDelete(req.params.id);
 
     const newActivity = await Activity.create({
-      activity: "deleted",
-      name,
-      categoryId,
+      action: "deleted",
+      itemName: item.name,
       itemId: item._id,
       date: new Date(),
     });

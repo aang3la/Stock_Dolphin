@@ -8,6 +8,7 @@ import plus_icon from "../../images/plus.png";
 import OrderModal from "../../components/OrderModal/OrderModal";
 import InvoiceModal from "../../components/InvoiceModal/InvoiceModal";
 import MoveItemModal from "../../components/MoveItemModal/MoveItemModal";
+import OrderCard from "../../components/OrderCard/OrderCard";
 import { useFetchData } from "../../uttils/FetchData";
 
 const Orders = () => {
@@ -24,7 +25,10 @@ const Orders = () => {
         <Header title={`Inventory > ${categoryName} > ${itemName}`} />
         <div className="orders-summary-container">
           <OrdersSummary orders={orders} />
-          <button className="add-order-btn" onClick={() => setOpenOrdersModal(true)}>
+          <button
+            className="add-order-btn"
+            onClick={() => setOpenOrdersModal(true)}
+          >
             <img src={plus_icon} alt="plus icon" />
             <p>ADD ORDER</p>
           </button>
@@ -33,7 +37,12 @@ const Orders = () => {
       </header>
       <div className="orders-title-section">
         <h1>Orders</h1>
-        <button className="invoice-btn" onClick={() => setOpenInvoiceModal(true)}>Generate Invoice</button>
+        <button
+          className="invoice-btn"
+          onClick={() => setOpenInvoiceModal(true)}
+        >
+          Generate Invoice
+        </button>
         {openInvoiceModal && <InvoiceModal closeModal={setOpenInvoiceModal} />}
       </div>
       <hr className="order-hr" />
@@ -50,15 +59,13 @@ const Orders = () => {
               </tr>
             </thead>
             <tbody>
-              {orders.map((order, index) => (
-                <tr key={index}>
-                  <td className="cell-styling">{order.quantity} units</td>
-                  <td className="cell-styling">€{order.totalPrice}</td>
-                  <td className="cell-styling">€{order.pricePerUnit}</td>
-                  <td className="cell-styling">{order.date}</td>
-                  <td className="cell-styling">{order.supplier}</td>
-                </tr>
+            <tr className="order-lines">
+              {orders.map((order) => (
+                 <td>
+                  <OrderCard key={order._id} order={order} />
+                </td>
               ))}
+            </tr>
             </tbody>
           </table>
           <div className="choosen-item">
@@ -67,10 +74,15 @@ const Orders = () => {
               <p>Name: {itemName}</p>
             </div>
             <div className="choosen-item-buttons">
-              <button className="move-item" onClick={() => setOpenMoveItemModal(true)}>
+              <button
+                className="move-item"
+                onClick={() => setOpenMoveItemModal(true)}
+              >
                 <img src={move_item} />
               </button>
-              {openMoveItemModal && <MoveItemModal closeModal={setOpenMoveItemModal} />}
+              {openMoveItemModal && (
+                <MoveItemModal closeModal={setOpenMoveItemModal} />
+              )}
               <button className="save-button">SAVE</button>
             </div>
           </div>

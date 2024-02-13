@@ -8,6 +8,11 @@ import ActivityItem from "../../components/ActivityItem/ActivityItem";
 function ActivityHistory() {
   const { activities } = useContext(Context);
 
+  const sortedActivities = activities.sort(
+    (a,b) => new Date(b.date) - new Date(a.date)
+  );
+  const latestActivities = sortedActivities.slice(0,11);
+
   return (
     <div className="Activity-history">
       <main>
@@ -18,7 +23,7 @@ function ActivityHistory() {
           <div className="left-part">
             <img src={sort_icon} id="sort-icon" />
             <div className="activities">
-              {activities.map((activity) => (
+              {latestActivities.map((activity) => (
                 <ActivityItem key={activity._id} activity={activity} />
               ))}
             </div>

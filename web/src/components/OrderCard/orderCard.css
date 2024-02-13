@@ -1,12 +1,17 @@
-#orders-heading {
-    font-size: 16px;
-    font-weight: 600;
-    color: black;
-    padding-bottom: 15px;
-    margin: 1px;
+.order-parts {
+    display: flex;
+    gap: 20px;
+    justify-content: space-evenly;
 }
 
-.orders-section {
+.order-part {
+    width: 120px;
+    height: 50px;
+}
+
+/* Od recentOrders delot */
+
+/* .orders-section {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -52,4 +57,4 @@
     width: 38px;
     padding-top: 20px;
     padding-bottom: 17px;
-}
+} */

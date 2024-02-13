@@ -16,7 +16,6 @@ import FetchContextProvider from "./uttils/FetchContextProvider";
 
 function App() {
   return (
-    <>
       <FetchContextProvider>
         <Routes>
           <Route path="/" element={<Signup />} />
@@ -33,7 +32,6 @@ function App() {
           </Route>
         </Routes>
       </FetchContextProvider>
-    </>
   );
 }
 
