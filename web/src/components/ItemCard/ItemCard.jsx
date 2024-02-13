@@ -12,33 +12,6 @@ const ItemCard = ({ item, isGridView }) => {
 
   const formattedDate = moment(item.date).format("MM/DD/YYYY HH:mm");
 
-  const handleAddItem = async () => {
-    try {
-      const itemData = {
-        name: "",
-        image: ""
-      };
-
-      const response = await fetch(
-        `http://127.0.0.1:10003/inventory/${categoryName}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(itemData),
-        }
-      );
-      console.log("Response:", response);
-      if (response.ok) {
-        setOpenModal(false);
-        fetchItems();
-      }
-    } catch (err) {
-      console.log("Error adding item.");
-    }
-  };
-
   // const handleDelete = async () => {
   //   try {
   //     console.log("Deleting item...");
