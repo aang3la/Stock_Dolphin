@@ -2,7 +2,17 @@ import add_image from "../../images/add-image.png";
 import close from "../../images/close.png";
 import "./modal.css";
 
-const Modal = ({ heading, closeModal, btnName, handleAddItem, dataChange, data }) => {
+const Modal = ({
+  heading,
+  closeModal,
+  btnName,
+  handleAction,
+  itemDataChange,
+  itemData,
+  categoryDataChange,
+  categoryData,
+  isAddingCategory,
+}) => {
   return (
     <div className="overlay-container">
       <dialog open>
@@ -14,11 +24,14 @@ const Modal = ({ heading, closeModal, btnName, handleAddItem, dataChange, data }
         </div>
         <div className="modal-body">
           <div className="input-container">
-            <input type="text" 
-            placeholder="Name*" 
-            name="name" 
-            value={data.name} 
-            onChange={dataChange} required />
+            <input
+              type="text"
+              placeholder="Name*"
+              name={isAddingCategory ? "title" : "name"}
+              value={isAddingCategory ? categoryData.title : itemData.name}
+              onChange={isAddingCategory ? categoryDataChange : itemDataChange}
+              required
+            />
             <hr id="custom_hr" />
           </div>
           <hr />
@@ -34,7 +47,9 @@ const Modal = ({ heading, closeModal, btnName, handleAddItem, dataChange, data }
           <button id="cancel-btn" onClick={() => closeModal(false)}>
             CANCEL
           </button>
-          <button id="add-btn" onClick={handleAddItem}>{btnName}</button>
+          <button id="add-btn" onClick={handleAction}>
+            {btnName}
+          </button>
         </div>
       </dialog>
     </div>
