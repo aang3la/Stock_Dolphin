@@ -1,0 +1,75 @@
+.move-item-dialog {
+    width: 240px;
+    height: 350px;
+}
+
+.move-modal-title {
+    width: 273px;
+    height: 37px;
+    border-radius: 20px 20px 0px 0px;
+    background-color: #53A856;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 8px;
+}
+
+.move-modal-title h1 {
+    font-size: 19px;
+    color: white;
+    margin-left: 20px;
+}
+
+.move-modal-title button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.categories-move-container {
+    width: 240px;
+    height: 400px;
+    padding-top: 30px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    padding-left: 10px;
+}
+
+.categories-move-modal {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#category-line {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    font-size: 15px;
+    color: #333544;
+}
+
+#category-line img {
+    width: 35px;
+}
+
+#line {
+    width: 1px;
+    height: 210px;
+}
+
+.move-item-btn {
+    width: 110px;
+    padding: 10px;
+    border-radius: 7px;
+    border: none;
+    font-size: 13px;
+    margin-top: 40px;
+    margin-bottom: 10px;
+    font-family: Poppins;
+    align-self: flex-end;
+    cursor: pointer;
+    color: white;
+    background-color: #53A856;
+}
