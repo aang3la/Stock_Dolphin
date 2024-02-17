@@ -16,7 +16,7 @@ const OrderCard = ({ order }) => {
         <p>{order.date}</p>
       </div>
       <div className="order-part">
-        <p>{order.supplier}</p>
+        <p>{order.supplierId}</p>
       </div>
     </div>
   );

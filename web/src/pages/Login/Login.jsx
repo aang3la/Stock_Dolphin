@@ -41,6 +41,7 @@ function Login() {
           setIsSubmit(true);
         }
       } else {
+        alert("Please fill in all required fields correctly.");
         event.preventDefault();
       }
     } catch (err) {

@@ -30,7 +30,7 @@ const OrderModal = ({ closeModal }) => {
               Supplier*
             </option>
             {suppliers.map((supplier) => (
-              <option key={supplier.id} value={supplier.id}>
+              <option key={supplier._id} value={supplier.id}>
                 {supplier.name}
               </option>
             ))}
@@ -41,7 +41,7 @@ const OrderModal = ({ closeModal }) => {
             <hr id="custom-hr" />
           </div>
           <div className="order-input-container">
-            <input type="text" placeholder="Total Price*" required />
+            <input type="text" placeholder="Price per unit*" required />
             <hr id="custom-hr" />
           </div>
           <div className="order-input-date">

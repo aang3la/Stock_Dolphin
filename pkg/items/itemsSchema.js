@@ -35,5 +35,9 @@ const itemsSchema = new mongoose.Schema({
   // },
 });
 
+// itemsSchema.virtual('totalCost').get(function() {
+//   return this.orders.reduce((total, order) => total + order.totalPrice, 0);
+// });
+
 const Items = mongoose.model("Items", itemsSchema);
 module.exports = Items;

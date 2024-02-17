@@ -11,17 +11,24 @@ const ordersSchema = new mongoose.Schema({
     },
     quantity: {
         type: Number,
-    },
-    totalPrice: {
-        type: Number
+        required: true,
     },
     pricePerUnit: {
+        type: Number,
+        required: true,
+    },
+    totalPrice: {
         type: Number
     },
     date: {
         type: Date,
         default: Date.now,
     }
+});
+
+ordersSchema.pre('save', function(next) {
+    this.totalPrice = this.quantity * this.pricePerUnit;
+    next();
 });
 
 const Orders = mongoose.model("Orders", ordersSchema);

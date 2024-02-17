@@ -12,6 +12,12 @@ const ItemCard = ({ item, isGridView }) => {
 
   const formattedDate = moment(item.date).format("MM/DD/YYYY HH:mm");
 
+  // const totalCost = item.orders.reduce((total, order) => {
+  //   const totalPrice = parseFloat(order.totalPrice); 
+  //   console.log("Order totalPrice:", order.totalPrice);
+  //   return total + totalPrice;
+  // }, 0);
+
   // const handleDelete = async () => {
   //   try {
   //     console.log("Deleting item...");
@@ -50,19 +56,19 @@ const ItemCard = ({ item, isGridView }) => {
             <h1>{item.name}</h1>
           </Link>
           <p>
-            {item.orders.length} Purchase Records | € {item.totalAmount}
+            {item.orders.length} Purchase Records | € 
           </p>
         </section>
       </div>
       {!isGridView && (
-          <div className="listViewDivider">
-            <hr className="listViewDividerLine" />
-            <p>
+        <div className="listViewDivider">
+          <hr className="listViewDividerLine" />
+          <p>
             Updated At: <br />
             <span id="itemCard-date">{formattedDate}</span>
-            </p>
-          </div>
-        )}
+          </p>
+        </div>
+      )}
       <div className="footer-item-card">
         <img
           src={delete_icon}

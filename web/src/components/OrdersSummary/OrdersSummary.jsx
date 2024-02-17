@@ -1,16 +1,18 @@
 import "./ordersSummary.css";
 
-const OrdersSummary = () => {
+const OrdersSummary = ({ orders }) => {
     const totalOrders = () => {
-        return 10;
+        return orders.length;
     };
 
     const totalCost = () => {
-      return 10;
-    };
+      const totalPriceArray = orders.map(order => order.totalPrice);
+        const total = totalPriceArray.reduce((acc, curr) => acc + curr, 0);
+        return total;
+  };
 
     const totalInvoices = () => {
-      return 10;
+      return 5;
     }
 
   return (
