@@ -28,6 +28,22 @@ exports.getAllOrders = async (req, res) => {
   }
 };
 
+exports.getAllOrders2 = async (req, res) => {
+  try {
+    const orders = await Orders.find();
+
+    res.status(200).json({
+      status: "success",
+      data: orders,
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: "fail",
+      message: err,
+    });
+  }
+};
+
 // Show one order
 exports.getOneOrder = async (req, res) => {
   try {

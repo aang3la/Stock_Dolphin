@@ -30,6 +30,7 @@ app.use(cors());
 // );
 
 // Routes
+app.get("/orders", orders.getAllOrders2);
 app.get("/inventory/:categoryName/:itemName", orders.getAllOrders);
 app.get("/inventory/:categoryName/:itemName/:id", orders.getOneOrder);
 app.post("/inventory/:categoryName/:itemName", orders.createOrder);

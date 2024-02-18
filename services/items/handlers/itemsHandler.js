@@ -2,22 +2,22 @@ const Items = require("../../../pkg/items/itemsSchema");
 const Categories = require("../../../pkg/categories/categoriesSchema");
 const Activity = require("../../../pkg/activity/activitySchema");
 
-// npm i multer
-const multer = require("multer");
-// npm i uuid
-const uuid = require("uuid");
+// // npm i multer
+// const multer = require("multer");
+// // npm i uuid
+// const uuid = require("uuid");
 
-const imageId = uuid.v4();
+// const imageId = uuid.v4();
 
-const multerStorage = multer.diskStorage({
-  destination: (req, file, callback) => {
-    callback(null, "public/images/items")
-  },
-  fileName: (req, file, callback) => {
-    const ext = file.mimetype.split("/")[1];
-    callback(null, `item-${imageId}-${Date.now()}.${ext}`);
-  }
-});
+// const multerStorage = multer.diskStorage({
+//   destination: (req, file, callback) => {
+//     callback(null, "public/images/items")
+//   },
+//   fileName: (req, file, callback) => {
+//     const ext = file.mimetype.split("/")[1];
+//     callback(null, `item-${imageId}-${Date.now()}.${ext}`);
+//   }
+// });
 
 // Show all items
 exports.getAllItems = async (req, res) => {
