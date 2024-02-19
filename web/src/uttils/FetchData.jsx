@@ -5,6 +5,7 @@ export const useFetchData = () => {
   const { categoryName, itemName } = useParams();
   const [items, setItems] = useState([]);
   const [orders, setOrders] = useState([]);
+  const [allOrders, setAllOrders] = useState([]);
 
   useEffect(() => {
     if (categoryName) {
@@ -65,5 +66,31 @@ export const useFetchData = () => {
     }
   }, [categoryName, itemName]);
 
-  return { items, orders };
+  useEffect(() => {
+    const fetchAllOrders = async () => {
+      try {
+        const response = await fetch(
+          `http://127.0.0.1:10004/orders`,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );  
+        const ordersData = await response.json();
+  
+        if (response.ok) {
+          console.log("API Response for orders:", ordersData);
+          setAllOrders(ordersData.data);
+        } else {
+          console.log("Error");
+        }
+      } catch (err) {
+        console.log("Error fetching orders.", err);
+      }
+    };
+    fetchAllOrders();
+  }, []);
+
+  return { items, setItems, orders, allOrders };
 };

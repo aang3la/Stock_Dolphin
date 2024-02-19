@@ -34,7 +34,7 @@ main {
 }
 
 .mainContent {
-    width: 400px;
+    width: 650px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -51,6 +51,7 @@ main {
 }
 
 .orders-dashboard {
+    width: 585px;
     padding-top: 7px;
 }
 
@@ -58,6 +59,28 @@ main {
     font-size: 16px;
     font-weight: 600;
     color: black;
-    padding-bottom: 15px;
+    padding-bottom: 10px;
     margin: 1px;
+}
+
+.orders-section {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    align-items: center;
+    padding-left: 30px;
+}
+
+.orders {
+    display: flex;
+    gap: 15px;
+}
+
+.pagination {
+    padding-top: 17px;
+    padding-left: 280px;
+}
+
+#pagination {
+    width: 35px;
 }

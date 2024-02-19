@@ -1,0 +1,29 @@
+.order-container {
+    width: 125px;
+    height: 130px;
+    border-radius: 8px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.25);
+}
+
+.recent-order-image {
+    margin-top: 0;
+    height: 80px;
+    background-color: grey;
+    border-radius: 10px 10px 0 0;
+}
+
+.recent-order-content {
+    padding-left: 7px;
+    height: 40px;
+    padding-bottom: 10px;
+}
+
+.recent-order-title p {
+    font-size: 15px;
+    color: #000000;
+}
+
+.recent-order-p p {
+    font-size: 12px;
+    color: #000000;
+}

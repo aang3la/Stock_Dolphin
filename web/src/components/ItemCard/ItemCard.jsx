@@ -4,43 +4,51 @@ import { useState } from "react";
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
 import delete_icon from "../../images/delete-icon.png";
 import { Link } from "react-router-dom";
+import { useFetchData } from "../../uttils/FetchData";
 const moment = require("moment");
 
 const ItemCard = ({ item, isGridView }) => {
   const { categoryName } = useParams();
+  const { setItems } = useFetchData();
   const [openModal, setOpenModal] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
 
   const formattedDate = moment(item.date).format("MM/DD/YYYY HH:mm");
 
-  // const totalCost = item.orders.reduce((total, order) => {
-  //   const totalPrice = parseFloat(order.totalPrice); 
-  //   console.log("Order totalPrice:", order.totalPrice);
-  //   return total + totalPrice;
-  // }, 0);
+  const handleDeleteClick = () => {
+    setSelectedItem(item._id);
+    setOpenModal(true);
+  }
+  
+  const handleDeleteItem = async () => {
+    if(!selectedItem) {
+      console.log("Item not found!", selectedItem);
+      return;
+    };
 
-  // const handleDelete = async () => {
-  //   try {
-  //     console.log("Deleting item...");
+    try {
+      const response = await fetch(
+        `http://127.0.0.1:10003/inventory/${categoryName}/${selectedItem}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
-  //     const response = await fetch(
-  //       `http://127.0.0.1:10003/inventory/${categoryName}/${item.id}`,
-  //       {
-  //         method: "DELETE",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //       }
-  //     );
-  //     console.log("Response:", response);
-  //     if (!response.ok) {
-  //       console.log("Error deleting item:", response.statusText);
-  //       return;
-  //     }
-  //     setOpenModal(false);
-  //   } catch (err) {
-  //     console.log("Error deleting item.");
-  //   }
-  // };
+      if (response.ok) {
+          setItems(prevItem => prevItem.filter(item => item._id !== selectedItem)
+          );
+          setOpenModal(false);
+      } else {
+        console.log("Failed deleting item.")
+      }
+      setOpenModal(false);
+    } catch (err) {
+      console.log("Error deleting item.", err);
+    }
+  };
 
   return (
     <div
@@ -73,7 +81,7 @@ const ItemCard = ({ item, isGridView }) => {
         <img
           src={delete_icon}
           className="delete-btn"
-          onClick={() => setOpenModal(true)}
+          onClick={handleDeleteClick}
         />
       </div>
       {openModal && (
@@ -81,7 +89,7 @@ const ItemCard = ({ item, isGridView }) => {
           closeModal={setOpenModal}
           content="Do you want to delete this item?"
           buttonName="CONFIRM"
-          onConfirm={handleDelete}
+          handleConfirm={handleDeleteItem}
         />
       )}
     </div>

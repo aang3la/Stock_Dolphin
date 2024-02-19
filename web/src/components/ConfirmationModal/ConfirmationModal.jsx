@@ -1,4 +1,3 @@
-// ConfirmationModal.js
 import "./confirmationModal.css";
 
 const ConfirmationModal = ({ content, buttonName, closeModal, handleConfirm }) => {

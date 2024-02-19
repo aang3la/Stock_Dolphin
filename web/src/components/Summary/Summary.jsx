@@ -6,12 +6,18 @@ import cost_icon from "../../images/cost-icon.png";
 import { Context } from "../../uttils/FetchContextProvider";
 import { useContext } from "react";
 
-const Summary = ({ orders }) => {
+const Summary = ({ allOrders }) => {
   const { categories } = useContext(Context);
 
   const totalItems = () => {
     return categories.reduce((total, category) => 
         total + category.items.length, 0);
+  };
+
+  const totalPriceOfAllOrders = () => {
+    return allOrders.reduce((total, order) => {
+      return total + (order.totalPrice || 0);
+    }, 0);
   };
 
   return (
@@ -30,12 +36,12 @@ const Summary = ({ orders }) => {
         </div>
         <div className="Orders square">
           <img src={orders_icon} alt="orders-icon" />
-          <h3>{orders.length}</h3>
+          <h3>{allOrders.length}</h3>
           <p>Total Orders</p>
         </div>
         <div className="Cost square">
           <img src={cost_icon} alt="cost-icon" />
-          <h3>€TO-DO</h3>
+          <h3>€{totalPriceOfAllOrders()}</h3>
           <p>Total Cost</p>
         </div>
       </div>

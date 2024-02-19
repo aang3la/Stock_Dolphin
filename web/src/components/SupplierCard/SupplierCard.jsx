@@ -12,15 +12,13 @@ const SupplierCard = ({ supplier }) => {
   const [selectedSupplier, setSelectedSupplier] = useState(null);
 
   const handleDeleteClick = () => {
-    console.log("Delete button clicked"); 
-
     setSelectedSupplier(supplier._id); 
     setOpenConfModal(true); 
   };
 
   const handleDeleteSupplier = async () => {
     if (!selectedSupplier) {
-      console.log("Supplier not found.//", selectedSupplier);
+      console.log("Supplier not found!!", selectedSupplier);
       return;
     }
     
@@ -38,7 +36,7 @@ const SupplierCard = ({ supplier }) => {
         );
         setOpenConfModal(false);
       } else {
-        console.log("Failed to delete supplier");
+        console.log("Failed deleting supplier");
       }
     } catch (err) {
       console.log("Error deleting supplier:", err);
