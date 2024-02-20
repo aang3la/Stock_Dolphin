@@ -44,6 +44,7 @@ const Items = () => {
             modalHeading="Add Item"
             modalBtn="ADD ITEM"
             query={query}
+            modalFor='item'
             onQueryChange={myQuery => setQuery(myQuery)}
           />
         </header>

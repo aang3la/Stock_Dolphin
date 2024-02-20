@@ -14,6 +14,7 @@ const Search_Add = ({
   modalBtn,
   query,
   onQueryChange,
+  modalFor,
 }) => {
   const { categoryName, id } = useParams();
   const { items, setItems } = useFetchData();
@@ -27,6 +28,12 @@ const Search_Add = ({
   const [categoryData, setCategoryData] = useState({
     title: "",
   });
+
+  const [data, setData] = useState({
+    name: "",
+    title: "",
+  });
+
   // const [updatedCategoryData, setUpdatedCategoryData] = useState({
   //   title: categories[id].title,
   // });
@@ -45,6 +52,21 @@ const Search_Add = ({
     });
   };
 
+  const onChange = (e) => {
+    if (modalFor == "category") {
+      setData({
+        ...data,
+        [e.target.name]: e.target.value,
+      });
+    }
+    if (modalFor == "item") {
+      setData({
+        ...data,
+        [e.target.name]: e.target.value,
+      });
+    }
+  };
+
   // const handleEditCategoryChange = (e) => {
   //   setUpdatedCategoryData({
   //     ...updatedCategoryData,
@@ -52,11 +74,11 @@ const Search_Add = ({
   //   });
   // };
 
-  useEffect(() => {
-    console.log("Item Data: ", itemData);
-    console.log("Category Data: ", categoryData);
-    // console.log("Updated Category Data: ", updatedCategoryData);
-  }, [itemData, categoryData]);
+  // useEffect(() => {
+  //   console.log("Item Data: ", itemData);
+  //   console.log("Category Data: ", categoryData);
+  //   // console.log("Updated Category Data: ", updatedCategoryData);
+  // }, [itemData, categoryData]);
 
   const handleAddItem = async (event) => {
     try {
@@ -65,7 +87,7 @@ const Search_Add = ({
         `http://127.0.0.1:10003/inventory/${categoryName}`,
         {
           method: "POST",
-          body: JSON.stringify(itemData),
+          body: JSON.stringify(data),
           headers: {
             "Content-Type": "application/json",
           },
@@ -75,7 +97,7 @@ const Search_Add = ({
       if (response.ok) {
         setOpenModal(false);
         const newItem = await response.json();
-        setItems([...items, newItem]);
+        setItems([...items, newItem.data.newItem]);
       } else {
         event.preventDefault();
       }
@@ -89,7 +111,7 @@ const Search_Add = ({
       event.preventDefault();
       const response = await fetch(`http://127.0.0.1:10005/inventory`, {
         method: "POST",
-        body: JSON.stringify(categoryData),
+        body: JSON.stringify(data),
         headers: {
           "Content-Type": "application/json",
         },
@@ -98,7 +120,7 @@ const Search_Add = ({
       if (response.ok) {
         setOpenModal(false);
         const newCategory = await response.json();
-        setCategories([...categories, newCategory]);
+        setCategories([...categories, newCategory.data]);
       } else {
         event.preventDefault();
       }
@@ -155,12 +177,10 @@ const Search_Add = ({
           heading={modalHeading}
           closeModal={setOpenModal}
           btnName={modalBtn}
-          handleAction={isAddingCategory ? handleAddCategory : handleAddItem}
-          itemDataChange={itemDataChange}
-          categoryDataChange={categoryDataChange}
-          itemData={itemData}
-          categoryData={isAddingCategory ? categoryData : updatedCategoryData}
-          isAddingCategory={isAddingCategory}
+          callbackAction={modalFor == "category" ? handleAddCategory : handleAddItem}
+          data={data}
+          onChange={onChange}
+          modalFor={modalFor}
         />
       )}
     </div>

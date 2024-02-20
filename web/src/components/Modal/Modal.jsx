@@ -6,12 +6,16 @@ const Modal = ({
   heading,
   closeModal,
   btnName,
-  handleAction,
-  itemDataChange,
-  itemData,
-  categoryDataChange,
-  categoryData,
-  isAddingCategory,
+  callbackAction,
+  data,
+  modalFor,
+  onChange
+  // handleAction,
+  // itemDataChange,
+  // itemData,
+  // categoryDataChange,
+  // categoryData,
+  // isAddingCategory,
 }) => {
   return (
     <div className="overlay-container">
@@ -27,9 +31,9 @@ const Modal = ({
             <input
               type="text"
               placeholder="Name*"
-              name={isAddingCategory ? "title" : "name"}
-              value={isAddingCategory ? categoryData.title : itemData.name}
-              onChange={isAddingCategory ? categoryDataChange : itemDataChange}
+              name={modalFor == 'category' ? "title" : "name"}
+              value={modalFor == 'category' ? data.title : data.name}
+              onChange={onChange}
               required
             />
             <hr id="custom_hr" />
@@ -47,7 +51,7 @@ const Modal = ({
           <button id="cancel-btn" onClick={() => closeModal(false)}>
             CANCEL
           </button>
-          <button id="add-btn" onClick={handleAction}>
+          <button id="add-btn" onClick={callbackAction}>
             {btnName}
           </button>
         </div>

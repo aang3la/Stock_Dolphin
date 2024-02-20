@@ -40,6 +40,7 @@ const Inventory = () => {
             modalHeading="Add Category"
             modalBtn="ADD CATEGORY"
             query={query}
+            modalFor='category'
             onQueryChange={myQuery => setQuery(myQuery)}
           />
           <InventorySummary categories={categories} />

@@ -1,10 +1,11 @@
 import "./itemCard.css";
 import { useParams } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
 import delete_icon from "../../images/delete-icon.png";
 import { Link } from "react-router-dom";
 import { useFetchData } from "../../uttils/FetchData";
+import { Context } from "../../uttils/FetchContextProvider";
 const moment = require("moment");
 
 const ItemCard = ({ item, isGridView }) => {

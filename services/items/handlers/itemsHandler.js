@@ -82,7 +82,7 @@ exports.createItem = async (req, res) => {
 
     const newItem = await Items.create({
       name,
-      image,
+      //image,
       categoryId: category._id,
     });
 
@@ -91,6 +91,7 @@ exports.createItem = async (req, res) => {
       itemName: newItem.name,
       itemId: newItem._id,
       date: new Date(),
+      categoryName: category.title
     });
 
     await Categories.findByIdAndUpdate(category._id, {
@@ -115,18 +116,21 @@ exports.createItem = async (req, res) => {
 // Make changes in a item
 exports.updateItem = async (req, res) => {
   try {
-    const { name, categoryId } = req.body;
+    const { categoryName } = req.params;
 
     const item = await Items.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
       runValidators: true,
     });
 
+    const category = await Categories.findOne({ title: categoryName });
+
     const newActivity = await Activity.create({
       action: "edited",
       itemName: item.name,
       itemId: item._id,
       date: new Date(),
+      categoryName: category.title
     });
 
     res.status(201).json({
@@ -147,14 +151,38 @@ exports.updateItem = async (req, res) => {
 // Delete item
 exports.deleteItem = async (req, res) => {
   try {
-    const { name, categoryId } = req.body;
+    const { categoryName } = req.params;
+    
+    const category = await Categories.findOne({ title: categoryName });
+
+    // res.status(201).json({
+    //   status: "success",
+    //   message: category
+    // });
+
+    // return;
+
+    if (!category) {
+      res.status(408).json({
+        status: "fail",
+        message: "category not found " + req.params.categoryName,
+      });
+    }
+
+    const categoryId = category._id;
+
     const item = await Items.findByIdAndDelete(req.params.id);
+
+    await Categories.findByIdAndUpdate(categoryId, {
+      $pull: { items: {$in: [item._id]} },
+    });
 
     const newActivity = await Activity.create({
       action: "deleted",
       itemName: item.name,
       itemId: item._id,
       date: new Date(),
+      categoryName: category.title
     });
 
     res.status(201).json({
