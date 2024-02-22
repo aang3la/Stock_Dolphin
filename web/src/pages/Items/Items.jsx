@@ -4,11 +4,11 @@ import { useState, useEffect } from "react";
 import Header from "../../components/Header/Header";
 import Search_Add from "../../components/Search_Add/Search_Add";
 import ItemCard from "../../components/ItemCard/ItemCard";
-import Modal from "../../components/Modal/Modal";
 import edit_green_icon from "../../images/edit-green-icon.png";
 import listView from "../../images/listView.png";
 import gridView from "../../images/gridView.png";
 import { useFetchData } from "../../uttils/FetchData";
+import EditCategoryModal from "../../components/EditCategoryModal/EditCategoryModal";
 
 const Items = () => {
   const { categoryName } = useParams();
@@ -17,6 +17,7 @@ const Items = () => {
   const [query, setQuery] = useState("");
   const [openModal, setOpenModal] = useState(false);
   const [isGridView, setGridView] = useState(true);
+  const [changedCategoryName, setChangedCategoryName] = useState("");
 
   useEffect(() => {
     if(query) {
@@ -31,6 +32,33 @@ const Items = () => {
 
   const toggleView = () => {
     setGridView((prevView) => !prevView);
+  };
+
+  const onChange = async (e) => {
+    setChangedCategoryName(e.target.value);
+  };
+
+  const handleEditCategory = async (event) => {
+    try {
+      event.preventDefault();
+      const response = await fetch(`http://127.0.0.1:10005/inventory/${categoryName}`, {
+        method: "PATCH",
+        body: JSON.stringify({ title: changedCategoryName }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      console.log("Response:", response);
+      if (response.ok) {
+        setOpenModal(false);
+        const updatedCategory = await response.json();
+        setChangedCategoryName(updatedCategory);
+      } else {
+        event.preventDefault();
+      }
+    } catch (err) {
+      console.log("Error editing category.");
+    }
   };
 
   return (
@@ -75,10 +103,13 @@ const Items = () => {
           <p>Edit Category</p>
         </button>
         {openModal && (
-          <Modal
+          <EditCategoryModal
+          categoryName={categoryName}
             heading="Edit Category"
             closeModal={setOpenModal}
             btnName="SAVE CHANGES"
+            onChange={onChange}
+            handleEditCategory={handleEditCategory}
           />
         )}
       </footer>

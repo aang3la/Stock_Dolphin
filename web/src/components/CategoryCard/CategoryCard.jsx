@@ -1,17 +1,55 @@
 import "./categoryCard.css";
 import delete_icon from "../../images/delete-icon.png";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
+import { Context } from "../../uttils/FetchContextProvider";
 const moment = require("moment");
 
 const CategoryCard = ({ category, isGridView }) => {
+  const { setCategories } = useContext(Context);
   const [openModal, setOpenModal] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
   const formattedDate = moment(category.date).format("MM/DD/YYYY HH:mm");
 
   const categoryItems = () => {
     return category.items.length;
+  };
+
+  const handleDeleteClick = () => {
+    setSelectedCategory(category._id);
+    setOpenModal(true);
+  };
+
+  const handleDeleteCategory = async () => {
+    if(!selectedCategory) {
+      console.log("Category not found!", selectedCategory);
+    };
+
+    try{
+      const response = await fetch(
+        `http://127.0.0.1:10005/inventory/${selectedCategory}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.ok) {
+        setCategories(prevCategory => prevCategory.filter(category => category._id !== selectedCategory)
+          );
+          setOpenModal(false);
+      } else {
+        console.log("Failed deleting category.")
+      }
+      setOpenModal(false);
+
+    } catch(err) {
+      console.log("Error deleting category.", err);
+    }
   };
 
   return (
@@ -40,7 +78,7 @@ const CategoryCard = ({ category, isGridView }) => {
           <img
             src={delete_icon}
             className="delete-btn"
-            onClick={() => setOpenModal(true)}
+            onClick={handleDeleteClick}
           />
         </div>
         {openModal && (
@@ -48,6 +86,7 @@ const CategoryCard = ({ category, isGridView }) => {
             closeModal={setOpenModal}
             content="Are you sure that you want to delete? All the items in the category will be deleted."
             buttonName="CONFIRM"
+            handleConfirm={handleDeleteCategory}
           />
         )}
       </div>

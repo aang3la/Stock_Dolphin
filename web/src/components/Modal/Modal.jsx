@@ -10,12 +10,6 @@ const Modal = ({
   data,
   modalFor,
   onChange
-  // handleAction,
-  // itemDataChange,
-  // itemData,
-  // categoryDataChange,
-  // categoryData,
-  // isAddingCategory,
 }) => {
   return (
     <div className="overlay-container">

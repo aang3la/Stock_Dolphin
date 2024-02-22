@@ -1,11 +1,10 @@
 import "./itemCard.css";
 import { useParams } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
 import delete_icon from "../../images/delete-icon.png";
 import { Link } from "react-router-dom";
 import { useFetchData } from "../../uttils/FetchData";
-import { Context } from "../../uttils/FetchContextProvider";
 const moment = require("moment");
 
 const ItemCard = ({ item, isGridView }) => {
@@ -55,7 +54,9 @@ const ItemCard = ({ item, isGridView }) => {
     <div
       className={`Item-Card ${isGridView ? "gridViewCard" : "listViewCard"}`}
     >
-      <div className="itemCard-images"></div>
+      <div className="itemCard-images">
+        {item.image}
+      </div>
       <div className="itemCard-content">
         <section className="title-p-item">
           <Link

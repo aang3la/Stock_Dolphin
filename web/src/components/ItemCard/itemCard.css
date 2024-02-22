@@ -30,7 +30,7 @@
 .listViewCard 
 .itemCard-images {
   width: 190px;
-  background-color: grey;
+  /* background-color: grey; */
 }
 
 .custom-link-item {
