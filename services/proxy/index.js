@@ -58,5 +58,5 @@ app.listen(process.env.PORTPROXY, (err) => {
     if(err) {
         return console.log("Couldn't start the service.");
     }
-    console.log(`Service started successfully on port ${process.env.PORTPROXY}`)
+    console.log(`Service started successfully on port 10000`)
 });

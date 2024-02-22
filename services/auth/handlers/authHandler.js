@@ -13,10 +13,11 @@ exports.signup = async (req, res) => {
       name: req.body.name,
       email: req.body.email,
       password: req.body.password,
+      // role: req.body.role
     });
 
     const token = jwt.sign(
-      { id: newUser._id, name: newUser.name },
+      { id: newUser._id, name: newUser.name, role: newUser.role },
       process.env.JWT_SECRET,
       { expiresIn: process.env.JWT_EXPIRES }
     );

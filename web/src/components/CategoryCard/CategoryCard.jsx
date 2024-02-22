@@ -46,8 +46,7 @@ const CategoryCard = ({ category, isGridView }) => {
         {openModal && (
           <ConfirmationModal
             closeModal={setOpenModal}
-            content="Are you sure that you want to delete?"
-            content2="All the items in the category will be deleted."
+            content="Are you sure that you want to delete? All the items in the category will be deleted."
             buttonName="CONFIRM"
           />
         )}

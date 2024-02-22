@@ -20,7 +20,7 @@ const InventorySummary = ({ categories }) => {
   return (
     <div className="InventorySummary">
       <p>
-        Categories: <b>{categories.length}</b>{" "}
+        Categories: <b>{categories.length}</b>
       </p>
       <p>
         Items: <b>{totalItems()}</b>

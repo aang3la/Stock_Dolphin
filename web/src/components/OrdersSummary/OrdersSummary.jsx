@@ -18,7 +18,7 @@ const OrdersSummary = ({ orders }) => {
   return (
     <div className="OrdersSummary">
         <p>Total Orders: <b>{totalOrders()}</b></p>
-        <p>Total Cost: <b>{totalCost()}</b></p>
+        <p>Total Cost: <b>€{totalCost()}</b></p>
         <p>Total Invoices: <b>{totalInvoices()}</b></p>
     </div>
   )

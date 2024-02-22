@@ -9,6 +9,9 @@ const ordersSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Suppliers',
     },
+    supplierName: {
+        type: String,
+    },
     quantity: {
         type: Number,
         required: true,

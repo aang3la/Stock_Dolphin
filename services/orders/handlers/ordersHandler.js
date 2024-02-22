@@ -1,5 +1,6 @@
 const Orders = require("../../../pkg/orders/ordersSchema");
 const Items = require("../../../pkg/items/itemsSchema");
+const Suppliers = require("../../../pkg/suppliers/suppliersSchema");
 
 // Show all orders
 exports.getAllOrders = async (req, res) => {
@@ -72,22 +73,27 @@ exports.createOrder = async (req, res) => {
       name: name,
     });
 
+    const supplier = await Suppliers.findById(supplierId);
+
     const newOrder = await Orders.create({
       name,
       supplierId,
       itemId: item._id,
+      supplierName: supplier.name,
       pricePerUnit,
       quantity,
       totalPrice,
     });
-
+    
     await Items.findByIdAndUpdate(item._id, {
       $push: { orders: newOrder },
     });
 
     res.status(200).json({
       status: "success",
-      data: newOrder,
+      data: {
+        order: newOrder,
+      },
     });
   } catch (err) {
     res.status(404).json({
