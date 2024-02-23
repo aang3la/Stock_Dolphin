@@ -92,5 +92,5 @@ export const useFetchData = () => {
     fetchAllOrders();
   }, []);
 
-  return { items, setItems, orders, allOrders };
+  return { items, setItems, orders, setOrders, allOrders };
 };

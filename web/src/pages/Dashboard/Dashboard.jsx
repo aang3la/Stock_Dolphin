@@ -30,7 +30,7 @@ function Dashboard() {
         <header className="dashboard-header">
           <Header title="Dashboard" />
           <div className="user-section">
-            <p>Welcome back Name Surname!</p>
+            <p>Welcome back Angela!</p>
             <img src={user_icon} />
           </div>
         </header>

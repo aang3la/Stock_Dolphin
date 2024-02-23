@@ -1,15 +1,10 @@
 import "./orderModal.css";
 import close from "../../images/close.png";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Context } from "../../uttils/FetchContextProvider";
 
-const OrderModal = ({ closeModal }) => {
+const OrderModal = ({ closeModal, callbackAction, data, onChange }) => {
   const { suppliers } = useContext(Context);
-  const [selectedSupplier, setSelectedSupplier] = useState("");
-
-  const handleSelect = (event) => {
-    setSelectedSupplier(event.target.value);
-  };
 
   return (
     <div className="overlay-container">
@@ -22,8 +17,9 @@ const OrderModal = ({ closeModal }) => {
         </div>
         <div className="modal-body">
           <select
-            value={selectedSupplier}
-            onChange={handleSelect}
+            name="supplierName"
+            value={data.supplierName}
+            onChange={onChange}
             className="order-select-container"
           >
             <option value="" hidden>
@@ -37,15 +33,34 @@ const OrderModal = ({ closeModal }) => {
           </select>
           <hr id="custom-hr" />
           <div className="order-input-container">
-            <input type="number" placeholder="Quantity*" required />
+            <input
+              type="number"
+              placeholder="Quantity*"
+              name="quantity"
+              value={data.quantity}
+              onChange={onChange}
+              required
+            />
             <hr id="custom-hr" />
           </div>
           <div className="order-input-container">
-            <input type="text" placeholder="Price per unit*" required />
+            <input
+              type="text"
+              placeholder="Price per unit*"
+              name="pricePerUnit"
+              value={data.pricePerUnit}
+              onChange={onChange}
+              required
+            />
             <hr id="custom-hr" />
           </div>
           <div className="order-input-date">
-            <input type="date" />
+            <input
+              type="date"
+              name="date"
+              value={data.date}
+              onChange={onChange}
+            />
           </div>
           <hr />
         </div>
@@ -53,7 +68,9 @@ const OrderModal = ({ closeModal }) => {
           <button id="cancel-btn" onClick={() => closeModal(false)}>
             CANCEL
           </button>
-          <button id="add-btn">ADD ORDER</button>
+          <button id="add-btn" onClick={callbackAction}>
+            ADD ORDER
+          </button>
         </div>
       </dialog>
     </div>

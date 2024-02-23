@@ -13,11 +13,50 @@ import { useFetchData } from "../../uttils/FetchData";
 
 const Orders = () => {
   const { categoryName, itemName } = useParams();
-  const { orders } = useFetchData();
+  const { orders, setOrders } = useFetchData();
 
   const [openOrdersModal, setOpenOrdersModal] = useState(false);
   const [openInvoiceModal, setOpenInvoiceModal] = useState(false);
   const [openMoveItemModal, setOpenMoveItemModal] = useState(false);
+
+  const [data, setData] = useState({
+    quantity: "",
+    pricePerUnit: "",
+    date: "",
+    supplierName: ""
+  });
+
+  const onChange = (e) => {
+    setData({...data, [e.target.name]: e.target.value
+    })
+    console.log(data);
+  };
+
+  const handleAddOrder = async (event) => {
+    try {
+      event.preventDefault();
+      const response = await fetch(
+        `http://127.0.0.1:10004/inventory/${categoryName}/${itemName}`,
+        {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log("Response:", response);
+      if (response.ok) {
+        setOpenOrdersModal(false);
+        const newOrder = await response.json();
+        setOrders([...orders, newOrder.data]);
+      } else {
+        event.preventDefault();
+      }
+    } catch (err) {
+      console.log("Error adding order.");
+    }
+  };
 
   return (
     <div className="Orders-container">
@@ -32,7 +71,13 @@ const Orders = () => {
             <img src={plus_icon} alt="plus icon" />
             <p>ADD ORDER</p>
           </button>
-          {openOrdersModal && <OrderModal closeModal={setOpenOrdersModal} />}
+          {openOrdersModal && (
+            <OrderModal 
+              closeModal={setOpenOrdersModal}
+              callbackAction={handleAddOrder} 
+              onChange={onChange}
+              data={data}
+          />)}
         </div>
       </header>
       <div className="orders-title-section">
@@ -71,7 +116,7 @@ const Orders = () => {
           <div className="choosen-item">
             <div className="example-pic"></div>
             <div className="choosen-item-name">
-              <p>Name: {itemName}</p>
+              <p>Name: <b>{itemName}</b></p>
             </div>
             <div className="choosen-item-buttons">
               <button

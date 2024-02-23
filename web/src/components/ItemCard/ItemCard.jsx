@@ -50,12 +50,23 @@ const ItemCard = ({ item, isGridView }) => {
     }
   };
 
+  // const calculateTotalPrice = () => {
+  //   let totalPrice = 0;
+  //   item.orders.forEach(orderId => {
+  //     // Assuming each order has a price field, adjust this according to your actual data structure
+  //     const order = getOrderDetails(orderId); // Assuming you have a function to fetch order details
+  //     totalPrice += order.price;
+  //   });
+  //   return totalPrice;
+  // };
+
   return (
     <div
       className={`Item-Card ${isGridView ? "gridViewCard" : "listViewCard"}`}
     >
       <div className="itemCard-images">
         {item.image}
+        <img src={`images/items/${item.image}`} />
       </div>
       <div className="itemCard-content">
         <section className="title-p-item">
@@ -66,7 +77,7 @@ const ItemCard = ({ item, isGridView }) => {
             <h1>{item.name}</h1>
           </Link>
           <p>
-            {item.orders.length} Purchase Records | € 
+            {item.orders.length} Purchase Records | €
           </p>
         </section>
       </div>

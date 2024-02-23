@@ -14,9 +14,9 @@ const Search_Add = ({
   modalBtn,
   query,
   onQueryChange,
-  modalFor,
+  modalFor
 }) => {
-  const { categoryName, id } = useParams();
+  const { categoryName } = useParams();
   const { items, setItems } = useFetchData();
   const { categories, setCategories } = useContext(Context);
   const [openModal, setOpenModal] = useState(false);
