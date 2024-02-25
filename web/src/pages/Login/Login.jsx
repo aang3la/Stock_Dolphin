@@ -75,7 +75,7 @@ function Login() {
     if (!values.email) {
       errors.email = "E-mail required!";
     } else if (!emailRegex.test(values.email)) {
-      errors.email = "This email is invalid!";
+      errors.email = "This email is invalid!"; 
     }
     if (!values.password) {
       errors.password = "Password is required!";
@@ -94,7 +94,7 @@ function Login() {
         <span className="signup-section">
           Don't have an account?
           <button>
-            <Link to="/">Sign up</Link>
+            <Link to="/" id="signup-btn">Sign up</Link>
           </button>
         </span>
       </header>

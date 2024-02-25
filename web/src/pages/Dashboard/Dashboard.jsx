@@ -1,18 +1,19 @@
 import "./dashboard.css";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Context } from "../../uttils/FetchContextProvider";
 import { useFetchData } from "../../uttils/FetchData";
 import Header from "../../components/Header/Header";
 import Summary from "../../components/Summary/Summary";
 import user_icon from "../../images/user-icon.png";
 import ActivityItem from "../../components/ActivityItem/ActivityItem";
-import arrow from "../../images/arrow.png";
-import pagination from "../../images/pagination-example.png";
-import RecentOrders from "../../components/RecentOrders/RecentOrders";
+import DashboardOrders from "../../components/DashboardOrders/DashboardOrders";
 
 function Dashboard() {
   const { activities } = useContext(Context);
   const { allOrders } = useFetchData();
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [ordersPerPage, setOrdersPerPage] = useState(4);
 
   const sortedActivities = activities.sort(
     (a, b) => new Date(b.date) - new Date(a.date)
@@ -20,9 +21,13 @@ function Dashboard() {
   const latestActivities = sortedActivities.slice(0, 4);
 
   const sortedOrders = allOrders.sort(
-    (a,b) => new Date(b.date) - new Date(a.date)
+    (a, b) => new Date(b.date) - new Date(a.date)
   );
-  const latestOrders = sortedOrders.slice(0,4);
+
+  //pagination
+  const lastOrderIndex = currentPage * ordersPerPage;
+  const firstOrderIndex = lastOrderIndex - ordersPerPage;
+  const currentPosts = sortedOrders.slice(firstOrderIndex, lastOrderIndex);
 
   return (
     <div className="Dashboard">
@@ -43,20 +48,16 @@ function Dashboard() {
               <ActivityItem key={activity._id} activity={activity} dashboard />
             ))}
           </div>
-          <div className="orders-dashboard">
+          <div>
             <h1 id="orders-heading">Recent Orders</h1>
-            <div className="orders-section">
-              <div className="orders">
-                {latestOrders.map((order) => (
-                  <RecentOrders key={order._id} order={order} />
-                ))}
-              </div>
-              <div>
-                <img src={arrow} alt="arrow-icon" id="arrow" />
-              </div>
-            </div>
-            <div className="pagination">
-              <img src={pagination} alt="pagination" id="pagination" />
+            <div>
+              <DashboardOrders
+                totalOrders={allOrders.length}
+                ordersPerPage={ordersPerPage}
+                setCurrentPage={setCurrentPage}
+                currentPage={currentPage}
+                currentPosts={currentPosts}
+              />
             </div>
           </div>
         </div>

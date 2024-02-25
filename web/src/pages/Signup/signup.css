@@ -5,6 +5,11 @@
     height: 100px;
 }
 
+#login-btn {
+    text-decoration: none;
+    color: white;
+}
+
 .login-section {
     padding: 25px;
     font-size: 14px;

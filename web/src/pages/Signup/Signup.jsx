@@ -82,7 +82,7 @@ export const Signup = () => {
         <span className="login-section">
           Already have an account?
           <button>
-            <Link to="/login" replace>
+            <Link to="/login" id="login-btn" replace>
               Login
             </Link>
           </button>

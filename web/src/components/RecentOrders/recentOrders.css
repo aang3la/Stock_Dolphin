@@ -1,6 +1,6 @@
 .order-container {
-    width: 125px;
-    height: 130px;
+    width: 120px;
+    height: 127px;
     border-radius: 8px;
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.25);
 }
@@ -18,12 +18,17 @@
     padding-bottom: 10px;
 }
 
+.recent-order-title  {
+    margin-top: 3px;
+    height: 24px;
+}
+
 .recent-order-title p {
-    font-size: 15px;
+    font-size: 14px;
     color: #000000;
 }
 
 .recent-order-p p {
-    font-size: 12px;
+    font-size: 11px;
     color: #000000;
 }

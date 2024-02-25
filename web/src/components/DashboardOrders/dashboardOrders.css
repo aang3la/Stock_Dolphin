@@ -1,0 +1,58 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination-left {
+  text-align: left;
+}
+
+.pagination-right {
+  text-align: right;
+}
+
+.arrow-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.orders-section {
+  width: 620px;
+  height: 145px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.orders {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.orders-pages {
+  margin-top: 8px;
+  margin-bottom: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.orders-pages button {
+  background: none;
+  border: none;
+}
+
+.circle {
+  width: 9px;
+  height: 9px;
+  border: none;
+  border-radius: 50%;
+}
+
+.active .circle {
+  background-color: #ccc;
+}

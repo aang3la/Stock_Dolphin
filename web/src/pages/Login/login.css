@@ -24,6 +24,11 @@
     border-radius: 10px;
 }
 
+#signup-btn {
+    text-decoration: none;
+    color: white;
+}
+
 .Login-form {
     margin: 0 auto;
     width: 450px;

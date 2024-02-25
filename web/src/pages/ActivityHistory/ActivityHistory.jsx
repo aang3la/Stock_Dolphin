@@ -7,7 +7,6 @@ import ActivityItem from "../../components/ActivityItem/ActivityItem";
 
 function ActivityHistory() {
   const { activities } = useContext(Context);
-  const [filteredActivities, setFilteredActivities] = useState([]);
   const [filter, setFilter] = useState("All");
 
   const sortActivities = (activities) => {

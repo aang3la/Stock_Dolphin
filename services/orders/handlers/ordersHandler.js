@@ -80,6 +80,7 @@ exports.createOrder = async (req, res) => {
       supplierId,
       itemId: item._id,
       supplierName: supplier.name,
+      itemName: item.name,
       pricePerUnit,
       quantity,
       totalPrice,

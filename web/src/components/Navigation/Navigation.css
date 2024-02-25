@@ -43,6 +43,10 @@
   align-items: center;
 }
 
+#list-text {
+  margin-left: 38px;
+}
+
 .custom-item {
   margin-top: 225px;
   padding-bottom: 10px;
