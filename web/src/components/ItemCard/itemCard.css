@@ -1,6 +1,4 @@
 .Item-Card {
-  width: 200px;
-  height: 205px;
   border-radius: 10px;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.25);
   background-color: white;
@@ -8,7 +6,7 @@
 
 .gridViewCard {
   width: 190px;
-  height: 210px;
+  height: 215px;
 }
 
 .listViewCard {
@@ -21,16 +19,18 @@
 }
 
 .gridViewCard
-.itemCard-images {
-  height: 115px;
-  background-color: grey;
+.itemCard-images img {
+  width: 190px;
+  height: 125px;
   border-radius: 10px 10px 0 0;
 }
 
 .listViewCard 
-.itemCard-images {
-  width: 190px;
-  /* background-color: grey; */
+.itemCard-images img {
+  width: 180px;
+  height: 120px;
+  padding-top: 6px;
+  border-radius: 10px 0 0 10px;
 }
 
 .custom-link-item {
@@ -43,7 +43,6 @@
   height: 110px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-items: center;
 }
 
@@ -54,15 +53,29 @@
   gap: 10px;
 }
 
+.gridViewCard
+.itemCard-content {
+  height: 43px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.gridViewCard
+.title-p-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
 .custom-link-title {
   text-decoration: none;
 }
 
 .custom-link-title h1 {
   font-size: 16px;
-  font-weight: 500;
   margin-left: 15px;
-  margin-top: 7px;
+  margin-top: 5px;
   text-decoration: none;
 }
 
@@ -72,30 +85,21 @@
   margin-bottom: 1px;
 }
 
-.itemCard-footer {
+.footer-item-card {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
 }
 
-.itemCard-footer p {
+.footer-item-card p {
   font-size: 13px;
 }
 
-.listViewCard
-.itemCard-footer {
-  width: 160px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  gap: 5px;
-}
 
-.listViewCard
-.itemCard-footer p {
+.listViewDivider p {
+  width: 70px;
   font-size: 12px;
-  padding-right: 30px;
-  padding-top: 30px;
+  padding-left: 70px;
 }
 
 #itemCard-date {
@@ -146,7 +150,7 @@
 
 .footer-item-card {
   margin-top: 5px;
-  margin-right: 10px;
+  margin-right: 5px;
   float: right;
 }
 

@@ -6,6 +6,9 @@ const dotenv = require('dotenv');
 dotenv.config({path: `${__dirname}/../config/config.env`});
 
 const app = express();
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static("public"));
+
 app.use(cors({
     origin: 'http://localhost:3000'
 })); 

@@ -61,7 +61,7 @@ const CategoryCard = ({ category, isGridView }) => {
             to={`/inventory/${category.title}`}
             className="custom-link-title"
           >
-            <h1>{category.title}</h1>
+            <h1><b>{category.title}</b></h1>
           </Link>
           <p>{categoryItems()} Items | € 338.00</p>
         </section>

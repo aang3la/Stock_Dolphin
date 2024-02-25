@@ -6,6 +6,7 @@ import delete_icon from "../../images/delete-icon.png";
 import { Link } from "react-router-dom";
 import { useFetchData } from "../../uttils/FetchData";
 const moment = require("moment");
+// import def from "../../../../public/images/items/default.jpg";
 
 const ItemCard = ({ item, isGridView }) => {
   const { categoryName } = useParams();
@@ -65,7 +66,7 @@ const ItemCard = ({ item, isGridView }) => {
       className={`Item-Card ${isGridView ? "gridViewCard" : "listViewCard"}`}
     >
       <div className="itemCard-images">
-      <img src="public/images/items/default.png" alt="Item Image" />
+      <img src={`/imgs/items/${item.image}`} alt="item image" />
       </div>
       <div className="itemCard-content">
         <section className="title-p-item">
@@ -73,10 +74,10 @@ const ItemCard = ({ item, isGridView }) => {
             className="custom-link-item"
             to={`/inventory/${categoryName}/${item.name}`}
           >
-            <h1>{item.name}</h1>
+            <h1><b>{item.name}</b></h1>
           </Link>
           <p>
-            {item.orders.length} Purchase Records | €
+            <b>{item.orders.length} Purchase Records</b> | €
           </p>
         </section>
       </div>

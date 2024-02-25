@@ -62,9 +62,11 @@
 }
 
 .categoryCard-footer {
+  width: 185px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  padding-top: 3px;
 }
 
 .categoryCard-footer p {
@@ -88,6 +90,7 @@
 
 .listViewCard .categoryCard-footer {
   width: 180px;
+  height: 100px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
