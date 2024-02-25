@@ -65,8 +65,7 @@ const ItemCard = ({ item, isGridView }) => {
       className={`Item-Card ${isGridView ? "gridViewCard" : "listViewCard"}`}
     >
       <div className="itemCard-images">
-        {item.image}
-        <img src={`images/items/${item.image}`} />
+      <img src="public/images/items/default.png" alt="Item Image" />
       </div>
       <div className="itemCard-content">
         <section className="title-p-item">

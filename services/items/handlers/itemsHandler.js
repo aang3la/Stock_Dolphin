@@ -11,7 +11,7 @@ const multerStorage = multer.diskStorage({
   destination: (req, file, callback) => {
     callback(null, "public/images/items")
   },
-  fileName: (req, file, callback) => {
+  filename: (req, file, callback) => {
     const ext = file.mimetype.split("/")[1];
     callback(null, `item-${imageId}-${Date.now()}.${ext}`);
   }
@@ -30,7 +30,7 @@ const upload = multer ({
   fileFilter: multerFilter,
 });
 
-exports.uploadItemImages = upload.single("image");
+exports.uploadItemImage = upload.single("image");
 
 // Show all items
 exports.getAllItems = async (req, res) => {
@@ -87,10 +87,10 @@ exports.getOneItem = async (req, res) => {
 // Create item
 exports.createItem = async (req, res) => {
   try {
-    if(req.file) {
-      const filename = req.file.filename;
-      req.body.image = filename;
-    };
+    // if(req.file) {
+    //   const filename = req.file.filename;
+    //   req.body.image = filename;
+    // };
     
     const { name, image } = req.body;
 
