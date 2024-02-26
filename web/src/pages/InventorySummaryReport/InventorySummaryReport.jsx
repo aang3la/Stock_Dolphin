@@ -1,34 +1,66 @@
 import "./InventorySummaryReport.css";
 import Header from "../../components/Header/Header";
 import LineChart from "../../components/LineChart/LineChart";
-import { useState } from "react";
-import {dataExample} from "../../components/LineChart/dataExample";
+import { useContext, useState } from "react";
+import { Context } from "../../uttils/FetchContextProvider";
 
 function InventorySummaryReport() {
-  // const [dataInventory, setDataInventory] = useState({
-  //   labels: dataExample.map((data) => data.date),
-  //   datasets: [
-  //     {
-  //       label: "Total cost of orders",
-  //       data: dataExample.map((data) => ({
-  //         x: new Date(data.date),
-  //         y: data.cost,
-  //       })),
-  //     },
-  //   ],
-  // });
+  const { categories } = useContext(Context);
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [buttonLabel, setButtonLabel] = useState('Show');
+
+  const handleShowReset = () => {
+    if (buttonLabel === 'Show') {
+      // Perform action to show data based on selected inputs
+      setButtonLabel('Reset');
+    } else {
+      // Perform action to reset inputs and data
+      setStartDate('');
+      setEndDate('');
+      setSelectedCategory('');
+      setButtonLabel('Show');
+    }
+  };
 
   return (
     <div className="Inventory-summary">
       <main>
         <header>
           <Header title="Reports > Inventory Summary" />
-          <section className="inventory-top-part">
-            <div></div>
-            <div></div>
-            <div></div>
-            <button>SHOW</button>
-          </section>
+          
+          <form className="inventory-top-part">
+            <div className="date-input-container">
+              <input 
+                type="date" 
+                name="startDate" 
+                value={startDate} 
+                onChange={(e) => setStartDate(e.target.value)} 
+              />
+            </div>
+            <div className="date-input-container">
+              <input 
+                type="date" 
+                name="endDate" 
+                value={endDate} 
+                onChange={(e) => setEndDate(e.target.value)} 
+              />
+            </div>
+            <div>
+              <select 
+                className="categories-select-container" 
+                value={selectedCategory} 
+                onChange={(e) => setSelectedCategory(e.target.value)} 
+              >
+                <option value="" hidden>All Categories</option>
+                {categories.map((category) => (
+                  <option key={category._id} value={category.id}>{category.title}</option>
+                ))}
+              </select>
+            </div>
+            <button id="show-reset-btn" onClick={handleShowReset}>{buttonLabel}</button>
+          </form>
         </header>
         {/* <LineChart dataExample={dataInventory} /> */}
       </main>

@@ -13,7 +13,7 @@ import { useFetchData } from "../../uttils/FetchData";
 
 const Orders = () => {
   const { categoryName, itemName } = useParams();
-  const { orders, setOrders } = useFetchData();
+  const { orders, setOrders, items } = useFetchData();
 
   const [openOrdersModal, setOpenOrdersModal] = useState(false);
   const [openInvoiceModal, setOpenInvoiceModal] = useState(false);
@@ -57,6 +57,8 @@ const Orders = () => {
       console.log("Error adding order.");
     }
   };
+
+  const selectedItem = items.find(item => item.name === itemName);
 
   return (
     <div className="Orders-container">
@@ -114,7 +116,9 @@ const Orders = () => {
             </tbody>
           </table>
           <div className="choosen-item">
-            <div className="example-pic"></div>
+            <div className="example-pic">
+              {selectedItem && <img src={selectedItem.image} alt="item image" />}
+            </div>
             <div className="choosen-item-name">
               <p>Name: <b>{itemName}</b></p>
             </div>

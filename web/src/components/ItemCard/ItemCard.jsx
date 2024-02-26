@@ -6,11 +6,10 @@ import delete_icon from "../../images/delete-icon.png";
 import { Link } from "react-router-dom";
 import { useFetchData } from "../../uttils/FetchData";
 const moment = require("moment");
-// import def from "../../../../public/images/items/default.jpg";
 
 const ItemCard = ({ item, isGridView }) => {
   const { categoryName } = useParams();
-  const { setItems } = useFetchData();
+  const { setItems, orders } = useFetchData();
   const [openModal, setOpenModal] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
 
@@ -19,13 +18,13 @@ const ItemCard = ({ item, isGridView }) => {
   const handleDeleteClick = () => {
     setSelectedItem(item._id);
     setOpenModal(true);
-  }
-  
+  };
+
   const handleDeleteItem = async () => {
-    if(!selectedItem) {
+    if (!selectedItem) {
       console.log("Item not found!", selectedItem);
       return;
-    };
+    }
 
     try {
       const response = await fetch(
@@ -39,11 +38,12 @@ const ItemCard = ({ item, isGridView }) => {
       );
 
       if (response.ok) {
-          setItems(prevItem => prevItem.filter(item => item._id !== selectedItem)
-          );
-          setOpenModal(false);
+        setItems((prevItem) =>
+          prevItem.filter((item) => item._id !== selectedItem)
+        );
+        setOpenModal(false);
       } else {
-        console.log("Failed deleting item.")
+        console.log("Failed deleting item.");
       }
       setOpenModal(false);
     } catch (err) {
@@ -66,7 +66,7 @@ const ItemCard = ({ item, isGridView }) => {
       className={`Item-Card ${isGridView ? "gridViewCard" : "listViewCard"}`}
     >
       <div className="itemCard-images">
-      <img src={`/imgs/items/${item.image}`} alt="item image" />
+        <img src={`/imgs/items/${item.image}`} alt="item image" />
       </div>
       <div className="itemCard-content">
         <section className="title-p-item">
@@ -74,7 +74,9 @@ const ItemCard = ({ item, isGridView }) => {
             className="custom-link-item"
             to={`/inventory/${categoryName}/${item.name}`}
           >
-            <h1><b>{item.name}</b></h1>
+            <h1>
+              <b>{item.name}</b>
+            </h1>
           </Link>
           <p>
             <b>{item.orders.length} Purchase Records</b> | €
