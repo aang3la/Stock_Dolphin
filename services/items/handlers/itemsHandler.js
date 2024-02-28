@@ -87,10 +87,10 @@ exports.getOneItem = async (req, res) => {
 // Create item
 exports.createItem = async (req, res) => {
   try {
-    // if(req.file) {
-    //   const filename = req.file.filename;
-    //   req.body.image = filename;
-    // };
+    if(req.file) {
+      const filename = req.file.filename;
+      req.body.image = filename;
+    };
     
     const { name, image } = req.body;
 

@@ -48,7 +48,7 @@ exports.getAllOrders2 = async (req, res) => {
 // Show one order
 exports.getOneOrder = async (req, res) => {
   try {
-    const order = await Orders.findById(req.params.id);
+    const order = await Orders.findById(req.params.id).populate("items");
 
     res.status(200).json({
       status: "success",
@@ -83,7 +83,7 @@ exports.createOrder = async (req, res) => {
       itemName: item.name,
       pricePerUnit,
       quantity,
-      totalPrice,
+      totalPrice
     });
     
     await Items.findByIdAndUpdate(item._id, {

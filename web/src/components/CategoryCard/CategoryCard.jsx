@@ -34,6 +34,7 @@ const CategoryCard = ({ category, isGridView }) => {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         }
       );

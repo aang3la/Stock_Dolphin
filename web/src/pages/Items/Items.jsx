@@ -41,11 +41,12 @@ const Items = () => {
   const handleEditCategory = async (event) => {
     try {
       event.preventDefault();
-      const response = await fetch(`http://127.0.0.1:10005/inventory/${categoryName}`, {
+      const response = await fetch(`http://127.0.0.1:10005/inventory/${categoryId}`, {
         method: "PATCH",
         body: JSON.stringify({ title: changedCategoryName }),
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
       console.log("Response:", response);

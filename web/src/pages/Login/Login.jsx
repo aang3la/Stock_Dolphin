@@ -37,36 +37,21 @@ function Login() {
             "Content-type": "application/json",
           },
         });
+        let jsonToObject = await response.json();
         if (response.ok) {
           setIsSubmit(true);
           localStorage.setItem("isSubmit", "true");
           localStorage.setItem("token", jsonToObject.token);
         }
+      alert(jsonToObject.status);
       } else {
         alert("Please fill in all required fields correctly.");
-        // alert(jsonToObject.status);
         event.preventDefault();
       }
     } catch (err) {
       console.log(err);
     }
   };
-
-// import jwtDecode from 'jwt-decode';
-
-
-//  const [decodedToken, setDecodedToken] = useState(null);
-// useEffect(() => {
-//     const token = localStorage.getItem('token');
-//     if (token) {
-//       try {
-//         const decoded = jwtDecode(token);
-//         setDecodedToken(decoded);
-//       } catch (error) {
-//         console.error("Failed to decode token", error);
-//       }
-//     }
-//   }, []);
 
   const validate = (values) => {
     const emailRegex = /^[^\s@]+@[^\s@]+[^\s@]{2,}$/i;

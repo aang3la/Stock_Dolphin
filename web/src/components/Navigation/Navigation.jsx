@@ -11,6 +11,7 @@ const Navigation = () => {
 
   const handleSignOut = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("isSubmit");
     navigate("/login");
   };
 

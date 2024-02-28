@@ -14,7 +14,7 @@ const Search_Add = ({
   modalBtn,
   query,
   onQueryChange,
-  modalFor
+  modalFor,
 }) => {
   const { categoryName } = useParams();
   const { items, setItems } = useFetchData();
@@ -51,6 +51,7 @@ const Search_Add = ({
           body: JSON.stringify(data),
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         }
       );
@@ -75,6 +76,7 @@ const Search_Add = ({
         body: JSON.stringify(data),
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
       console.log("Response:", response);
@@ -112,7 +114,9 @@ const Search_Add = ({
           heading={modalHeading}
           closeModal={setOpenModal}
           btnName={modalBtn}
-          callbackAction={modalFor == "category" ? handleAddCategory : handleAddItem}
+          callbackAction={
+            modalFor == "category" ? handleAddCategory : handleAddItem
+          }
           data={data}
           onChange={onChange}
           modalFor={modalFor}

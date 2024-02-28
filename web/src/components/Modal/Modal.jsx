@@ -1,6 +1,7 @@
 import add_image from "../../images/add-image.png";
 import close from "../../images/close.png";
-import "./modal.css";
+import "./modal.css"
+import { useState } from "react";;
 
 const Modal = ({
   heading,
@@ -11,6 +12,8 @@ const Modal = ({
   modalFor,
   onChange
 }) => {
+  const [file, setFile] = useState();
+
   return (
     <div className="overlay-container">
       <dialog open>
@@ -35,7 +38,10 @@ const Modal = ({
           <hr />
           <div className="img-container">
             <div className="modal-image">
-              <img src={add_image} />
+              <label htmlFor="img-upload" className="img-upload-label">
+                <img src={add_image} />
+              </label>
+              <input type="file" id="img-upload" onChange={(e) => setFile(e.target.files[0]) } />
               <p>(Add Photo, 2MB Total)</p>
             </div>
           </div>

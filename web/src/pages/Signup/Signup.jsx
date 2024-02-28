@@ -40,10 +40,15 @@ export const Signup = () => {
             "Content-type": "application/json",
           },
         });
+        let jsonToObject = await response.json();
+
         if (response.ok) {
           setIsSubmit(true);
         }
+        alert(jsonToObject.status);
+
       } else {
+        alert("Please fill in all required fields correctly.");
         event.preventDefault();
       }
     } catch (err) {
