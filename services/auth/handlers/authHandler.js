@@ -49,6 +49,7 @@ exports.login = async (req, res) => {
 
     // checking if the user exists
     const user = await Users.findOne({ email });
+
     if (!user)
       return res.status(400).send("This user with this email doesn't exist.");
 
@@ -61,7 +62,7 @@ exports.login = async (req, res) => {
 
     // if everything is correct, the token is generating
     const token = jwt.sign(
-      { id: user._id, name: user.name },
+      { id: user._id, name: user.name, role: user.role },
       process.env.JWT_SECRET,
       { expiresIn: process.env.JWT_EXPIRES }
     );

@@ -2,13 +2,21 @@ import "./invoiceModal.css";
 import close from "../../images/close.png";
 import { useContext, useState } from "react";
 import { Context } from "../../uttils/FetchContextProvider";
+import { useFetchData } from "../../uttils/FetchData";
 
 const InvoiceModal = ({ closeModal }) => {
   const { suppliers } = useContext(Context);
+  const { orders } = useFetchData();
   const [selectedSupplier, setSelectedSupplier] = useState(" ");
+  const [selectedOrder, setSelectedOrder] = useState(" ");
 
-  const handleSelect = (event) => {
+
+  const handleSelectSupplier = (event) => {
     setSelectedSupplier(event.target.value);
+  };
+
+  const handleSelectOrder = (event) => {
+    setSelectedOrder(event.target.value);
   };
 
   return (
@@ -27,12 +35,12 @@ const InvoiceModal = ({ closeModal }) => {
           </div>
           <select
             value={selectedSupplier}
-            onChange={handleSelect}
+            onChange={handleSelectSupplier}
             className="invoice-select-container"
           >
             <option value="" hidden>Supplier</option>
             {suppliers.map((supplier) => (
-              <option key={supplier.id} value={supplier.id}>
+              <option key={supplier._id} value={supplier.id}>
                 {supplier.name}
               </option>
             ))}
@@ -41,8 +49,17 @@ const InvoiceModal = ({ closeModal }) => {
           <div className="invoice-input-date">
             <input type="date" />
           </div>
-          <select className="invoice-select-container">
-            <option value="">Select Orders</option>
+          <select
+            value={selectedOrder}
+            onChange={handleSelectOrder}
+            className="invoice-select-container"
+          >
+            <option value="" hidden>Select Orders</option>
+            {orders.map((order) => (
+              <option key={order._id} value={order.id}>
+                {order.quantity}
+              </option>
+            ))}
           </select>
           <hr id="invoice-hr" />
           <hr id="footer-hr" />
