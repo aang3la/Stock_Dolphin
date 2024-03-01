@@ -9,7 +9,7 @@ const moment = require("moment");
 
 const ItemCard = ({ item, isGridView }) => {
   const { categoryName } = useParams();
-  const { setItems, orders } = useFetchData();
+  const { setItems, allOrders } = useFetchData();
   const [openModal, setOpenModal] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
 
@@ -52,15 +52,14 @@ const ItemCard = ({ item, isGridView }) => {
     }
   };
 
-  // const calculateTotalPrice = () => {
-  //   let totalPrice = 0;
-  //   item.orders.forEach(orderId => {
-  //     // Assuming each order has a price field, adjust this according to your actual data structure
-  //     const order = getOrderDetails(orderId); // Assuming you have a function to fetch order details
-  //     totalPrice += order.price;
-  //   });
-  //   return totalPrice;
-  // };
+  const calculateTotalItemsCost = () => {
+    const itemOrders = allOrders.filter(order => {
+      return order.itemId === item._id;
+    });
+    const total = itemOrders.reduce((acc, curr) => acc + curr.totalPrice, 0);  
+    return total;
+  };
+  
 
   return (
     <div
@@ -80,7 +79,7 @@ const ItemCard = ({ item, isGridView }) => {
             </h1>
           </Link>
           <p>
-            <b>{item.orders.length} Purchase Records</b> | €
+            <b>{item.orders.length} Purchase Records</b> | €{calculateTotalItemsCost()}.00
           </p>
         </section>
       </div>

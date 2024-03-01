@@ -4,10 +4,12 @@ import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
 import { Context } from "../../uttils/FetchContextProvider";
+import { useFetchData } from "../../uttils/FetchData";
 const moment = require("moment");
 
 const CategoryCard = ({ category, isGridView }) => {
   const { setCategories } = useContext(Context);
+  const { allOrders } = useFetchData();
   const [openModal, setOpenModal] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(null);
 
@@ -17,17 +19,30 @@ const CategoryCard = ({ category, isGridView }) => {
     return category.items.length;
   };
 
+  const calculateTotalCost = (category) => {
+    let totalCost = 0;
+
+    for (const itemId of category.items) {
+      const itemOrders = allOrders.filter((order) => order.itemId === itemId);
+
+      const itemTotalCost = itemOrders.reduce((acc, curr) => acc + curr.totalPrice,0);
+
+      totalCost += itemTotalCost;
+    }
+    return totalCost;
+  };
+
   const handleDeleteClick = () => {
     setSelectedCategory(category._id);
     setOpenModal(true);
   };
 
   const handleDeleteCategory = async () => {
-    if(!selectedCategory) {
+    if (!selectedCategory) {
       console.log("Category not found!", selectedCategory);
-    };
+    }
 
-    try{
+    try {
       const response = await fetch(
         `http://127.0.0.1:10005/inventory/${selectedCategory}`,
         {
@@ -40,21 +55,25 @@ const CategoryCard = ({ category, isGridView }) => {
       );
 
       if (response.ok) {
-        setCategories(prevCategory => prevCategory.filter(category => category._id !== selectedCategory)
-          );
-          setOpenModal(false);
+        setCategories((prevCategory) =>
+          prevCategory.filter((category) => category._id !== selectedCategory)
+        );
+        setOpenModal(false);
       } else {
-        console.log("Failed deleting category.")
+        console.log("Failed deleting category.");
       }
       setOpenModal(false);
-
-    } catch(err) {
+    } catch (err) {
       console.log("Error deleting category.", err);
     }
   };
 
   return (
-    <div className={`Category-Card ${isGridView ? "gridViewCard" : "listViewCard"}`}>
+    <div
+      className={`Category-Card ${
+        isGridView ? "gridViewCard" : "listViewCard"
+      }`}
+    >
       <div className="categoryCard-images"></div>
       <div className="categoryCard-content">
         <section className="title-p-card">
@@ -62,9 +81,13 @@ const CategoryCard = ({ category, isGridView }) => {
             to={`/inventory/${category.title}`}
             className="custom-link-title"
           >
-            <h1><b>{category.title}</b></h1>
+            <h1>
+              <b>{category.title}</b>
+            </h1>
           </Link>
-          <p>{categoryItems()} Items | € 338.00</p>
+          <p>
+            <b>{categoryItems()} Items</b> | €{calculateTotalCost(category)}.00
+          </p>
         </section>
         {!isGridView && (
           <div className="listViewDivider">

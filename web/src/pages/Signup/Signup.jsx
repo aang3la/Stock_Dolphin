@@ -45,8 +45,6 @@ export const Signup = () => {
         if (response.ok) {
           setIsSubmit(true);
         }
-        alert(jsonToObject.status);
-
       } else {
         alert("Please fill in all required fields correctly.");
         event.preventDefault();

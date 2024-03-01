@@ -43,7 +43,6 @@ function Login() {
           localStorage.setItem("isSubmit", "true");
           localStorage.setItem("token", jsonToObject.token);
         }
-      alert(jsonToObject.status);
       } else {
         alert("Please fill in all required fields correctly.");
         event.preventDefault();
