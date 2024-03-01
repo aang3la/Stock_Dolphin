@@ -1,22 +1,69 @@
 import "./InventorySummaryReport.css";
 import Header from "../../components/Header/Header";
-import LineChart from "../../components/LineChart/LineChart";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Context } from "../../uttils/FetchContextProvider";
+import { useFetchData } from "../../uttils/FetchData";
+import LineChart from "../../components/LineChart/LineChart";
 
 function InventorySummaryReport() {
+  const { allOrders } = useFetchData();
   const { categories } = useContext(Context);
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [buttonLabel, setButtonLabel] = useState('Show');
+  const [chartData, setChartData] = useState({ labels: [], datasets: [] });
+
+  useEffect(() => {
+    // Filter orders based on selected date range and category
+    let filteredOrders = allOrders.filter(order => {
+      const orderDate = new Date(order.date);
+      const start = startDate ? new Date(startDate) : null;
+      const end = endDate ? new Date(endDate) : null;
+
+      if (start && end) {
+        return orderDate >= start && orderDate <= end;
+      } else if (start) {
+        return orderDate >= start;
+      } else if (end) {
+        return orderDate <= end;
+      }
+      return true;
+    });
+
+    if (selectedCategory) {
+      filteredOrders = filteredOrders.filter(order => order.category === selectedCategory);
+    }
+
+    // Aggregate total cost for each date
+    const dateMap = {};
+    filteredOrders.forEach(order => {
+      const date = order.date.split('T')[0]; // Extract date without time
+      if (dateMap[date]) {
+        dateMap[date] += order.totalPrice;
+      } else {
+        dateMap[date] = order.totalPrice;
+      }
+    });
+
+    // Prepare data for Line chart
+    const labels = Object.keys(dateMap);
+    const data = Object.values(dateMap);
+
+    setChartData({
+      labels: labels,
+      datasets: [{
+        label: "Total Cost of Orders",
+        data: data,
+        backgroundColor: 'rgb(75, 192, 192)',
+      }]
+    });
+  }, [allOrders, startDate, endDate, selectedCategory]);
 
   const handleShowReset = () => {
     if (buttonLabel === 'Show') {
-      // Perform action to show data based on selected inputs
       setButtonLabel('Reset');
     } else {
-      // Perform action to reset inputs and data
       setStartDate('');
       setEndDate('');
       setSelectedCategory('');
@@ -62,7 +109,7 @@ function InventorySummaryReport() {
             <button id="show-reset-btn" onClick={handleShowReset}>{buttonLabel}</button>
           </form>
         </header>
-        {/* <LineChart dataExample={dataInventory} /> */}
+        <LineChart chartData={chartData} />
       </main>
     </div>
   );
