@@ -46,6 +46,7 @@ exports.getAllItems = async (req, res) => {
     const category = await Categories.findOne({
       title: req.params.categoryName,
     });
+    
     if (!category) {
       res.status(408).json({
         status: "fail",

@@ -5,6 +5,7 @@ import Header from "../../components/Header/Header";
 import OrdersSummary from "../../components/OrdersSummary/OrdersSummary";
 import move_item from "../../images/move-item-icon.png";
 import plus_icon from "../../images/plus.png";
+import edit_icon from "../../images/edit-icon.png";
 import OrderModal from "../../components/OrderModal/OrderModal";
 import InvoiceModal from "../../components/InvoiceModal/InvoiceModal";
 import MoveItemModal from "../../components/MoveItemModal/MoveItemModal";
@@ -44,8 +45,7 @@ const Orders = () => {
             "Content-Type": "application/json",
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
-        }
-      );
+        });
       console.log("Response:", response);
       if (response.ok) {
         setOpenOrdersModal(false);
@@ -58,6 +58,30 @@ const Orders = () => {
       console.log("Error adding order.");
     }
   };
+
+  // const handleEditItem = async (event) => {
+  //   try {
+  //     event.preventDefault();
+  //     const response = await fetch(`http://127.0.0.1:10003/inventory/${categoryName}/${id}`, {
+  //       method: "PATCH",
+  //       body: JSON.stringify(item),
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         Authorization: `Bearer ${localStorage.getItem("token")}`,
+  //       },
+  //     });
+  //     console.log("Response:", response);
+  //     if (response.ok) {
+  //       setOpenModal(false);
+  //       const updatedItem = await response.json();
+  //       setChangedItem(updatedItem);
+  //     } else {
+  //       event.preventDefault();
+  //     }
+  //   } catch (err) {
+  //     console.log("Error editing item.");
+  //   }
+  // };
 
   const selectedItem = items.find(item => item.name === itemName);
 
@@ -116,9 +140,12 @@ const Orders = () => {
             </tr>
             </tbody>
           </table>
-          <div className="choosen-item">
-            <div className="example-pic">
-              {selectedItem && <img src={selectedItem.image} alt="item image" />}
+          <form className="choosen-item">
+            <div className="picture-container">
+              {selectedItem && <img src={`/imgs/items/${selectedItem.image}`} alt="item image" />}
+              <button className="edit-item-btn">
+                <img src={edit_icon} id="edit-item-icon" alt="Edit Item" />
+            </button>
             </div>
             <div className="choosen-item-name">
               <p>Name: <b>{itemName}</b></p>
@@ -135,7 +162,7 @@ const Orders = () => {
               )}
               <button className="save-button">SAVE</button>
             </div>
-          </div>
+          </form>
         </div>
       </main>
     </div>

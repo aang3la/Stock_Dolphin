@@ -1,6 +1,6 @@
 import "./items.css";
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Header from "../../components/Header/Header";
 import Search_Add from "../../components/Search_Add/Search_Add";
 import ItemCard from "../../components/ItemCard/ItemCard";
@@ -9,18 +9,31 @@ import listView from "../../images/listView.png";
 import gridView from "../../images/gridView.png";
 import { useFetchData } from "../../uttils/FetchData";
 import EditCategoryModal from "../../components/EditCategoryModal/EditCategoryModal";
+import { Context } from "../../uttils/FetchContextProvider";
 
 const Items = () => {
   const { categoryName } = useParams();
-  const { items } = useFetchData();  
+  const { items } = useFetchData();
+  const { categories } = useContext(Context);
   const [filteredItems, setFilteredItems] = useState([]);
   const [query, setQuery] = useState("");
   const [openModal, setOpenModal] = useState(false);
   const [isGridView, setGridView] = useState(true);
-  const [changedCategoryName, setChangedCategoryName] = useState("");
+
+  const [categoryData, setCategoryData] = useState({
+    title: "",
+    image: "",
+  });
+
+  const onChange = async (e) => {
+    setCategoryData({ ...categoryData, [e.target.name]: e.target.value });
+    console.log(categoryData);
+  };
+
+  // const selectedCategory = categories.find(category => category._id === category.id);
 
   useEffect(() => {
-    if(query) {
+    if (query) {
       const filtered = items.filter((item) => {
         return item.name.toLowerCase().includes(query.toLowerCase());
       });
@@ -34,26 +47,25 @@ const Items = () => {
     setGridView((prevView) => !prevView);
   };
 
-  const onChange = async (e) => {
-    setChangedCategoryName(e.target.value);
-  };
-
   const handleEditCategory = async (event) => {
     try {
       event.preventDefault();
-      const response = await fetch(`http://127.0.0.1:10005/inventory/${categoryId}`, {
-        method: "PATCH",
-        body: JSON.stringify({ title: changedCategoryName }),
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      const response = await fetch(
+        `http://127.0.0.1:10005/inventory/${categoryName}`,
+        {
+          method: "PATCH",
+          body: JSON.stringify(categoryData),
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
       console.log("Response:", response);
       if (response.ok) {
         setOpenModal(false);
         const updatedCategory = await response.json();
-        setChangedCategoryName(updatedCategory);
+        setCategoryData(updatedCategory.categoryData);
       } else {
         event.preventDefault();
       }
@@ -73,8 +85,8 @@ const Items = () => {
             modalHeading="Add Item"
             modalBtn="ADD ITEM"
             query={query}
-            modalFor='item'
-            onQueryChange={myQuery => setQuery(myQuery)}
+            modalFor="item"
+            onQueryChange={(myQuery) => setQuery(myQuery)}
           />
         </header>
         <div className="main-itemCards-container">
@@ -105,7 +117,7 @@ const Items = () => {
         </button>
         {openModal && (
           <EditCategoryModal
-          categoryName={categoryName}
+            categoryName={categoryName}
             heading="Edit Category"
             closeModal={setOpenModal}
             btnName="SAVE CHANGES"

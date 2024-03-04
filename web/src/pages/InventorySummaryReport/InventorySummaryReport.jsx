@@ -15,7 +15,6 @@ function InventorySummaryReport() {
   const [chartData, setChartData] = useState({ labels: [], datasets: [] });
 
   useEffect(() => {
-    // Filter orders based on selected date range and category
     let filteredOrders = allOrders.filter(order => {
       const orderDate = new Date(order.date);
       const start = startDate ? new Date(startDate) : null;
@@ -35,10 +34,9 @@ function InventorySummaryReport() {
       filteredOrders = filteredOrders.filter(order => order.category === selectedCategory);
     }
 
-    // Aggregate total cost for each date
     const dateMap = {};
     filteredOrders.forEach(order => {
-      const date = order.date.split('T')[0]; // Extract date without time
+      const date = order.date.split('T')[0];
       if (dateMap[date]) {
         dateMap[date] += order.totalPrice;
       } else {
@@ -46,7 +44,6 @@ function InventorySummaryReport() {
       }
     });
 
-    // Prepare data for Line chart
     const labels = Object.keys(dateMap);
     const data = Object.values(dateMap);
 
@@ -55,7 +52,7 @@ function InventorySummaryReport() {
       datasets: [{
         label: "Total Cost of Orders",
         data: data,
-        backgroundColor: 'rgb(75, 192, 192)',
+        backgroundColor: '#53a856',
       }]
     });
   }, [allOrders, startDate, endDate, selectedCategory]);
@@ -109,7 +106,9 @@ function InventorySummaryReport() {
             <button id="show-reset-btn" onClick={handleShowReset}>{buttonLabel}</button>
           </form>
         </header>
-        <LineChart chartData={chartData} />
+        <div className="line-chart">
+          <LineChart chartData={chartData} />
+        </div>
       </main>
     </div>
   );

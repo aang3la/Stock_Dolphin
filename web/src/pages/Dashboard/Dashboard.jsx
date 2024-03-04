@@ -1,5 +1,5 @@
 import "./dashboard.css";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Context } from "../../uttils/FetchContextProvider";
 import { useFetchData } from "../../uttils/FetchData";
 import Header from "../../components/Header/Header";
@@ -14,6 +14,14 @@ function Dashboard() {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [ordersPerPage, setOrdersPerPage] = useState(4);
+
+  const [username, setUsername] = useState("");
+
+  useEffect(() => {
+    const storedUsername = localStorage.getItem("username");
+    console.log("Username stored:", localStorage.getItem("username"));    
+    setUsername(storedUsername);
+  }, []);
 
   const sortedActivities = activities.sort(
     (a, b) => new Date(b.date) - new Date(a.date)
@@ -35,7 +43,7 @@ function Dashboard() {
         <header className="dashboard-header">
           <Header title="Dashboard" />
           <div className="user-section">
-            <p>Welcome back Angela!</p>
+            <p>Welcome back Admin!</p>
             <img src={user_icon} />
           </div>
         </header>

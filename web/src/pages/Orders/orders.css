@@ -108,12 +108,31 @@
   flex-direction: column;
 }
 
-.example-pic {
+.picture-container {
   width: 300px;
-  height: 270px;
-  background-color: grey;
+  height: 250px;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.picture-container img {
+  width: 300px;
+  height: 250px;
   border-radius: 8px;
-  margin-bottom: 28px;
+}
+
+.edit-item-btn {
+  float: right;
+  background: none;
+  border: none;
+  position: absolute;
+  bottom: 2%;
+  right: 2px;
+}
+
+#edit-item-icon {
+  width: 40px;
+  height: 40px;
 }
 
 .choosen-item-name {

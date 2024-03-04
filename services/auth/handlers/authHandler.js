@@ -78,6 +78,7 @@ exports.login = async (req, res) => {
     res.status(201).json({
       status: "success",
       token,
+      username: user.name
     });
   } catch (err) {
     console.error(err);

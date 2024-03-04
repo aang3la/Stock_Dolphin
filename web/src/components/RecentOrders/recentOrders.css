@@ -5,10 +5,9 @@
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.25);
 }
 
-.recent-order-image {
-    margin-top: 0;
-    height: 80px;
-    background-color: grey;
+.recent-order-image img {
+    width: 120px;
+    height: 73px;
     border-radius: 10px 10px 0 0;
 }
 
@@ -19,7 +18,7 @@
 }
 
 .recent-order-title  {
-    margin-top: 3px;
+    margin-top: 2px;
     height: 24px;
 }
 
