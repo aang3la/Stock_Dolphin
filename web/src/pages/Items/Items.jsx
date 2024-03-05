@@ -30,8 +30,6 @@ const Items = () => {
     console.log(categoryData);
   };
 
-  // const selectedCategory = categories.find(category => category._id === category.id);
-
   useEffect(() => {
     if (query) {
       const filtered = items.filter((item) => {

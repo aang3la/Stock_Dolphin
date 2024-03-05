@@ -6,6 +6,7 @@ import Modal from "../Modal/Modal";
 import { useParams } from "react-router-dom";
 import { useFetchData } from "../../uttils/FetchData";
 import { Context } from "../../uttils/FetchContextProvider";
+import SupplierModal from "../SupplierModal/SupplierModal";
 
 const Search_Add = ({
   searchText,
@@ -18,12 +19,20 @@ const Search_Add = ({
 }) => {
   const { categoryName } = useParams();
   const { items, setItems } = useFetchData();
-  const { categories, setCategories } = useContext(Context);
+  const { categories, setCategories, suppliers, setSuppliers } =
+    useContext(Context);
   const [openModal, setOpenModal] = useState(false);
 
   const [data, setData] = useState({
     name: "",
     title: "",
+  });
+
+  const [supplierData, setSupplierData] = useState({
+    name: "",
+    address: "",
+    phone: "",
+    email: "",
   });
 
   const onChange = (e) => {
@@ -36,6 +45,12 @@ const Search_Add = ({
     if (modalFor == "item") {
       setData({
         ...data,
+        [e.target.name]: e.target.value,
+      });
+    }
+    if (modalFor == "supplier") {
+      setSupplierData({
+        ...supplierData,
         [e.target.name]: e.target.value,
       });
     }
@@ -92,6 +107,30 @@ const Search_Add = ({
     }
   };
 
+  const handleAddSupplier = async (event) => {
+    try {
+      event.preventDefault();
+      const response = await fetch(`http://127.0.0.1:10001/suppliers`, {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      console.log("Response:", response);
+      if (response.ok) {
+        setOpenModal(false);
+        const newSupplier = await response.json();
+        setSuppliers([...suppliers, newSupplier.data]);
+      } else {
+        event.preventDefault();
+      }
+    } catch (err) {
+      console.log("Error adding supplier.");
+    }
+  };
+
   return (
     <div className="search-add">
       <label className="search-container">
@@ -120,6 +159,14 @@ const Search_Add = ({
           data={data}
           onChange={onChange}
           modalFor={modalFor}
+        />
+      )}
+      {openModal && modalFor === "supplier" && (
+        <SupplierModal
+          closeModal={setOpenModal}
+          callbackAction={handleAddSupplier}
+          supplierData={supplierData}
+          onChange={onChange}
         />
       )}
     </div>

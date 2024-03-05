@@ -29,8 +29,7 @@ const Suppliers = () => {
           <Search_Add
             searchText="Search Suppliers"
             text="ADD SUPPLIER"
-            modalHeading="Add Supplier"
-            modalBtn="ADD SUPPLIER"
+            modalFor="supplier"
             query={query}
             onQueryChange={myQuery => setQuery(myQuery)}
           />
