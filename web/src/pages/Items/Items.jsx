@@ -14,15 +14,14 @@ import { Context } from "../../uttils/FetchContextProvider";
 const Items = () => {
   const { categoryName } = useParams();
   const { items } = useFetchData();
-  const { categories } = useContext(Context);
+  const { categories, setCategories } = useContext(Context);
   const [filteredItems, setFilteredItems] = useState([]);
   const [query, setQuery] = useState("");
   const [openModal, setOpenModal] = useState(false);
   const [isGridView, setGridView] = useState(true);
 
   const [categoryData, setCategoryData] = useState({
-    title: "",
-    image: "",
+    title: categoryName
   });
 
   const onChange = async (e) => {
@@ -46,10 +45,16 @@ const Items = () => {
   };
 
   const handleEditCategory = async (event) => {
+    const category = categories.find((category) => category.title === categoryName);
+    const categoryId = category._id;
+    console.log("category: ..", category);
+    console.log("categoryID!!!: ..", categoryId);
+
+    
     try {
       event.preventDefault();
       const response = await fetch(
-        `http://127.0.0.1:10005/inventory/${categoryName}`,
+        `http://127.0.0.1:10005/inventory/${categoryId}`,
         {
           method: "PATCH",
           body: JSON.stringify(categoryData),
@@ -62,8 +67,13 @@ const Items = () => {
       console.log("Response:", response);
       if (response.ok) {
         setOpenModal(false);
-        const updatedCategory = await response.json();
-        setCategoryData(updatedCategory.categoryData);
+        const updatedCategory = categories.map((cat) => {
+          if(cat._id === category._id){
+            return {...cat, ...categoryData};
+          }
+          return cat;
+        });
+        setCategories(updatedCategory);
       } else {
         event.preventDefault();
       }
@@ -116,6 +126,7 @@ const Items = () => {
         {openModal && (
           <EditCategoryModal
             categoryName={categoryName}
+            categoryData={categoryData}
             heading="Edit Category"
             closeModal={setOpenModal}
             btnName="SAVE CHANGES"

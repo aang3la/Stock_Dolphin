@@ -31,7 +31,8 @@ exports.getAllOrders = async (req, res) => {
 
 exports.getAllOrders2 = async (req, res) => {
   try {
-    const orders = await Orders.find().populate("itemId");
+    const orders = await Orders.find()
+    // .populate("itemId");
 
     res.status(200).json({
       status: "success",

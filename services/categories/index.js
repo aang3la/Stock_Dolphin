@@ -67,12 +67,7 @@ app.get("/inventory/:id", items.getOneCategory);
 // Routes accessible only to admin users
 app.post("/inventory", verifyToken, restrictToAdmin, items.createCategory);
 app.patch("/inventory/:id", verifyToken, restrictToAdmin, items.updateCategory);
-app.delete(
-  "/inventory/:id",
-  verifyToken,
-  restrictToAdmin,
-  items.deleteCategory
-);
+app.delete("/inventory/:id", verifyToken, restrictToAdmin, items.deleteCategory);
 
 app.listen(process.env.PORT_CATEGORY, (err) => {
   if (err) {

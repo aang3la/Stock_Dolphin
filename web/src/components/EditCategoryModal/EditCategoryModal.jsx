@@ -2,9 +2,7 @@ import add_image from "../../images/add-image.png";
 import close from "../../images/close.png";
 import { useState } from "react";
 
-const EditCategoryModal = ({categoryName, heading, btnName, handleEditCategory, closeModal}) => {  
-    const [newCategoryName, setNewCategoryName] = useState(categoryName);
-
+const EditCategoryModal = ({ categoryData, heading, btnName, handleEditCategory, closeModal, onChange }) => {  
     return (
       <div className="overlay-container">
         <dialog open>
@@ -20,8 +18,8 @@ const EditCategoryModal = ({categoryName, heading, btnName, handleEditCategory, 
                 type="text"
                 placeholder="Name*"
                 name="title"
-                value={newCategoryName}
-                onChange={(e) => setNewCategoryName(e.target.value)}                
+                value={categoryData.title}
+                onChange={onChange}                
                 required
               />
               <hr id="custom_hr" />

@@ -8,7 +8,7 @@ import { useFetchData } from "../../uttils/FetchData";
 const moment = require("moment");
 
 const CategoryCard = ({ category, isGridView }) => {
-  const { categories, setCategories } = useContext(Context);
+  const { setCategories } = useContext(Context);
   const { allOrders } = useFetchData();
   const [openModal, setOpenModal] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -24,12 +24,7 @@ const CategoryCard = ({ category, isGridView }) => {
 
     for (const itemId of category.items) {
       const itemOrders = allOrders.filter((order) => order.itemId === itemId);
-
-      const itemTotalCost = itemOrders.reduce(
-        (acc, curr) => acc + curr.totalPrice,
-        0
-      );
-
+      const itemTotalCost = itemOrders.reduce((acc, curr) => acc + curr.totalPrice, 0);
       totalCost += itemTotalCost;
     }
     return totalCost;

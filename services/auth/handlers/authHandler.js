@@ -85,3 +85,12 @@ exports.login = async (req, res) => {
     res.status(500).send("Internal server error");
   }
 };
+
+// exports.restrict = (...roles) => {
+//   return (req, res, next) => {
+//     if (!roles.includes(req.auth.role)) {
+//       return res.status(500).send('You dont have permission for this action.');
+//     }
+//     next();
+//   };
+// };

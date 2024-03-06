@@ -1,10 +1,20 @@
 import "./orderModal.css";
 import close from "../../images/close.png";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Context } from "../../uttils/FetchContextProvider";
 
 const OrderModal = ({ closeModal, callbackAction, data, onChange }) => {
   const { suppliers } = useContext(Context);
+  const [selectedSupplier, setSelectedSupplier] = useState("");
+  const [selectedDate, setSelectedDate] = useState("");
+
+  const handleSelectSupplier = (event) => {
+    setSelectedSupplier(event.target.value);
+  };
+
+  const handleSelectedDate = (event) => {
+    setSelectedDate(event.target.value);
+  };
 
   return (
     <div className="overlay-container">
@@ -18,8 +28,8 @@ const OrderModal = ({ closeModal, callbackAction, data, onChange }) => {
         <div className="modal-body">
           <select
             name="supplierName"
-            value={data.supplierName}
-            onChange={onChange}
+            value={selectedSupplier}
+            onChange={handleSelectSupplier}
             className="order-select-container"
           >
             <option value="" hidden>
@@ -58,8 +68,8 @@ const OrderModal = ({ closeModal, callbackAction, data, onChange }) => {
             <input
               type="date"
               name="date"
-              value={data.date}
-              onChange={onChange}
+              value={selectedDate}
+              onChange={handleSelectedDate}
             />
           </div>
           <hr />
