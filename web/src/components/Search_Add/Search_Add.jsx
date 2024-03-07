@@ -112,7 +112,7 @@ const Search_Add = ({
       event.preventDefault();
       const response = await fetch(`http://127.0.0.1:10001/suppliers`, {
         method: "POST",
-        body: JSON.stringify(data),
+        body: JSON.stringify(supplierData),
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -122,7 +122,7 @@ const Search_Add = ({
       if (response.ok) {
         setOpenModal(false);
         const newSupplier = await response.json();
-        setSuppliers([...suppliers, newSupplier.data]);
+        setSuppliers([...suppliers, newSupplier.supplierData]);
       } else {
         event.preventDefault();
       }

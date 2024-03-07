@@ -11,6 +11,7 @@ function Login() {
 
   const [data, setData] = useState(initData);
   const [isSubmit, setIsSubmit] = useState(false);
+  const [username, setUsername] = useState("");
   const [formErrors, setFormErrors] = useState({});
 
   const dataChange = (event) => {
@@ -19,10 +20,6 @@ function Login() {
       [event.target.name]: event.target.value,
     });
   };
-
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
 
   const handleLogin = async (event) => {
     try {
@@ -37,11 +34,12 @@ function Login() {
             "Content-type": "application/json",
           },
         });
-        let jsonToObject = await response.json();
+        let jsonData = await response.json();
         if (response.ok) {
           setIsSubmit(true);
           localStorage.setItem("isSubmit", "true");
-          localStorage.setItem("token", jsonToObject.token);
+          localStorage.setItem("token", jsonData.token);
+          localStorage.setItem("username", jsonData.username);
         }
       } else {
         alert("Please fill in all required fields correctly.");
@@ -51,6 +49,25 @@ function Login() {
       console.log(err);
     }
   };
+
+  useEffect(() => {
+    console.log(data);
+    const isSubmit = localStorage.getItem("isSubmit") === "true";
+    const username = localStorage.getItem("username");
+
+    if(username) { setUsername(username); }
+
+    const token = localStorage.getItem("token");
+    if(token) {
+      try {
+        const decoded = jwtDecode(token);
+        setDecodedToken(decoded);
+      } catch(err) {
+        console.log("Failed to decode token", err);
+      }
+    }
+    setIsSubmit(isSubmit);
+  }, [data]);
 
   const validate = (values) => {
     const emailRegex = /^[^\s@]+@[^\s@]+[^\s@]{2,}$/i;

@@ -4,6 +4,7 @@ import { Navigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import logo from "../../images/logo.png";
 import check_icon from "../../images/checkIcon.png";
+import { jwtDecode } from "jwt-decode";
 
 export const Signup = () => {
   const initData = {
@@ -14,6 +15,7 @@ export const Signup = () => {
 
   const [data, setData] = useState(initData);
   const [isSubmit, setIsSubmit] = useState(false);
+  const [username, setUsername] = useState("");
   const [formErrors, setFormErrors] = useState({});
 
   const dataChange = (event) => {
@@ -22,10 +24,6 @@ export const Signup = () => {
       [event.target.name]: event.target.value,
     });
   };
-
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
 
   const handleSignup = async (event) => {
     try {
@@ -40,10 +38,14 @@ export const Signup = () => {
             "Content-type": "application/json",
           },
         });
-        let jsonToObject = await response.json();
+        let jsonData = await response.json();
+        console.log("Response from the server: ", jsonData);
 
         if (response.ok) {
           setIsSubmit(true);
+          localStorage.setItem("isSubmit", "true");
+          localStorage.setItem("token", jsonData.token);
+          localStorage.setItem("username", jsonData.username);
         }
       } else {
         alert("Please fill in all required fields correctly.");
@@ -53,6 +55,25 @@ export const Signup = () => {
       console.log(err);
     }
   };
+
+  useEffect(() => {
+    console.log(data);
+    const isSubmit = localStorage.getItem("isSubmit") === "true";
+    const username = localStorage.getItem("username");
+
+    if(username) { setUsername(username); }
+
+    const token = localStorage.getItem("token");
+    if(token) {
+      try {
+        const decoded = jwtDecode(token);
+        setDecodedToken(decoded);
+      } catch(err) {
+        console.log("Failed to decode token", err);
+      }
+    }
+    setIsSubmit(isSubmit);
+  }, [data]);
 
   const validate = (values) => {
     const emailRegex = /^[^\s@]+@[^\s@]+[^\s@]{2,}$/i;

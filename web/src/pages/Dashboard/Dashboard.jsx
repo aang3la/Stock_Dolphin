@@ -16,16 +16,12 @@ function Dashboard() {
   const [currentPage, setCurrentPage] = useState(1);
   const [ordersPerPage, setOrdersPerPage] = useState(4);
 
-  const [decodeToken, setDecodeToken] = useState(null);
+  const [username, setUsername] = useState("");
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if(token) {
-      const decoded = jwtDecode(token);
-      setDecodeToken(decoded);
-    }
+    const storedUsername = localStorage.getItem("username");
+    setUsername(storedUsername);
   }, []);
-  console.log("Decoded:", decodeToken);
 
   const sortedActivities = activities.sort(
     (a, b) => new Date(b.date) - new Date(a.date)
@@ -47,7 +43,7 @@ function Dashboard() {
         <header className="dashboard-header">
           <Header title="Dashboard" />
           <div className="user-section">
-            <p>Welcome back Angela!</p>
+            <p>Welcome back {username}!</p>
             <img src={user_icon} />
           </div>
         </header>
