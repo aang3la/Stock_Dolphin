@@ -1,19 +1,67 @@
 import "./orderModal.css";
 import close from "../../images/close.png";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { Context } from "../../uttils/FetchContextProvider";
+import { useFetchData } from "../../uttils/FetchData";
 
-const OrderModal = ({ closeModal, callbackAction, data, onChange }) => {
+const OrderModal = ({ setOpenOrdersModal }) => {
+  const { categoryName, itemName } = useParams();
+  const { orders, setOrders } = useFetchData();
   const { suppliers } = useContext(Context);
   const [selectedSupplier, setSelectedSupplier] = useState("");
   const [selectedDate, setSelectedDate] = useState("");
 
+  const [data, setData] = useState({
+    quantity: "",
+    pricePerUnit: "",
+    date: "",
+    supplierId: "",
+  });
+
+  const onChange = (e) => {
+    setData({ ...data, [e.target.name]: e.target.value });
+    console.log(data);
+  };
+
   const handleSelectSupplier = (event) => {
     setSelectedSupplier(event.target.value);
+    console.log("Selected Supplier:", event.target.value);
   };
 
   const handleSelectedDate = (event) => {
     setSelectedDate(event.target.value);
+  };
+
+  const handleAddOrder = async (event) => {
+    try {
+      event.preventDefault();
+      const response = await fetch(
+        `http://127.0.0.1:10004/inventory/${categoryName}/${itemName}`,
+        {
+          method: "POST",
+          body: JSON.stringify({
+            ...data,
+            supplierId: selectedSupplier,
+            date: selectedDate,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      console.log("Response:", response);
+      if (response.ok) {
+        setOpenOrdersModal(false);
+        const newOrder = await response.json();
+        setOrders([...orders, newOrder.data]);
+      } else {
+        event.preventDefault();
+      }
+    } catch (err) {
+      console.log("Error adding order.");
+    }
   };
 
   return (
@@ -21,7 +69,7 @@ const OrderModal = ({ closeModal, callbackAction, data, onChange }) => {
       <dialog id="order-dialog" open>
         <div className="order-modal-title">
           <h1>Add Order</h1>
-          <button onClick={() => closeModal(false)}>
+          <button onClick={() => setOpenOrdersModal(false)}>
             <img src={close} className="close-icon" alt="close-icon" />
           </button>
         </div>
@@ -36,7 +84,7 @@ const OrderModal = ({ closeModal, callbackAction, data, onChange }) => {
               Supplier*
             </option>
             {suppliers.map((supplier) => (
-              <option key={supplier._id} value={supplier.id}>
+              <option key={supplier._id} value={supplier._id}>
                 {supplier.name}
               </option>
             ))}
@@ -78,7 +126,7 @@ const OrderModal = ({ closeModal, callbackAction, data, onChange }) => {
           <button id="cancel-btn" onClick={() => closeModal(false)}>
             CANCEL
           </button>
-          <button id="add-btn" onClick={callbackAction}>
+          <button id="add-btn" onClick={handleAddOrder}>
             ADD ORDER
           </button>
         </div>

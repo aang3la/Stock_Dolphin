@@ -14,76 +14,57 @@ import { useFetchData } from "../../uttils/FetchData";
 
 const Orders = () => {
   const { categoryName, itemName } = useParams();
-  const { orders, setOrders, items } = useFetchData();
+  const { orders, items, setItems } = useFetchData();
 
   const [openOrdersModal, setOpenOrdersModal] = useState(false);
   const [openInvoiceModal, setOpenInvoiceModal] = useState(false);
   const [openMoveItemModal, setOpenMoveItemModal] = useState(false);
 
-  const [data, setData] = useState({
-    quantity: "",
-    pricePerUnit: "",
-    date: "",
-    supplierName: ""
+  const [itemData, setItemData] = useState({
+    name: itemName,
   });
+  const [isEditing, setIsEditing] = useState(false);
 
-  const onChange = (e) => {
-    setData({...data, [e.target.name]: e.target.value
-    })
-    console.log(data);
+  const onChange = async (e) => {
+    setItemData({ ...itemData, [e.target.name]: e.target.value });
+    console.log(itemData);
   };
 
-  const handleAddOrder = async (event) => {
+  const selectedItem = items.find((item) => item.name === itemName);
+
+  const handleEditItem = async (event) => {
+    const itemId = selectedItem._id;
+
     try {
       event.preventDefault();
       const response = await fetch(
-        `http://127.0.0.1:10004/inventory/${categoryName}/${itemName}`,
+        `http://127.0.0.1:10003/inventory/${categoryName}/${itemId}`,
         {
-          method: "POST",
-          body: JSON.stringify(data),
+          method: "PATCH",
+          body: JSON.stringify(itemData),
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
-        });
+        }
+      );
       console.log("Response:", response);
       if (response.ok) {
-        setOpenOrdersModal(false);
-        const newOrder = await response.json();
-        setOrders([...orders, newOrder.data]);
+        setIsEditing(false);
+        const updatedItem = items.map((it) => {
+          if (it._id === selectedItem._id) {
+            return { ...it, ...itemData };
+          }
+          return it;
+        });
+        setItems(updatedItem);
       } else {
         event.preventDefault();
       }
     } catch (err) {
-      console.log("Error adding order.");
+      console.log("Error editing item.");
     }
   };
-
-  // const handleEditItem = async (event) => {
-  //   try {
-  //     event.preventDefault();
-  //     const response = await fetch(`http://127.0.0.1:10003/inventory/${categoryName}/${id}`, {
-  //       method: "PATCH",
-  //       body: JSON.stringify(item),
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Authorization: `Bearer ${localStorage.getItem("token")}`,
-  //       },
-  //     });
-  //     console.log("Response:", response);
-  //     if (response.ok) {
-  //       setOpenModal(false);
-  //       const updatedItem = await response.json();
-  //       setChangedItem(updatedItem);
-  //     } else {
-  //       event.preventDefault();
-  //     }
-  //   } catch (err) {
-  //     console.log("Error editing item.");
-  //   }
-  // };
-
-  const selectedItem = items.find(item => item.name === itemName);
 
   return (
     <div className="Orders-container">
@@ -99,12 +80,8 @@ const Orders = () => {
             <p>ADD ORDER</p>
           </button>
           {openOrdersModal && (
-            <OrderModal 
-              closeModal={setOpenOrdersModal}
-              callbackAction={handleAddOrder} 
-              onChange={onChange}
-              data={data}
-          />)}
+            <OrderModal setOpenOrdersModal={setOpenOrdersModal} />
+          )}
         </div>
       </header>
       <div className="orders-title-section">
@@ -131,24 +108,44 @@ const Orders = () => {
               </tr>
             </thead>
             <tbody>
-            <tr className="order-lines">
-              {orders.map((order) => (
-                 <td>
-                  <OrderCard key={order._id} order={order} />
-                </td>
-              ))}
-            </tr>
+              <tr className="order-lines">
+                {orders.map((order) => (
+                  <td>
+                    <OrderCard key={order._id} order={order} />
+                  </td>
+                ))}
+              </tr>
             </tbody>
           </table>
           <form className="choosen-item">
             <div className="picture-container">
-              {selectedItem && <img src={`/imgs/items/${selectedItem.image}`} alt="item image" />}
-              <button className="edit-item-btn">
+              {selectedItem && (
+                <img
+                  src={`/imgs/items/${selectedItem.image}`}
+                  alt="item image"
+                />
+              )}
+              <button
+                type="button"
+                className="edit-item-btn"
+                onClick={() => setIsEditing(true)}
+              >
                 <img src={edit_icon} id="edit-item-icon" alt="Edit Item" />
-            </button>
+              </button>
             </div>
             <div className="choosen-item-name">
-              <p>Name: <b>{itemName}</b></p>
+              {isEditing ? (
+                <input
+                  type="text"
+                  name="name"
+                  value={itemData.name}
+                  onChange={onChange}
+                />
+              ) : (
+                <p>
+                  Name: <b>{itemName}</b>
+                </p>
+              )}
             </div>
             <div className="choosen-item-buttons">
               <button
@@ -160,7 +157,13 @@ const Orders = () => {
               {openMoveItemModal && (
                 <MoveItemModal closeModal={setOpenMoveItemModal} />
               )}
-              <button className="save-button">SAVE</button>
+              <button
+                type="button"
+                className="save-button"
+                onClick={handleEditItem}
+              >
+                SAVE
+              </button>
             </div>
           </form>
         </div>

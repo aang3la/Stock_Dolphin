@@ -16,9 +16,6 @@ const itemsSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  // totalAmount: {
-  //   type: Number,
-  // },
   orders: [
     {
       type: mongoose.Schema.Types.ObjectId,
@@ -29,15 +26,7 @@ const itemsSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Activity",
   },
-  // totalCost: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: "Orders",
-  // },
 });
-
-// itemsSchema.virtual('totalCost').get(function() {
-//   return this.orders.reduce((total, order) => total + order.totalPrice, 0);
-// });
 
 const Items = mongoose.model("Items", itemsSchema);
 module.exports = Items;

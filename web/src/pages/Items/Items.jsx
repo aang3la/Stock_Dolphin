@@ -47,10 +47,7 @@ const Items = () => {
   const handleEditCategory = async (event) => {
     const category = categories.find((category) => category.title === categoryName);
     const categoryId = category._id;
-    console.log("category: ..", category);
-    console.log("categoryID!!!: ..", categoryId);
-
-    
+     
     try {
       event.preventDefault();
       const response = await fetch(

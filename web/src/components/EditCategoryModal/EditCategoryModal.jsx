@@ -1,6 +1,5 @@
 import add_image from "../../images/add-image.png";
 import close from "../../images/close.png";
-import { useState } from "react";
 
 const EditCategoryModal = ({ categoryData, heading, btnName, handleEditCategory, closeModal, onChange }) => {  
     return (
@@ -34,7 +33,6 @@ const EditCategoryModal = ({ categoryData, heading, btnName, handleEditCategory,
                 type="file"
                 id="photo-upload"
                 accept="image/*" 
-                // onChange={handlePhotoUpload} // Handle file upload onChange event
                 />
                 <p>(Add Photo, 2MB Total)</p>
             </div>

@@ -5,15 +5,22 @@ import delete_icon from "../../images/delete-icon.png";
 import { useState, useContext } from "react";
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
 import { Context } from "../../uttils/FetchContextProvider";
+import EditSupplierModal from "../EditSupplierModal/EditSupplierModal";
 
 const SupplierCard = ({ supplier }) => {
   const [openConfModal, setOpenConfModal] = useState(false);
+  const [openEditModal, setOpenEditModal] = useState(false);
   const { setSuppliers } = useContext(Context);
   const [selectedSupplier, setSelectedSupplier] = useState(null);
 
   const handleDeleteClick = () => {
-    setSelectedSupplier(supplier._id); 
-    setOpenConfModal(true); 
+    setSelectedSupplier(supplier._id);
+    setOpenConfModal(true);
+  };
+
+  const handleEdit = () => {
+    setSelectedSupplier(supplier._id);
+    setOpenEditModal(true);
   };
 
   const handleDeleteSupplier = async () => {
@@ -21,18 +28,21 @@ const SupplierCard = ({ supplier }) => {
       console.log("Supplier not found!!", selectedSupplier);
       return;
     }
-    
+
     try {
-      const response = await fetch(`http://127.0.0.1:10001/suppliers/${selectedSupplier}`, {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      const response = await fetch(
+        `http://127.0.0.1:10001/suppliers/${selectedSupplier}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
 
       if (response.ok) {
-        setSuppliers(prevSuppliers =>
-          prevSuppliers.filter(supplier => supplier._id !== selectedSupplier)
+        setSuppliers((prevSuppliers) =>
+          prevSuppliers.filter((supplier) => supplier._id !== selectedSupplier)
         );
         setOpenConfModal(false);
       } else {
@@ -62,7 +72,13 @@ const SupplierCard = ({ supplier }) => {
         </p>
         <hr className="hrClass" />
         <span className="supplier-buttons">
-          <img src={edit_icon_2} id="edit_icon" alt="Edit Icon" />
+          <img src={edit_icon_2} id="edit_icon" alt="Edit Icon" onClick={handleEdit} />
+          {openEditModal && (
+            <EditSupplierModal
+              closeModal={() => setOpenEditModal(false)}
+              supplier={supplier}
+            />
+          )}
           <img
             src={delete_icon}
             id="delete_icon"
@@ -76,7 +92,7 @@ const SupplierCard = ({ supplier }) => {
           closeModal={() => setOpenConfModal(false)}
           content="Do you want to delete this supplier?"
           buttonName="CONFIRM"
-          handleConfirm={handleDeleteSupplier} 
+          handleConfirm={handleDeleteSupplier}
         />
       )}
     </div>
