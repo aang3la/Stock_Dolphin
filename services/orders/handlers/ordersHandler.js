@@ -31,7 +31,13 @@ exports.getAllOrders = async (req, res) => {
 
 exports.getAllOrders2 = async (req, res) => {
   try {
-    const orders = await Orders.find();
+    const orders = await Orders.find()
+    // .lean();
+
+    // for(let order of orders) {
+    //   const item = await Items.findById(order.itemId);
+    //   order.itemImage = item.image;
+    // }
 
     res.status(200).json({
       status: "success",

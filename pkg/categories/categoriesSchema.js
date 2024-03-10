@@ -18,10 +18,6 @@ const categoriesSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  // totalPrice: {
-  //     type: mongoose.Schema.Types.ObjectId,
-  //     ref: 'Items',
-  // }
 });
 
 const Categories = mongoose.model("Categories", categoriesSchema);

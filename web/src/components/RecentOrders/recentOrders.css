@@ -5,6 +5,12 @@
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.25);
 }
 
+.recent-order-image {
+    height: 78px;
+    border-radius: 10px 10px 0 0;
+    background-color: grey;
+}
+
 .recent-order-image img {
     width: 120px;
     height: 73px;

@@ -67,11 +67,7 @@ const CategoryCard = ({ category, isGridView }) => {
   };
 
   return (
-    <div
-      className={`Category-Card ${
-        isGridView ? "gridViewCard" : "listViewCard"
-      }`}
-    >
+    <div className={`Category-Card ${isGridView ? "gridViewCard" : "listViewCard"}`}>
       <div className="categoryCard-images">
         <div key={category._id} className="category-images-container">
           <div className="images3-container">

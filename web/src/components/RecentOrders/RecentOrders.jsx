@@ -4,7 +4,7 @@ const RecentOrders = ({ order }) => {
   return (
     <div className="order-container">
       <div className="recent-order-image">
-          <img src={`/imgs/items/${order.itemId.image}`} alt="item image" />
+          <img src={`/imgs/items/${order.itemImage}`} alt="item image" />
       </div>
       <section className="recent-order-content">
         <div className="recent-order-title">

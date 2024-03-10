@@ -179,13 +179,6 @@ exports.deleteItem = async (req, res) => {
     
     const category = await Categories.findOne({ title: categoryName });
 
-    // res.status(201).json({
-    //   status: "success",
-    //   message: category
-    // });
-
-    // return;
-
     if (!category) {
       res.status(408).json({
         status: "fail",
