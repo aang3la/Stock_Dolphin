@@ -1,7 +1,7 @@
 import add_image from "../../images/add-image.png";
 import close from "../../images/close.png";
 
-const EditCategoryModal = ({ categoryData, heading, btnName, handleEditCategory, closeModal, onChange }) => {  
+const EditCategoryModal = ({ categoryData, heading, btnName, handleEditCategory, closeModal, onChange, handleFileChange }) => {  
     return (
       <div className="overlay-container">
         <dialog open>
@@ -33,6 +33,7 @@ const EditCategoryModal = ({ categoryData, heading, btnName, handleEditCategory,
                 type="file"
                 id="photo-upload"
                 accept="image/*" 
+                onChange={handleFileChange}
                 />
                 <p>(Add Photo, 2MB Total)</p>
             </div>

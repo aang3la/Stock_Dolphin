@@ -23,10 +23,16 @@ const Items = () => {
   const [categoryData, setCategoryData] = useState({
     title: categoryName
   });
+  const [file, setFile] = useState(null);
 
   const onChange = async (e) => {
     setCategoryData({ ...categoryData, [e.target.name]: e.target.value });
     console.log(categoryData);
+  };
+
+  const handleFileChange = (e) => {
+    const selectedFile = e.target.files[0];
+    setFile(selectedFile);
   };
 
   useEffect(() => {
@@ -50,6 +56,15 @@ const Items = () => {
      
     try {
       event.preventDefault();
+
+      // const formData = new FormData();
+      // if(file){
+      //   formData.append("image", file);
+      // }
+      // formData.append("title", categoryData.title);
+
+      // console.log(`formdata:`, formData);
+
       const response = await fetch(
         `http://127.0.0.1:10005/inventory/${categoryId}`,
         {

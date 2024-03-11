@@ -34,6 +34,7 @@ exports.getAllOrders2 = async (req, res) => {
     const orders = await Orders.find();
     // .lean();
 
+
     // for(let order of orders) {
     //   const item = await Items.findById(order.itemId);
     //   // let item = items.filter(item => {
