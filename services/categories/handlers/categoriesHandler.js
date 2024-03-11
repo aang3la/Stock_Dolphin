@@ -1,4 +1,5 @@
 const Categories = require("../../../pkg/categories/categoriesSchema");
+const Items = require("../../../pkg/items/itemsSchema");
 
 // Show all categories
 exports.getAllCategories = async(req, res) => {
@@ -8,7 +9,7 @@ exports.getAllCategories = async(req, res) => {
         queryString = queryString.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`)
         const query = JSON.parse(queryString);
 
-        const categories = await Categories.find(query);
+        const categories = await Categories.find(query).populate("items");
 
         res.status(200).json({
             status: "success",

@@ -21,10 +21,15 @@ const CategoryCard = ({ category, isGridView }) => {
 
   const calculateTotalCost = (category) => {
     let totalCost = 0;
-
-    for (const itemId of category.items) {
-      const itemOrders = allOrders.filter((order) => order.itemId === itemId);
-      const itemTotalCost = itemOrders.reduce((acc, curr) => acc + curr.totalPrice, 0);
+  
+    const categoryItems = category.items.filter(item => item.categoryId === category._id);
+  
+    for (const item of categoryItems) {
+      const itemOrders = allOrders.filter((order) => order.itemId === item._id);
+      const itemTotalCost = itemOrders.reduce(
+        (acc, curr) => acc + curr.totalPrice,
+        0
+      );
       totalCost += itemTotalCost;
     }
     return totalCost;
@@ -67,27 +72,35 @@ const CategoryCard = ({ category, isGridView }) => {
   };
 
   return (
-    <div className={`Category-Card ${isGridView ? "gridViewCard" : "listViewCard"}`}>
+    <div
+      className={`Category-Card ${
+        isGridView ? "gridViewCard" : "listViewCard"
+      }`}
+    >
       <div className="categoryCard-images">
         <div key={category._id} className="category-images-container">
           <div className="images3-container">
             {category.items.slice(0, 1).map((item) => (
-              <div className="image1" key={item._id}>
-                <img src={`/imgs/items/${item.image}`} alt="img1" />
+              <div key={item._id}>
+                <img
+                  src={`/imgs/items/${item.image}`}
+                  alt="img1"
+                  className="image1"
+                />
               </div>
             ))}
-            <div className="image2-3">
-              {category.items.slice(1, 2).map((item) => (
-                <div className="image2" key={item._id}>
-                  <img src={`/imgs/items/${item.image}`} alt="img2" />
-                </div>
-              ))}
-              {category.items.slice(2, 3).map((item) => (
-                <div className="image3" key={item._id}>
-                  <img src={`/imgs/items/${item.image}`} alt="img3" />
-                </div>
-              ))}
-            </div>
+          </div>
+          <div className="image2-3">
+            {category.items.slice(1, 2).map((item) => (
+              <div key={item._id}>
+                <img src={`/imgs/items/${item.image}`} alt="img2" className="image2" />
+              </div>
+            ))}
+            {category.items.slice(2, 3).map((item) => (
+              <div key={item._id}>
+                <img src={`/imgs/items/${item.image}`} alt="img3" className="image3" />
+              </div>
+            ))}
           </div>
         </div>
       </div>

@@ -31,11 +31,14 @@ exports.getAllOrders = async (req, res) => {
 
 exports.getAllOrders2 = async (req, res) => {
   try {
-    const orders = await Orders.find()
+    const orders = await Orders.find();
     // .lean();
 
     // for(let order of orders) {
     //   const item = await Items.findById(order.itemId);
+    //   // let item = items.filter(item => {
+    //   //   return item._id === order.itemId;
+    //   // });
     //   order.itemImage = item.image;
     // }
 
@@ -89,9 +92,9 @@ exports.createOrder = async (req, res) => {
       itemName: item.name,
       pricePerUnit,
       quantity,
-      totalPrice
+      totalPrice,
     });
-    
+
     await Items.findByIdAndUpdate(item._id, {
       $push: { orders: newOrder },
     });

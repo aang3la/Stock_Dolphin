@@ -18,13 +18,48 @@
 
 .gridViewCard .categoryCard-images {
   height: 115px;
-  background-color: grey;
   border-radius: 10px 10px 0 0;
 }
 
 .listViewCard .categoryCard-images {
-  width: 190px;
-  background-color: grey;
+  width: 200px;
+  height: 115px;
+  border-radius: 10px 0 0 10px;
+}
+
+.category-images-container {
+  display: flex;
+}
+
+.gridViewCard .image1 {
+  width: 95px;
+  height: 115px;
+  border-radius: 10px 0 0 0;
+}
+
+.gridViewCard .image2, .gridViewCard .image3 {
+  width: 95px;
+  height: 58px;
+}
+
+.gridViewCard .image2 {
+  border-radius: 0 10px 0 0;
+  margin-bottom: -8px;
+}
+
+.listViewCard .image1 {
+  width: 100px;
+  height: 115px;
+  border-radius: 10px 0 0 10px;
+}
+
+.listViewCard .image2, .listViewCard .image3 {
+  width: 95px;
+  height: 59px;
+}
+
+.listViewCard .image2 {
+  margin-bottom: -9px;
 }
 
 .listViewCard .categoryCard-content {
@@ -89,7 +124,7 @@
 }
 
 .listViewCard .categoryCard-footer {
-  width: 180px;
+  width: 160px;
   height: 100px;
   display: flex;
   flex-direction: column;

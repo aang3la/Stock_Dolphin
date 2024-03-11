@@ -1,9 +1,8 @@
 const express = require('express');
 const suppliers = require("./handlers/suppliersHandler");
 const database = require("../../pkg/database/index");
-
 const cors = require('cors');
-const jwt = require('express-jwt');
+const expressJWT = require("express-jwt");
 
 const app = express();
 
@@ -13,7 +12,7 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-app.use(jwt.expressjwt({
+app.use(expressJWT.expressjwt({
     algorithms: ["HS256"],
     secret: process.env.JWT_SECRET,
     getToken: (req) => {

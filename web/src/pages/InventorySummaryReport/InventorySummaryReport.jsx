@@ -28,7 +28,7 @@ function InventorySummaryReport() {
         return orderDate <= end;
       }
       return true;
-    });
+    }, []);
 
     if (selectedCategory) {
       filteredOrders = filteredOrders.filter(order => order.category === selectedCategory);

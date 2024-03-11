@@ -24,10 +24,16 @@ const Orders = () => {
     name: itemName,
   });
   const [isEditing, setIsEditing] = useState(false);
+  const [file, setFile] = useState(null);
 
   const onChange = async (e) => {
     setItemData({ ...itemData, [e.target.name]: e.target.value });
     console.log(itemData);
+  };
+
+  const handleFileChange = (e) => {
+    const selectedFile = e.target.files[0];
+    setFile(selectedFile);
   };
 
   const selectedItem = items.find((item) => item.name === itemName);
@@ -37,11 +43,21 @@ const Orders = () => {
 
     try {
       event.preventDefault();
+      
+      const formData = new FormData();
+      if(file){
+        formData.append("image", file);
+      }
+      formData.append("name", itemData.name);
+      formData.append("title", categoryName);
+
+      console.log(`formdata:`, formData);
+
       const response = await fetch(
         `http://127.0.0.1:10003/inventory/${categoryName}/${itemId}`,
         {
           method: "PATCH",
-          body: JSON.stringify(itemData),
+          body: formData,
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -49,8 +65,10 @@ const Orders = () => {
         }
       );
       console.log("Response:", response);
+      const resData = await res.json();
+      console.log("resData", resData);
       if (response.ok) {
-        setIsEditing(false);
+        setIsEditing(true);
         const updatedItem = items.map((it) => {
           if (it._id === selectedItem._id) {
             return { ...it, ...itemData };
@@ -149,6 +167,7 @@ const Orders = () => {
             </div>
             <div className="choosen-item-buttons">
               <button
+                type="button"
                 className="move-item"
                 onClick={() => setOpenMoveItemModal(true)}
               >

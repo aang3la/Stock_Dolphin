@@ -12,7 +12,7 @@ const Modal = ({
   modalFor,
   onChange
 }) => {
-  // const [file, setFile] = useState();
+  const [file, setFile] = useState(null);
 
   return (
     <div className="overlay-container">
