@@ -99,9 +99,11 @@ exports.createItem = async (req, res) => {
       title: req.params.categoryName
     });
 
+    // const itemImage = req.file ? req.file.filename : "default.png";
+
     const newItem = await Items.create({
       name,
-      image,
+      image: req.file.filename,
       categoryId: category._id,
     });
 

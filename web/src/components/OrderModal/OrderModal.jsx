@@ -123,7 +123,7 @@ const OrderModal = ({ setOpenOrdersModal }) => {
           <hr />
         </div>
         <div className="modal-footer">
-          <button id="cancel-btn" onClick={() => closeModal(false)}>
+          <button id="cancel-btn" onClick={() => setOpenOrdersModal(false)}>
             CANCEL
           </button>
           <button id="add-btn" onClick={handleAddOrder}>
