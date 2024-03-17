@@ -5,8 +5,10 @@ Manual monitoring and ordering practices often result in either overstocking or 
 With StockDolphin and its advanced features, we aims to save costs by efficiently optimising the inventory of expandable items and automating the purchase record keeping process.
 
 
-#### Register / Login Page
+#### Signup Page 
 ![Screenshot 2024-03-17 185148](https://github.com/aang3la/Stock_Dolphin/assets/128414550/487374d1-1d5b-4640-9564-54cdc98d19e1)
+
+#### Login Page
 ![Screenshot 2024-03-17 185209](https://github.com/aang3la/Stock_Dolphin/assets/128414550/0fefdfa7-5eac-4bf3-a702-c94f098e7db2)
 
 #### Dashboard Page (main workspace)
@@ -14,6 +16,9 @@ With StockDolphin and its advanced features, we aims to save costs by efficientl
 
 #### Inventory Page (categories)
 ![Screenshot 2024-03-17 185632](https://github.com/aang3la/Stock_Dolphin/assets/128414550/7dd16f67-6079-4dc5-9b8e-28c51cb174f1)
+
+Add new Category modal
+![Screenshot 2024-03-17 191815](https://github.com/aang3la/Stock_Dolphin/assets/128414550/5a55decc-0fe2-4f2d-a7e4-0d92f12458c3)
 
 #### Inventory (items in one category)
 Grid View
@@ -24,11 +29,17 @@ List View
 Add new Item modal
 ![Screenshot 2024-03-17 185737](https://github.com/aang3la/Stock_Dolphin/assets/128414550/3419ce6a-e3ad-4662-b98f-0686dc8b1bed)
 
+Edit Category modal
+![Screenshot 2024-03-17 191921](https://github.com/aang3la/Stock_Dolphin/assets/128414550/b64d15e0-ccf5-4bad-a04c-ec8d27a2b87b)
+
 #### Orders Page (orders in one item)
 ![Screenshot 2024-03-17 185755](https://github.com/aang3la/Stock_Dolphin/assets/128414550/faa2be84-d66f-4269-a149-5f654c7a6a37)
 
 Add new Order modal
 ![Screenshot 2024-03-17 185826](https://github.com/aang3la/Stock_Dolphin/assets/128414550/983db78c-84c8-461d-9674-881648963c03)
+
+Add Invoice modal
+![Screenshot 2024-03-17 191955](https://github.com/aang3la/Stock_Dolphin/assets/128414550/e4258334-493d-4621-8fa4-a85cf6121e3f)
 
 #### Reports Page
 ![Screenshot 2024-03-17 191052](https://github.com/aang3la/Stock_Dolphin/assets/128414550/313861e4-d35f-40f4-9fe9-daf5bf3e519b)
