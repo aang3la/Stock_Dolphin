@@ -1,9 +1,16 @@
-# Stock Dolphin🐬
-### Innovative Inventory System designed to revolutionize the way offices manage and stock their supplies.
+# Stock Dolphin
+
+## Overview
+#### Innovative Inventory System designed to revolutionize the way offices manage and stock their supplies.
 Some offices supply management process is inefficient and costly, leading to excessive spending and inventory management challenges. 
 Manual monitoring and ordering practices often result in either overstocking or stockouts, causing financial waste and disruption in office operations. 
 With StockDolphin and its advanced features, we aims to save costs by efficiently optimising the inventory of expandable items and automating the purchase record keeping process.
 
+## Technologies Used
+- HTML, CSS, JavaScript, ReactJS;
+- NodeJS, ExpressJS, MongoDB.
+
+## Screenshots
 
 #### Signup Page 
 ![Screenshot 2024-03-17 185148](https://github.com/aang3la/Stock_Dolphin/assets/128414550/487374d1-1d5b-4640-9564-54cdc98d19e1)
