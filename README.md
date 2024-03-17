@@ -10,6 +10,13 @@ With StockDolphin and its advanced features, we aims to save costs by efficientl
 - HTML, CSS, JavaScript, ReactJS;
 - NodeJS, ExpressJS, MongoDB.
 
+## Features
+- Roles and Permissions (admin, user);
+- JWT Authentication (secure log in, access protected routes, & maintain sessions);
+- Database Integration (storing data - MongoDB);
+- API Endpoints (CRUD operations);
+- Frontend Components (ReactJS).
+
 ## Screenshots
 
 #### Signup Page 
